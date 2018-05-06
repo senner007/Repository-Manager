@@ -31,23 +31,17 @@ namespace Manager.Models
         public bool UpdatePerson(IPerson personCopy, string propertyName, string value) // IPerson parameter er value kopi fra Datagridview
         {
             IPerson _person = _people.FirstOrDefault(p => p.TLF == personCopy.TLF); // Find matching person in db
-            Console.WriteLine(propertyName);
-            Console.WriteLine(value);
-            if (_person != null)
-            {   
-                if (propertyName == "TLF" || propertyName == "Age")
-                {
-                    Console.WriteLine("Hello number");
-                    _person.GetType().GetProperty(propertyName).SetValue(_person, Convert.ToUInt32(value), null);
+            //Console.WriteLine(propertyName);
+            //Console.WriteLine(value);
+            //Console.WriteLine(_person.GetType().GetProperty(propertyName).PropertyType);
 
-                } else if (propertyName == "FirstName" || propertyName == "LastName")
-                {
-                    Console.WriteLine("Hello string");
-                    _person.GetType().GetProperty(propertyName).SetValue(_person, value, null);
-                }               
+            if (_person != null)
+            {
+                var correctType = Convert.ChangeType(value, _person.GetType().GetProperty(propertyName).PropertyType);
+                _person.GetType().GetProperty(propertyName)
+                    .SetValue(_person, correctType, null); // konverter på baggrund af prop navn       
             }
             return true;
-
         }
         public List<T> GetByType<T>(Func<IPerson, T> lambda) where T : IPerson
         {
