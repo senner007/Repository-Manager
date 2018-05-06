@@ -60,7 +60,7 @@ namespace Manager.Models
         }
         internal List<Merged> MergeTypes()
         {
-            List<Merged> mStudents = GetByType(o => o as Student).Select(s => new Merged // TODO : forbedre/simplificer
+            IEnumerable<Merged> mStudents = GetByType(o => o as Student).Select(s => new Merged // TODO : forbedre/simplificer
             {
                 TLF = s.TLF,
                 FirstName = s.FirstName,
@@ -70,9 +70,9 @@ namespace Manager.Models
                 Major = s.Major,
                 Company = null,
                 Salary = 0
-            }).ToList();
+            });
 
-            List<Merged> mEmployed = GetByType(o => o as Employed).Select(w => new Merged
+            IEnumerable<Merged> mEmployed = GetByType(o => o as Employed).Select(w => new Merged
             {
                 TLF = w.TLF,
                 FirstName = w.FirstName,
@@ -82,7 +82,7 @@ namespace Manager.Models
                 Major = null,
                 Company = w.Company,
                 Salary = w.Salary
-            }).ToList();
+            });
 
             return mEmployed.Union(mStudents).ToList();
         }
