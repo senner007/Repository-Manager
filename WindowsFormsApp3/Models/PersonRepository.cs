@@ -38,20 +38,16 @@ namespace Manager.Models
                 if (propertyName == "TLF" || propertyName == "Age")
                 {
                     Console.WriteLine("Hello number");
-                    _person.GetType().GetProperty(propertyName).SetValue(_person, ConvertValue<UInt32>(propertyName, value), null);
+                    _person.GetType().GetProperty(propertyName).SetValue(_person, Convert.ToUInt32(value), null);
 
                 } else if (propertyName == "FirstName" || propertyName == "LastName")
                 {
                     Console.WriteLine("Hello string");
-                    _person.GetType().GetProperty(propertyName).SetValue(_person, ConvertValue<string>(propertyName, value), null);
+                    _person.GetType().GetProperty(propertyName).SetValue(_person, value, null);
                 }               
             }
             return true;
 
-        }
-        public T ConvertValue<T>(string prop, string value)
-        {
-          return (T)Convert.ChangeType(value, typeof(T));  
         }
         public List<T> GetByType<T>(Func<IPerson, T> lambda) where T : IPerson
         {
