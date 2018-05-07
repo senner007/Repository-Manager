@@ -101,9 +101,11 @@ namespace Manager.Views
         }
         // kaldes for hver tekstændring i filtertekstboks - opdaterer liste efter hver ændring
         private void textFilter_TextChanged(object sender, EventArgs e) 
-        {    
+        {
+            // OnShow();
             OnShow();
             ColumnOrder();
+
         }
         // opdater person
         private void buttonUpdate_Click(object sender, EventArgs e)
@@ -118,8 +120,9 @@ namespace Manager.Views
            // Console.WriteLine(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].DataGridView.DataSource);
 
             IPerson currentObject = (IPerson)dataGridView1.CurrentRow.DataBoundItem; // udtræk person object(value) fra datagrid
-
+            Console.WriteLine(dataGridView1.CurrentRow.Selected); 
             var propValue = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
 
             OnListClick.Invoke(
                 currentObject,  

@@ -12,7 +12,6 @@ namespace Manager.Presenter
     {
         private IFind _view;
         private PersonRepository _manage = new PersonRepository();
-        // private List<IPerson> _sortCache = null;
         private Determine determine = new Determine();
 
         public FindPresenter(IFind view, UpdateDeletePresenter updateDeletePresenter, CreatePresenter createPresenter)
@@ -21,30 +20,29 @@ namespace Manager.Presenter
             _view.OnShow += FilterSort;
             updateDeletePresenter.CallShow += FilterSort;
             createPresenter.CallShow += FilterSort;
-
         }
-        private void FilterSort () 
+        private void FilterSort()
         {
-                // hvis vis studerende, ikke vis employed
+            // hvis vis studerende, ikke vis employed
             if (_view.ShowStudentsCheck && !_view.ShowEmployedCheck)
-            {   // kald sort med student objecter og lambda med sorter efter fag - filtrer
-                _view.PersonList = Filter(SortList(_manage.GetByType(s => s as Student), o => o.Major));
+            {   // kald sort med student objecter og lambda med filtrer - sorter efter fag
+                _view.PersonList = SortList(Filter(_manage.GetByType(s => s as Student)), o => o.Major);
             }
             else if (!_view.ShowStudentsCheck && _view.ShowEmployedCheck)
             {
-                _view.PersonList = Filter(SortList(_manage.GetByType(s => s as Employed), o => o.Salary));
+                _view.PersonList = SortList(Filter(_manage.GetByType(s => s as Employed)), o => o.Salary);    
             }
-            else 
+            else
             {
-                _view.PersonList = Filter(SortList(_manage.MergeTypes(), o => o.Type));           
+                _view.PersonList = SortList(Filter(_manage.MergeTypes()), o => o.Type);
             }
-
         }
 
-        public IEnumerable<T> Filter<T>(List<T> list) where T : IPerson 
+        public IEnumerable<T> Filter<T>(IEnumerable<T> list) where T : IPerson 
             // TODO : øjeblikkelig fokus på filter tekstbox ved programstart
             // TODO : tilføj case-insensitive filter
         {
+
             if (determine.IfName(_view.FilterText))
             {
                 return list.Where(n => n.FirstName.StartsWith(_view.FilterText) || n.LastName.StartsWith(_view.FilterText)).ToList();
@@ -59,7 +57,6 @@ namespace Manager.Presenter
 
         private List<T> SortList<T>(IEnumerable<T> list, Func<T, dynamic> lambda) where T : IPerson
         {
-          //  if (_sortCache != null)  // TODO: implementer sort cache - lav test med mange objekter
      
             if (_view.SortNameRadio)
             {
