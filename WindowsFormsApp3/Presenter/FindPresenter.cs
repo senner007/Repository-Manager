@@ -45,13 +45,13 @@ namespace Manager.Presenter
 
             if (determine.IfName(_view.FilterText))
             {
-                return list.Where(n => n.FirstName.StartsWith(_view.FilterText) || n.LastName.StartsWith(_view.FilterText)).ToList();
+                return list.Where(n => n.FirstName.StartsWith(_view.FilterText) || n.LastName.StartsWith(_view.FilterText));
             }
             if (determine.IfUint(_view.FilterText))
             {
-                return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText)).ToList();
+                return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
             }
-            return list.ToList(); // TODO : returner ingen eller hel liste ved fejlindtastning?
+            return list; // TODO : returner ingen eller hel liste ved fejlindtastning?
         }
 
 
