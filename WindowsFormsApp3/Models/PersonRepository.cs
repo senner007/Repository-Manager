@@ -72,7 +72,8 @@ namespace Manager.Models
                 Salary = w.Salary
             });
 
-            return mEmployed.Union(mStudents);
+            return mEmployed.Concat(mStudents); // Concat bedre for performance
+            // return mEmployed.Union(mStudents); //Union ikke nødvendig da alle gerne skulle være unikke
         }
 
         internal bool DeletePerson(IPerson person)
