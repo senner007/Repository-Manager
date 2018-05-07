@@ -126,7 +126,6 @@ namespace Manager.Views
         // sort retning - opdaterer liste efter tryk.
         private void chkSortDirection_CheckedChanged(object sender, EventArgs e)
         {
-            OnShow();
             chkSortDirection.Text = chkSortDirection.Checked ? "Asc" : "Desc";
             //https://stackoverflow.com/questions/30717616/winform-image-toggle-button
         }
