@@ -30,18 +30,15 @@ namespace Manager.Models
 
         public bool UpdatePerson(IPerson personCopy, string propertyName, string value) // IPerson parameter er value kopi fra Datagridview
         {
-            IPerson _person = _people.FirstOrDefault(p => p.TLF == personCopy.TLF); // Find matching person in db
-            //Console.WriteLine(propertyName);
-            //Console.WriteLine(value);
-            //Console.WriteLine(_person.GetType().GetProperty(propertyName).PropertyType);
+            IPerson _person = _people.FirstOrDefault(p => p.TLF == personCopy.TLF); // Find matching person in db                                                                                   
+            PropertyInfo propInfo = _person.GetType().GetProperty(propertyName);
+            var correctType = Convert.ChangeType(value, propInfo.PropertyType); // konverter på baggrund af prop navn    
 
-            if (_person != null)
-            {
-                var correctType = Convert.ChangeType(value, _person.GetType().GetProperty(propertyName).PropertyType);
-                _person.GetType().GetProperty(propertyName)
-                    .SetValue(_person, correctType, null); // konverter på baggrund af prop navn       
-            }
-            return true;
+            if (_person == null || propertyName == "TLF" && TlfExists((uint)correctType)) return false;
+
+                propInfo.SetValue(_person, correctType, null);    
+                return true;
+   
         }
         public List<T> GetByType<T>(Func<IPerson, T> lambda) where T : IPerson
         {
