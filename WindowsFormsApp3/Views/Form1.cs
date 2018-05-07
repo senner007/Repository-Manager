@@ -77,18 +77,28 @@ namespace Manager.Views
         public event Action OnDelete;
 
         // hent og sorter liste - TODO : nødvendig? eller opdater automatisk ved ændring af visning og sorteringsindstilling
-        private void buttonSort_Click(object sender, EventArgs e)
+        private void ColumnOrder()
         {
+            dataGridView1.Columns["Type"].DisplayIndex = 0; // sikrer samme rækkefølge
+            dataGridView1.Columns["FirstName"].DisplayIndex = 1;
+            dataGridView1.Columns["LastName"].DisplayIndex = 2;
+            dataGridView1.Columns["Age"].DisplayIndex = 3;
+            dataGridView1.Columns["TLF"].DisplayIndex = 4;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // stræk for udfulde plads
+            // dataGridView1.AutoResizeColumns();
+            dataGridView1.AutoResizeRows();
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {         
             OnShow(); 
-             dataGridView1.AutoResizeColumns(); // TODO : sikre samme kolonnerækkefølge
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ColumnOrder();
         }
         // kaldes for hver tekstændring i filtertekstboks - opdaterer liste efter hver ændring
         private void textFilter_TextChanged(object sender, EventArgs e) 
-        {
+        {    
             OnShow();
-            dataGridView1.AutoResizeColumns();
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ColumnOrder();
         }
         // opdater person
         private void buttonUpdate_Click(object sender, EventArgs e)
