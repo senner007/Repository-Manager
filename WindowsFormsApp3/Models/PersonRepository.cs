@@ -36,16 +36,17 @@ namespace Manager.Models
 
             if (_person == null || propertyName == "TLF" && TlfExists((uint)correctType)) return false;
 
-                propInfo.SetValue(_person, correctType, null);    
+                propInfo.SetValue(_person, correctType, null);  
+            
                 return true;
    
         }
-        public List<T> GetByType<T>(Func<IPerson, T> lambda) where T : IPerson
+        public IEnumerable<T> GetByType<T>(Func<IPerson, T> lambda) where T : IPerson
         {
-            return _people.Select(lambda).Where(p => p != null).ToList();
+            return _people.Select(lambda).Where(p => p != null);
 
         }
-        internal List<Merged> MergeTypes()
+        internal IEnumerable<Merged> MergeTypes()
         {
             IEnumerable<Merged> mStudents = GetByType(o => o as Student).Select(s => new Merged // TODO : forbedre/simplificer
             {
@@ -71,7 +72,7 @@ namespace Manager.Models
                 Salary = w.Salary
             });
 
-            return mEmployed.Union(mStudents).ToList();
+            return mEmployed.Union(mStudents);
         }
 
         internal bool DeletePerson(IPerson person)
