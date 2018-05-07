@@ -87,6 +87,11 @@ namespace Manager.Views
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // stræk for udfulde plads
             // dataGridView1.AutoResizeColumns();
             dataGridView1.AutoResizeRows();
+            dataGridView1.Columns["Type"].Width = 80;
+            dataGridView1.Columns["FirstName"].Width = 120;
+            dataGridView1.Columns["LastName"].Width = 120;
+            dataGridView1.Columns["Age"].Width = 50;
+            dataGridView1.Columns["TLF"].Width = 80;
         }
 
         private void buttonSort_Click(object sender, EventArgs e)
