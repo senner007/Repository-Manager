@@ -66,6 +66,8 @@
             this.chkEmployed = new System.Windows.Forms.CheckBox();
             this.chkSortDirection = new System.Windows.Forms.CheckBox();
             this.radioOrderBySalary = new System.Windows.Forms.RadioButton();
+            this.labelDelete = new System.Windows.Forms.Label();
+            this.labelCreate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grpUpdateDelete.SuspendLayout();
             this.grpCreate.SuspendLayout();
@@ -157,6 +159,7 @@
             // 
             // grpUpdateDelete
             // 
+            this.grpUpdateDelete.Controls.Add(this.labelDelete);
             this.grpUpdateDelete.Controls.Add(this.buttonDelete);
             this.grpUpdateDelete.Controls.Add(this.labelError);
             this.grpUpdateDelete.Controls.Add(this.buttonUpdate);
@@ -227,6 +230,7 @@
             // 
             // grpCreate
             // 
+            this.grpCreate.Controls.Add(this.labelCreate);
             this.grpCreate.Controls.Add(this.buttonCreate);
             this.grpCreate.Controls.Add(this.labelCreateMajor);
             this.grpCreate.Controls.Add(this.labelCreateSalary);
@@ -461,6 +465,24 @@
             this.radioOrderBySalary.Text = "Sorter på TYPE";
             this.radioOrderBySalary.UseVisualStyleBackColor = false;
             // 
+            // labelDelete
+            // 
+            this.labelDelete.AutoSize = true;
+            this.labelDelete.Location = new System.Drawing.Point(105, 172);
+            this.labelDelete.Name = "labelDelete";
+            this.labelDelete.Size = new System.Drawing.Size(35, 13);
+            this.labelDelete.TabIndex = 6;
+            this.labelDelete.Text = "label1";
+            // 
+            // labelCreate
+            // 
+            this.labelCreate.AutoSize = true;
+            this.labelCreate.Location = new System.Drawing.Point(448, 172);
+            this.labelCreate.Name = "labelCreate";
+            this.labelCreate.Size = new System.Drawing.Size(35, 13);
+            this.labelCreate.TabIndex = 17;
+            this.labelCreate.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -527,6 +549,8 @@
         private System.Windows.Forms.Label labelCreateCompany;
         private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Label labelDelete;
+        private System.Windows.Forms.Label labelCreate;
     }
 }
 
