@@ -52,6 +52,7 @@ namespace Manager.Presenter
             }
             if (determine.IfUint(_view.FilterText))
             {
+                // TODO :hvis der søges på tlf, hop over sort og find med binær søgning. Vis unik resultat under textbox - tab for indsættelse ?
                 return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
             }
             return list; // TODO : returner ingen eller hel liste ved fejlindtastning?
@@ -60,7 +61,7 @@ namespace Manager.Presenter
 
         private List<T> SortList<T>(IEnumerable<T> list, Func<T, dynamic> lambda) where T : IPerson
         {
-      
+    
             if (_view.SortNameRadio)
             {
                 list = list.OrderBy(o => o.LastName).ThenBy(o => o.FirstName);

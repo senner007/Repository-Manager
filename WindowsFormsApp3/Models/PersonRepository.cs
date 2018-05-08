@@ -16,7 +16,7 @@ namespace Manager.Models
 
         static PersonRepository() // static constructor
         {
-            Console.WriteLine("People static contructor"); 
+            Console.WriteLine("People static contructor");
             _people = new List<IPerson>()
             {
               new Employed() { TLF = 11111111, FirstName = "Poul", LastName = "Irish", Age  = 40 , Company= "Google", Salary = 10000},
@@ -34,9 +34,9 @@ namespace Manager.Models
                 {
                     _people.Add(new Employed() { TLF = 10000000 + i, FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
                 }
-               
+
             }
-           
+
 
         }
 
@@ -102,6 +102,7 @@ namespace Manager.Models
         public bool CreateStudent (uint tlf, string firstname, string lastname, uint age, string major)
         {
             if (TlfExists(tlf)) return false;
+           
             _people.Add(new Student() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Major = major });
             Console.WriteLine("Hello from student create model");
             return true;
