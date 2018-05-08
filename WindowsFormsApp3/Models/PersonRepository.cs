@@ -32,12 +32,10 @@ namespace Manager.Models
         {
             IPerson _person = _people.FirstOrDefault(p => p.TLF == personCopy.TLF); // Find matching person in db                                                                                   
             PropertyInfo propInfo = _person.GetType().GetProperty(propertyName);
-            var correctType = Convert.ChangeType(value, propInfo.PropertyType); // konverter på baggrund af prop navn    
 
-            if (_person == null || propertyName == "TLF" && TlfExists((uint)correctType)) return false;
+            if (propInfo == null || propertyName == "TLF" && TlfExists(Convert.ToUInt32(value))) return false;
 
-                propInfo.SetValue(_person, correctType, null);  
-            
+                propInfo.SetValue(_person, Convert.ChangeType(value, propInfo.PropertyType), null);  
                 return true;
    
         }
