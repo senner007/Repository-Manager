@@ -60,7 +60,7 @@ namespace Manager.Presenter
 
         private List<T> SortList<T>(IEnumerable<T> list, Func<T, dynamic> lambda) where T : IPerson
         {
-     
+      
             if (_view.SortNameRadio)
             {
                 list = list.OrderBy(o => o.LastName).ThenBy(o => o.FirstName);

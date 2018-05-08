@@ -18,7 +18,7 @@ namespace Manager.Views
             _createPresenter = new CreatePresenter(this);
             _findPresenter = new FindPresenter(this, _updatedDeletePresenter, _createPresenter);
             // instantiate FindPresenter presenter - indsæt presenters for at kalde event i findpresenter
-            OnShow += ColumnOrder;
+ 
         }
 
         [DllImport("kernel32.dll", SetLastError = true)] // Console output
@@ -86,14 +86,15 @@ namespace Manager.Views
         // hent og sorter liste - TODO : nødvendig? eller opdater automatisk ved ændring af visning og sorteringsindstilling
         public void ColumnOrder()
         {
+            //Console.WriteLine("columnorder");
             dataGridView1.Columns["Type"].DisplayIndex = 0; // sikrer samme rækkefølge
             dataGridView1.Columns["FirstName"].DisplayIndex = 1;
             dataGridView1.Columns["LastName"].DisplayIndex = 2;
             dataGridView1.Columns["Age"].DisplayIndex = 3;
             dataGridView1.Columns["TLF"].DisplayIndex = 4;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // stræk for udfulde plads
-            dataGridView1.AutoResizeColumns();
-            dataGridView1.AutoResizeRows();
+           // dataGridView1.AutoResizeColumns(); // skaber performance bottleneck
+           // dataGridView1.AutoResizeRows(); //skaber performance bottleneck
             dataGridView1.Columns["Type"].Width = 80;
             dataGridView1.Columns["FirstName"].Width = 120;
             dataGridView1.Columns["LastName"].Width = 120;
@@ -102,12 +103,16 @@ namespace Manager.Views
         }
 
         private void buttonSort_Click(object sender, EventArgs e)
-        {         
+        {
+
+           // dataGridView1.ColumnHeadersVisible = false; // TODO : vis columnheaders over liste?
+          
             OnShow(); 
         }
         // kaldes for hver tekstændring i filtertekstboks - opdaterer liste efter hver ændring
         private void textFilter_TextChanged(object sender, EventArgs e) 
         {
+            
             OnShow();
         }
         // opdater person
