@@ -9,7 +9,7 @@ namespace Manager.Presenter
 {
     public class Determine
     {
-        public bool IfTLF(string input) => UInt32.TryParse(input, out UInt32 parsed) && parsed.ToString().Length == 8 ? true : false;
+        public bool IfTLF(string input) => Regex.IsMatch(input, @"^\d{8}$");
 
         public bool IfUint(string input) => UInt32.TryParse(input, out UInt32 parsed)  ? true : false;
 
