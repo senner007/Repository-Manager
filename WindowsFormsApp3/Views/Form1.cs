@@ -18,6 +18,7 @@ namespace Manager.Views
             _createPresenter = new CreatePresenter(this);
             _findPresenter = new FindPresenter(this, _updatedDeletePresenter, _createPresenter);
             // instantiate FindPresenter presenter - indsæt presenters for at kalde event i findpresenter
+            OnShow += ColumnOrder;
         }
 
         [DllImport("kernel32.dll", SetLastError = true)] // Console output
@@ -43,7 +44,7 @@ namespace Manager.Views
         // IUpdateDelete View-Presenter--------------------
         public event EventWithArgs OnListClick; 
         public event EventHandler<EventArgs> OnUpdate;
-        public event EventNoArgs OnTextUpdate;
+        public event Action OnTextUpdate;
         
         public string UpdateText { get => txtUpdateProperty.Text; set => txtUpdateProperty.Text = value; }
         public string PropertyLabel { get => labelUpdateProperty.Text ; set => labelUpdateProperty.Text = value; }
@@ -80,8 +81,10 @@ namespace Manager.Views
         public event Action OnDisplayLabels;
         public event Action OnDelete;
 
+       
+
         // hent og sorter liste - TODO : nødvendig? eller opdater automatisk ved ændring af visning og sorteringsindstilling
-        private void ColumnOrder()
+        public void ColumnOrder()
         {
             dataGridView1.Columns["Type"].DisplayIndex = 0; // sikrer samme rækkefølge
             dataGridView1.Columns["FirstName"].DisplayIndex = 1;
@@ -89,7 +92,7 @@ namespace Manager.Views
             dataGridView1.Columns["Age"].DisplayIndex = 3;
             dataGridView1.Columns["TLF"].DisplayIndex = 4;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // stræk for udfulde plads
-            // dataGridView1.AutoResizeColumns();
+            dataGridView1.AutoResizeColumns();
             dataGridView1.AutoResizeRows();
             dataGridView1.Columns["Type"].Width = 80;
             dataGridView1.Columns["FirstName"].Width = 120;
@@ -101,15 +104,11 @@ namespace Manager.Views
         private void buttonSort_Click(object sender, EventArgs e)
         {         
             OnShow(); 
-            ColumnOrder();
         }
         // kaldes for hver tekstændring i filtertekstboks - opdaterer liste efter hver ændring
         private void textFilter_TextChanged(object sender, EventArgs e) 
         {
-            // OnShow();
             OnShow();
-            ColumnOrder();
-
         }
         // opdater person
         private void buttonUpdate_Click(object sender, EventArgs e)
