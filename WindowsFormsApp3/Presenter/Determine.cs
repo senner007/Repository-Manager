@@ -23,8 +23,12 @@ namespace Manager.Presenter
 
         public bool IfCPR(string input) => Int64.TryParse(input, out Int64 parsed) && parsed.ToString().Length == 10 ? true : false;
 
-        public bool IfAddress(string input) => Regex.IsMatch(input, @"^([a-zA-Z]).+\s(?=.*[0-9]).*$") == true ? true : false; 
+        public bool IfAddress(string input) => Regex.IsMatch(input, @"^([a-zA-Z]).+\s(?=.*[0-9]).*$") == true ? true : false;
         // TODO: forbedre adressekode - tilføj adresse
+        public string NameFail => "Indtast et navn (bogstaver)";
+        public string AgeFail => "Indtast alder (tal 16-99)";
+        public string TlfFail => "Indtast telefonnummer (8 tal)";
+        public string NumberFail => "Indtast (tal)";
 
         public bool ValidateNewStudent(string tlf, string firstname, string lastname, string age, string major)
         {
@@ -34,5 +38,22 @@ namespace Manager.Presenter
         {
             return (IfTLF(tlf) && IfName(firstname) && IfName(lastname) && IfAge(age) && IfMisc(company) && IfUint(salary) == true) ? true : false;
         }
+        public bool ValidateUpdate(string prop , string input)
+        { 
+            if ((prop == "FirstName" || prop == "LastName") && IfName(input)) return true;
+            if (prop == "Age" && IfAge(input)) return true;
+            if (prop == "TLF" && IfTLF(input)) return true;
+            if (prop == "Salary" && IfUint(input)) return true;
+            if (prop == "Company") return true;
+            if (prop == "Major") return true;
+            return false;
+        }
+      
+
     }
+
+
+    
+    
+
 }
