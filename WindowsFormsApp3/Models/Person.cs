@@ -8,7 +8,7 @@ namespace Manager.Models // TODO : tilføj flere egenskaber
 {
     abstract class Person : IPerson
     {
-        [System.ComponentModel.DisplayName("Key")]
+     //   [System.ComponentModel.DisplayName("Key")]
         public uint TLF { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
