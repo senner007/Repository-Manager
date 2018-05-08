@@ -19,5 +19,8 @@ namespace Manager.Views
         string FilterText { get; }
 
         event Action OnShow;
+
+        void ColumnOrder();
+
     }
 }

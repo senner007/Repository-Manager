@@ -46,13 +46,16 @@ namespace Manager.Views
 
         public event Action OnShow;
         public event EventHandler<EventArgs> OnUpdate;
-        public event EventNoArgs OnTextUpdate;
+        public event Action OnTextUpdate;
         public event EventWithArgs OnListClick;
         public event Action OnDisplayLabels;
         public event Action OnCreate;
         public event Action OnDelete;
 
         public void buttonSort() => OnShow();
+
+        public void ColumnOrder() { }
+
         // TODO : tilføj manglende knapper
     }
 }
