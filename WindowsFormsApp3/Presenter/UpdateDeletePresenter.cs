@@ -15,21 +15,21 @@ namespace Manager.Presenter
         private PersonRepository _manage = new PersonRepository();
         private IPerson _personToUpdate = null;
         private Determine determine = new Determine();
-        private string _propertyToUpdate;
+        private string _propToUpdate;
         public event Action CallShow; // Call show in FindPresenter event action
         public UpdateDeletePresenter(IUpdateDelete view)
         {
             _view = view;
             _view.OnUpdate += Update;
             _view.OnListClick += ListClick;
-            _view.OnTextUpdate += Validate;
+            _view.OnTextUpdate += DisplayLabels;
             _view.OnDelete += Delete;
         }
         // klik på listen - gem person object og egenskab navn(kolonne) og celleværdi - vis i opdateringsboks
         private void ListClick(IPerson person, string prop, string propValue)
         {
             _personToUpdate = person;
-            _propertyToUpdate = prop;
+            _propToUpdate = prop;
            
             _view.UpdateText = propValue;
             _view.PropertyLabel = prop;
@@ -44,11 +44,11 @@ namespace Manager.Presenter
             // updater fornavn, efternavn, alder, tlf
             // TODO : tilføj manglende opdateringsmuligheder
            
-            if (!Validate()) return;
+            if (!determine.ValidateUpdate(_propToUpdate, _view.UpdateText) || _personToUpdate == null) return;
 
             bool success = _manage.UpdatePerson(
                             _personToUpdate,
-                            _propertyToUpdate, 
+                            _propToUpdate, 
                             _view.UpdateText);
 
             if (success)
@@ -74,46 +74,32 @@ namespace Manager.Presenter
             _view.PropertyLabel = "";
             _view.PersonInfoLabel = "";
         }
-
-
-        private bool Validate () // implementer samme logik som ved personCreate - valider alle egenskaber
+        public void  DisplayLabels()
         {
+            _view.ErrorLabel = Labels();
+        }
 
-            var prop = _propertyToUpdate;
-            if (_personToUpdate == null)
-            {
-                _view.ErrorLabel = "Klik på en persons egenskab for at opdatere";
-                return false;
-            }
-            
-            _view.ErrorLabel = "Klik på Update efter indtastning";
-            if (prop == "TLF")
-            {
-                if (!determine.IfTLF(_view.UpdateText))
-                {
-                    _view.ErrorLabel = "Telefonnummer skal bestå af 8 hele tal";
-                    return false;
-                }
-            }
-            else if (prop == "Age")
-            {
-                if (!determine.IfAge(_view.UpdateText))
-                {
-                    _view.ErrorLabel = "Alder skal være mellem 15 og 100";
-                    return false;
-                }                  
-            }
-            else if (prop == "FirstName" || prop == "LastName")
-            {
-                if (!determine.IfName(_view.UpdateText))
-                {
-                    _view.ErrorLabel = "Navn skal består af 1 til 50 bogstaver";
-                    return false;
-                }                   
-            }
 
-            return true;
-        } 
+        public string Labels()
+        {
+            if (_propToUpdate == "FirstName" && !determine.ValidateUpdate(_propToUpdate, _view.UpdateText))
+                return determine.NameFail;
+            else if (_propToUpdate == "LastName" && !determine.ValidateUpdate(_propToUpdate, _view.UpdateText))
+                return determine.NameFail;
+            else if (_propToUpdate == "Age" && !determine.ValidateUpdate(_propToUpdate, _view.UpdateText))
+                return determine.AgeFail;
+            else if (_propToUpdate == "TLF" && !determine.ValidateUpdate(_propToUpdate, _view.UpdateText))
+                return determine.TlfFail;
+            else if (_propToUpdate == "Salary" && !determine.ValidateUpdate(_propToUpdate, _view.UpdateText))
+                return determine.NumberFail;
+            else if (_propToUpdate == "Company")
+                return "";
+            else if (_propToUpdate == "Major")
+                return "";
+            return "";
+        }
+
+
         private void Delete () // TODO : messageboks ved delete
         {
             if (_personToUpdate == null) return;

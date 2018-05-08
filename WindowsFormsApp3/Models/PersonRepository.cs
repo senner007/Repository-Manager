@@ -30,6 +30,7 @@ namespace Manager.Models
 
         public bool UpdatePerson(IPerson personCopy, string propertyName, string value) // IPerson parameter er value kopi fra Datagridview
         {
+            Console.WriteLine(personCopy == null);
             IPerson _person = _people.FirstOrDefault(p => p.TLF == personCopy.TLF); // Find matching person in db                                                                                   
             PropertyInfo propInfo = _person.GetType().GetProperty(propertyName);
 
