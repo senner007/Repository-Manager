@@ -15,9 +15,8 @@ namespace Manager.Presenter
         private PersonRepository _manage = new PersonRepository();
         private IPerson _personToUpdate = null;
         private Determine determine = new Determine();
-        public event Action CallShow; // Call show in FindPresenter event action
         private string _propertyToUpdate;
-
+        public event Action CallShow; // Call show in FindPresenter event action
         public UpdateDeletePresenter(IUpdateDelete view)
         {
             _view = view;
@@ -31,11 +30,13 @@ namespace Manager.Presenter
         {
             _personToUpdate = person;
             _propertyToUpdate = prop;
-
+           
             _view.UpdateText = propValue;
             _view.PropertyLabel = prop;
-            _view.PersonInfoLabel = _personToUpdate.ToString();          
-   
+            _view.PersonInfoLabel = _personToUpdate.ToString();
+
+            _view.PersonDeleteText = "";
+
         }
 
         private void Update(object PropertyName, EventArgs e)  // TODO : call FindPresenter to update
@@ -50,17 +51,32 @@ namespace Manager.Presenter
                             _propertyToUpdate, 
                             _view.UpdateText);
 
-            if (!success) return;
+            if (success)
+            {
+                _view.ErrorLabel = "Opdatering gennemført!"; // omdøb variabel fra Errorlabel til feedbacklabel
+                ClearPerson();
+                CallShow(); // Call show in FindPresenter
+            }
+            else
+                _view.ErrorLabel = "Fejl! person ikke opdateret";
 
-            CallShow(); // Call show in FindPresenter
-            _view.ErrorLabel = "Opdatering gennemført!";
 
+            
         }
         // TODO : genbrug i PersonCreate
         // TODO : farv rød
         // TODO : Tilføj feedback
 
-        private bool Validate () 
+        private void ClearPerson()
+        {
+            _personToUpdate = null;
+            _view.UpdateText = "";
+            _view.PropertyLabel = "";
+            _view.PersonInfoLabel = "";
+        }
+
+
+        private bool Validate () // implementer samme logik som ved personCreate - valider alle egenskaber
         {
 
             var prop = _propertyToUpdate;
@@ -100,15 +116,19 @@ namespace Manager.Presenter
         } 
         private void Delete () // TODO : messageboks ved delete
         {
+            if (_personToUpdate == null) return;
             bool success = _manage.DeletePerson(_personToUpdate);
 
-            if (!success) return;
-            _personToUpdate = null;
-            _view.UpdateText = "";
-            _view.PropertyLabel = "";
-            _view.PersonInfoLabel = "";   
-            _view.ErrorLabel = "Person slettet!";
-            CallShow(); // Call show in FindPresenter
+            if (success)
+            {
+                _view.PersonDeleteText = "Person slettet!"; // omdøb variabel fra Errorlabel til feedbacklabel
+                ClearPerson();
+                CallShow();
+            }
+            else
+                _view.PersonDeleteText = "Fejl! - person ikke slettet";
+                
+           
         }
 
     }
