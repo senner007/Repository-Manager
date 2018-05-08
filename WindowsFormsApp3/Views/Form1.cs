@@ -16,7 +16,7 @@ namespace Manager.Views
              AllocConsole();    
             _updatedDeletePresenter = new UpdateDeletePresenter(this); // instantiate UpdateDeletePresenter presenter
             _createPresenter = new CreatePresenter(this);
-            _findPresenter = new FindPresenter(this, _updatedDeletePresenter, _createPresenter); 
+            _findPresenter = new FindPresenter(this, _updatedDeletePresenter, _createPresenter);
             // instantiate FindPresenter presenter - indsæt presenters for at kalde event i findpresenter
         }
 
@@ -50,6 +50,8 @@ namespace Manager.Views
         public string ErrorLabel { get => labelError.Text; set => labelError.Text = value; }
         public string PersonInfoLabel { get => labelPersonInfo.Text; set => labelPersonInfo.Text = value; }
 
+        public string PersonDeleteText { get => labelDelete.Text; set => labelDelete.Text = value; }
+
 
         // TODO : individuelle access modifiers
         // ICreate View-Presenter--------------------
@@ -71,6 +73,8 @@ namespace Manager.Views
         public string _errorCreateCompanyText { get => labelCreateCompany.Text; set => labelCreateCompany.Text = value; }
         public string _errorCreateSalaryText { get => labelCreateSalary.Text; set => labelCreateSalary.Text = value; }
         public string _errorCreateMajorText { get => labelCreateMajor.Text; set => labelCreateMajor.Text = value; }
+        public string CreatePersonText { get => labelCreate.Text; set => labelCreate.Text = value; }
+      
 
         public event Action OnCreate;
         public event Action OnDisplayLabels;
