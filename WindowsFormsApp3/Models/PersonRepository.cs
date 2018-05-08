@@ -12,6 +12,7 @@ namespace Manager.Models
         protected static readonly List<IPerson> _people;
 
         public List<IPerson> GetPeople { get => _people; }
+       
 
         static PersonRepository() // static constructor
         {
@@ -26,11 +27,21 @@ namespace Manager.Models
               new Student() { TLF = 66666666, FirstName = "John", LastName = "Doe", Age = 30, Major = "Computer Science 201"},
               new Student() { TLF = 77777777, FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming"}
             };
+
+
+            for (uint i = 0; i < 500000; i++)
+            {
+                {
+                    _people.Add(new Employed() { TLF = 10000000 + i, FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
+                }
+               
+            }
+           
+
         }
 
         public bool UpdatePerson(IPerson personCopy, string propertyName, string value) // IPerson parameter er value kopi fra Datagridview
         {
-            Console.WriteLine(personCopy == null);
             IPerson _person = _people.FirstOrDefault(p => p.TLF == personCopy.TLF); // Find matching person in db                                                                                   
             PropertyInfo propInfo = _person.GetType().GetProperty(propertyName);
 
@@ -47,6 +58,7 @@ namespace Manager.Models
         }
         internal IEnumerable<Merged> MergeTypes()
         {
+            Console.WriteLine("from merged");
             IEnumerable<Merged> mStudents = GetByType(o => o as Student).Select(s => new Merged // TODO : forbedre/simplificer
             {
                 TLF = s.TLF,
