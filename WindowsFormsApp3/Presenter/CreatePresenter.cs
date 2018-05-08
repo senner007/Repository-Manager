@@ -17,59 +17,57 @@ namespace Manager.Presenter
         public CreatePresenter(ICreate view)
         {
             _view = view;
-            _view.OnCreate += Create;
+            _view.OnCreate += CreatePerson;
             _view.OnDisplayLabels += DisplayLabels;
         }
 
         public void DisplayLabels()
         {
-            _view._errorCreateFirstNameText = determine.IfName(_view.CreateFirstNameText) ? "" : "Indtast et navn bestående af bogstaver";
-            _view._errorCreateLastNameText = determine.IfName(_view.CreateLastNameText) ? "" : "Indtast et navn bestående af bogstaver";
-            _view._errorCreateAgeText = determine.IfAge(_view.CreateAgeText) ? "" : "Indtast en gyldig alder";
-            _view._errorCreateTlfText = determine.IfTLF(_view.CreateTlfText) ? "" : "Indtast et gyldigt telefonnummer";
-            _view._errorCreateMajorText = determine.IfMisc(_view.CreateMajorText) ? "" : "Indtast et gyldigt fag";
-            _view._errorCreateCompanyText = determine.IfMisc(_view.CreateCompanyText) ? "" : "Indtast et firmanavn";
-            _view._errorCreateSalaryText = determine.IfUint(_view.CreateSalaryText) ? "" : "Indtast løn";
+            _view._errorCreateFirstNameText = determine.IfName(_view.CreateFirstNameText) ? "" : "Indtast et navn [bogstaver]";
+            _view._errorCreateLastNameText = determine.IfName(_view.CreateLastNameText) ? "" : "Indtast et navn [bogstaver]";
+            _view._errorCreateAgeText = determine.IfAge(_view.CreateAgeText) ? "" : "Indtast alder [tal]";
+            _view._errorCreateTlfText = determine.IfTLF(_view.CreateTlfText) ? "" : "Indtast telefonnummer [8 tal]";
+            _view._errorCreateMajorText = determine.IfMisc(_view.CreateMajorText) ? "" : "Indtast fag";
+            _view._errorCreateCompanyText = determine.IfMisc(_view.CreateCompanyText) ? "" : "Indtast firmanavn";
+            _view._errorCreateSalaryText = determine.IfUint(_view.CreateSalaryText) ? "" : "Indtast løn [tal]";
+
+            _view.CreatePersonText = "";
         }
 
-        private void Create () 
+        private bool Create()
         {
             if (_view.CreateStudentRadio)
             {
-                if (!determine.ValidateNewStudent(   
+                if (!determine.ValidateNewStudent(
                         _view.CreateTlfText,
                         _view.CreateFirstNameText,
                         _view.CreateLastNameText,
                         _view.CreateAgeText,
                         _view.CreateMajorText
-                    )) return;
+                    )) return false;
 
-
-                bool success = _manage.CreateStudent(
-                        Convert.ToUInt32(_view.CreateTlfText), 
-                        _view.CreateFirstNameText, 
-                        _view.CreateLastNameText, 
-                        Convert.ToUInt32(_view.CreateAgeText), 
-                        _view.CreateMajorText
-                    );
-
-                if (success) CallShow(); // TODO : feedback - slet felter efter indsættelse
-
+                return _manage.CreateStudent(
+                       Convert.ToUInt32(_view.CreateTlfText),
+                       _view.CreateFirstNameText,
+                       _view.CreateLastNameText,
+                       Convert.ToUInt32(_view.CreateAgeText),
+                       _view.CreateMajorText
+                   );
             }
 
-            if (_view.CreateEmployedRadio)
+            else if (_view.CreateEmployedRadio)
             {
 
-                if (!determine.ValidateNewEmployed(  
+                if (!determine.ValidateNewEmployed(
                         _view.CreateTlfText,
                         _view.CreateFirstNameText,
                         _view.CreateLastNameText,
                         _view.CreateAgeText,
                         _view.CreateCompanyText,
                         _view.CreateSalaryText
-                   )) return;
+                   )) return false;
 
-                bool success = _manage.CreateEmployed(
+                return _manage.CreateEmployed(
                         Convert.ToUInt32(_view.CreateTlfText),
                         _view.CreateFirstNameText,
                         _view.CreateLastNameText,
@@ -78,9 +76,34 @@ namespace Manager.Presenter
                         Convert.ToUInt32(_view.CreateSalaryText)
                     );
 
-               if (success) CallShow();
             }
+            return false;
+        }
 
+        private void CreatePerson()
+        {           
+            if (Create())
+            {
+                ClearPerson();
+                CallShow();
+                _view.CreatePersonText = "Oprettet!"; // omdøb variabel fra Errorlabel til feedbacklabel
+            }
+            else
+            {
+                Console.WriteLine("not created");
+                _view.CreatePersonText = "Fejl! - ikke oprettet";
+            }
+        }    
+                
+        private void ClearPerson()
+        {
+            _view.CreateFirstNameText = "";
+            _view.CreateLastNameText = "";
+            _view.CreateMajorText = "";
+            _view.CreateSalaryText = "";
+            _view.CreateTlfText = "";
+            _view.CreateAgeText = "";
+            _view.CreateCompanyText = "";
         }
     }
 }
