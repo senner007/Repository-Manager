@@ -37,6 +37,7 @@
             this.radioOrderByName = new System.Windows.Forms.RadioButton();
             this.radioOrderByAge = new System.Windows.Forms.RadioButton();
             this.grpUpdateDelete = new System.Windows.Forms.GroupBox();
+            this.labelDelete = new System.Windows.Forms.Label();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.labelError = new System.Windows.Forms.Label();
             this.buttonUpdate = new System.Windows.Forms.Button();
@@ -44,6 +45,7 @@
             this.txtUpdateProperty = new System.Windows.Forms.TextBox();
             this.labelUpdateProperty = new System.Windows.Forms.Label();
             this.grpCreate = new System.Windows.Forms.GroupBox();
+            this.labelCreate = new System.Windows.Forms.Label();
             this.buttonCreate = new System.Windows.Forms.Button();
             this.labelCreateMajor = new System.Windows.Forms.Label();
             this.labelCreateSalary = new System.Windows.Forms.Label();
@@ -66,8 +68,6 @@
             this.chkEmployed = new System.Windows.Forms.CheckBox();
             this.chkSortDirection = new System.Windows.Forms.CheckBox();
             this.radioOrderBySalary = new System.Windows.Forms.RadioButton();
-            this.labelDelete = new System.Windows.Forms.Label();
-            this.labelCreate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grpUpdateDelete.SuspendLayout();
             this.grpCreate.SuspendLayout();
@@ -173,6 +173,15 @@
             this.grpUpdateDelete.TabStop = false;
             this.grpUpdateDelete.Text = "Opdater/Slet Person";
             // 
+            // labelDelete
+            // 
+            this.labelDelete.AutoSize = true;
+            this.labelDelete.Location = new System.Drawing.Point(105, 172);
+            this.labelDelete.Name = "labelDelete";
+            this.labelDelete.Size = new System.Drawing.Size(75, 13);
+            this.labelDelete.TabIndex = 6;
+            this.labelDelete.Text = "Slet en person";
+            // 
             // buttonDelete
             // 
             this.buttonDelete.Location = new System.Drawing.Point(10, 167);
@@ -254,6 +263,15 @@
             this.grpCreate.TabIndex = 6;
             this.grpCreate.TabStop = false;
             this.grpCreate.Text = "Opret Person";
+            // 
+            // labelCreate
+            // 
+            this.labelCreate.AutoSize = true;
+            this.labelCreate.Location = new System.Drawing.Point(448, 172);
+            this.labelCreate.Name = "labelCreate";
+            this.labelCreate.Size = new System.Drawing.Size(83, 13);
+            this.labelCreate.TabIndex = 17;
+            this.labelCreate.Text = "Opret en person";
             // 
             // buttonCreate
             // 
@@ -464,24 +482,6 @@
             this.radioOrderBySalary.TabStop = true;
             this.radioOrderBySalary.Text = "Sorter på TYPE";
             this.radioOrderBySalary.UseVisualStyleBackColor = false;
-            // 
-            // labelDelete
-            // 
-            this.labelDelete.AutoSize = true;
-            this.labelDelete.Location = new System.Drawing.Point(105, 172);
-            this.labelDelete.Name = "labelDelete";
-            this.labelDelete.Size = new System.Drawing.Size(35, 13);
-            this.labelDelete.TabIndex = 6;
-            this.labelDelete.Text = "label1";
-            // 
-            // labelCreate
-            // 
-            this.labelCreate.AutoSize = true;
-            this.labelCreate.Location = new System.Drawing.Point(448, 172);
-            this.labelCreate.Name = "labelCreate";
-            this.labelCreate.Size = new System.Drawing.Size(35, 13);
-            this.labelCreate.TabIndex = 17;
-            this.labelCreate.Text = "label1";
             // 
             // Form1
             // 
