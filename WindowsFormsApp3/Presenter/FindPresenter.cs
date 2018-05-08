@@ -13,7 +13,6 @@ namespace Manager.Presenter
         private IFind _view;
         private PersonRepository _manage = new PersonRepository();
         private Determine determine = new Determine();
-
         public FindPresenter(IFind view, UpdateDeletePresenter updateDeletePresenter, CreatePresenter createPresenter)
         {
             _view = view;
@@ -24,6 +23,7 @@ namespace Manager.Presenter
         }
         private void FilterSort()
         {
+            
             // hvis vis studerende, ikke vis employed
             if (_view.ShowStudentsCheck && !_view.ShowEmployedCheck)
             {   // kald sort med student objecter og lambda med filtrer - sorter efter fag
@@ -37,6 +37,8 @@ namespace Manager.Presenter
             {
                 _view.PersonList = SortList(Filter(_manage.MergeTypes()), o => o.Type);
             }
+
+            _view.ColumnOrder(); // kald columnOrder i view
         }
 
         public IEnumerable<T> Filter<T>(IEnumerable<T> list) where T : IPerson 
