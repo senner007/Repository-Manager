@@ -20,6 +20,7 @@ namespace Manager.Presenter
             _view.OnShow += FilterSort;
             updateDeletePresenter.CallShow += FilterSort;
             createPresenter.CallShow += FilterSort;
+
         }
         private void FilterSort()
         {

@@ -29,6 +29,8 @@ namespace Manager.Views
 
         string _errorCreateMajorText { get; set; }
 
+        string CreatePersonText { get; set; }
+
 
         event Action OnDisplayLabels;
         event Action OnCreate;

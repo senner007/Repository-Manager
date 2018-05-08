@@ -11,6 +11,9 @@ namespace Manager.Views
         string PersonInfoLabel { get; set; }
         string PropertyLabel { get; set; }
         string ErrorLabel { get; set; }
+
+        string PersonDeleteText { get; set; }
+
         event EventHandler<EventArgs> OnUpdate;
         event EventNoArgs OnTextUpdate;
         event EventWithArgs OnListClick;

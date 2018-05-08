@@ -41,6 +41,9 @@ namespace Manager.Views
         public string _errorCreateSalaryText { get; set; }
         public string _errorCreateMajorText { get; set; }
 
+        public string CreatePersonText { get; set; }
+        public string PersonDeleteText { get; set; }
+
         public event Action OnShow;
         public event EventHandler<EventArgs> OnUpdate;
         public event EventNoArgs OnTextUpdate;
