@@ -48,12 +48,14 @@ namespace Manager.Presenter
 
             if (determine.IfName(_view.FilterText))
             {
+
                 return list.Where(n => n.FirstName.StartsWith(_view.FilterText) || n.LastName.StartsWith(_view.FilterText));
+                //return list.Where(n => n.FirstName.StartsWith(_view.FilterText) || n.LastName.StartsWith(_view.FilterText));
             }
-            if (determine.IfUint(_view.FilterText))
+            else if (determine.IfUint(_view.FilterText))
             {
-                // TODO :hvis der søges på tlf, hop over sort og find med binær søgning. Vis unik resultat under textbox - tab for indsættelse ?
-                return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
+                  return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
+
             }
             return list; // TODO : returner ingen eller hel liste ved fejlindtastning?
         }
@@ -61,7 +63,8 @@ namespace Manager.Presenter
 
         private List<T> SortList<T>(IEnumerable<T> list, Func<T, dynamic> lambda) where T : IPerson
         {
-    
+             //if (sortCache.Count() != 0) return sortCache.OfType<T>().ToList();
+ 
             if (_view.SortNameRadio)
             {
                 list = list.OrderBy(o => o.LastName).ThenBy(o => o.FirstName);
@@ -85,3 +88,16 @@ namespace Manager.Presenter
 
     }
 }
+//Console.WriteLine(cachedString == _view.FilterText.Substring(0, _view.FilterText.Length - 1));
+//                if (cachedString != _view.FilterText.Substring(0, _view.FilterText.Length - 1))
+//                {
+//                    Console.WriteLine("Hello from filter");
+//                    cachedString = _view.FilterText;
+//                    return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
+//                }
+//                else if (cachedString == _view.FilterText.Substring(0, _view.FilterText.Length - 1))
+//                {
+//                    cachedString = _view.FilterText;
+//                    return _view.PersonList.Where(n => n.TLF.ToString().StartsWith(_view.FilterText)).OfType<T>();
+    
+//                }

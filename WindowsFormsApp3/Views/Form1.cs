@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using Manager.Models;
 using Manager.Presenter;
 using System.Runtime.InteropServices;
-
+using System.Drawing;
 
 namespace Manager.Views
 {
@@ -86,6 +86,13 @@ namespace Manager.Views
         // hent og sorter liste - TODO : nødvendig? eller opdater automatisk ved ændring af visning og sorteringsindstilling
         public void ColumnOrder()
         {
+            //DataGridViewImageColumn img = new DataGridViewImageColumn();
+            //Image image = Image.FromFile("d:\\gits5\\img.png");
+            //img.Image = image;
+            //dataGridView1.Columns.Add(img);
+        //    dataGridView1.Rows[0].Cells[2].Value = Image.FromFile("d:\\gits5\\img.png"); ;
+         
+
             //Console.WriteLine("columnorder");
             dataGridView1.Columns["Type"].DisplayIndex = 0; // sikrer samme rækkefølge
             dataGridView1.Columns["FirstName"].DisplayIndex = 1;
@@ -112,8 +119,9 @@ namespace Manager.Views
         // kaldes for hver tekstændring i filtertekstboks - opdaterer liste efter hver ændring
         private void textFilter_TextChanged(object sender, EventArgs e) 
         {
-            
+          
             OnShow();
+           
         }
         // opdater person
         private void buttonUpdate_Click(object sender, EventArgs e)
@@ -169,6 +177,7 @@ namespace Manager.Views
         private void createText_TextChanged(object sender, EventArgs e) => OnDisplayLabels();
         // slet person
         private void buttonDelete_Click(object sender, EventArgs e) => OnDelete();
-     
+
+   
     }
 }
