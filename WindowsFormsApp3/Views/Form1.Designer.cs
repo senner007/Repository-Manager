@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonSort = new System.Windows.Forms.Button();
             this.txtFilter = new System.Windows.Forms.TextBox();
@@ -69,45 +70,51 @@
             this.chkSortDirection = new System.Windows.Forms.CheckBox();
             this.radioOrderBySalary = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grpUpdateDelete.SuspendLayout();
             this.grpCreate.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.Location = new System.Drawing.Point(32, 54);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(905, 338);
             this.dataGridView1.TabIndex = 0;
@@ -115,9 +122,9 @@
             // 
             // buttonSort
             // 
-            this.buttonSort.Location = new System.Drawing.Point(965, 55);
+            this.buttonSort.Location = new System.Drawing.Point(16, 30);
             this.buttonSort.Name = "buttonSort";
-            this.buttonSort.Size = new System.Drawing.Size(94, 23);
+            this.buttonSort.Size = new System.Drawing.Size(109, 23);
             this.buttonSort.TabIndex = 1;
             this.buttonSort.Text = "Hent og Sorter";
             this.buttonSort.UseVisualStyleBackColor = true;
@@ -125,7 +132,7 @@
             // 
             // txtFilter
             // 
-            this.txtFilter.Location = new System.Drawing.Point(965, 249);
+            this.txtFilter.Location = new System.Drawing.Point(16, 55);
             this.txtFilter.MaxLength = 8;
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.Size = new System.Drawing.Size(140, 20);
@@ -137,7 +144,7 @@
             this.radioOrderByName.AutoSize = true;
             this.radioOrderByName.BackColor = System.Drawing.Color.DimGray;
             this.radioOrderByName.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioOrderByName.Location = new System.Drawing.Point(970, 84);
+            this.radioOrderByName.Location = new System.Drawing.Point(17, 59);
             this.radioOrderByName.Name = "radioOrderByName";
             this.radioOrderByName.Padding = new System.Windows.Forms.Padding(7, 2, 2, 2);
             this.radioOrderByName.Size = new System.Drawing.Size(145, 21);
@@ -151,7 +158,7 @@
             this.radioOrderByAge.AutoSize = true;
             this.radioOrderByAge.BackColor = System.Drawing.Color.DimGray;
             this.radioOrderByAge.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioOrderByAge.Location = new System.Drawing.Point(970, 111);
+            this.radioOrderByAge.Location = new System.Drawing.Point(17, 86);
             this.radioOrderByAge.Name = "radioOrderByAge";
             this.radioOrderByAge.Padding = new System.Windows.Forms.Padding(7, 2, 2, 2);
             this.radioOrderByAge.Size = new System.Drawing.Size(113, 21);
@@ -206,9 +213,9 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(214, 84);
+            this.buttonUpdate.Location = new System.Drawing.Point(214, 82);
             this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
+            this.buttonUpdate.Size = new System.Drawing.Size(75, 22);
             this.buttonUpdate.TabIndex = 3;
             this.buttonUpdate.Text = "Opdater";
             this.buttonUpdate.UseVisualStyleBackColor = true;
@@ -298,7 +305,7 @@
             // labelCreateSalary
             // 
             this.labelCreateSalary.AutoSize = true;
-            this.labelCreateSalary.Location = new System.Drawing.Point(445, 81);
+            this.labelCreateSalary.Location = new System.Drawing.Point(445, 82);
             this.labelCreateSalary.Name = "labelCreateSalary";
             this.labelCreateSalary.Size = new System.Drawing.Size(60, 13);
             this.labelCreateSalary.TabIndex = 14;
@@ -307,7 +314,7 @@
             // labelCreateCompany
             // 
             this.labelCreateCompany.AutoSize = true;
-            this.labelCreateCompany.Location = new System.Drawing.Point(445, 55);
+            this.labelCreateCompany.Location = new System.Drawing.Point(445, 50);
             this.labelCreateCompany.Name = "labelCreateCompany";
             this.labelCreateCompany.Size = new System.Drawing.Size(67, 13);
             this.labelCreateCompany.TabIndex = 13;
@@ -343,7 +350,7 @@
             // labelCreateFirstName
             // 
             this.labelCreateFirstName.AutoSize = true;
-            this.labelCreateFirstName.Location = new System.Drawing.Point(135, 55);
+            this.labelCreateFirstName.Location = new System.Drawing.Point(135, 51);
             this.labelCreateFirstName.Name = "labelCreateFirstName";
             this.labelCreateFirstName.Size = new System.Drawing.Size(78, 13);
             this.labelCreateFirstName.TabIndex = 9;
@@ -368,7 +375,7 @@
             // radioCreateEmployed
             // 
             this.radioCreateEmployed.AutoSize = true;
-            this.radioCreateEmployed.Location = new System.Drawing.Point(329, 29);
+            this.radioCreateEmployed.Location = new System.Drawing.Point(329, 24);
             this.radioCreateEmployed.Name = "radioCreateEmployed";
             this.radioCreateEmployed.Size = new System.Drawing.Size(71, 17);
             this.radioCreateEmployed.TabIndex = 6;
@@ -405,7 +412,7 @@
             // 
             // txtCreateFirstName
             // 
-            this.txtCreateFirstName.Location = new System.Drawing.Point(18, 52);
+            this.txtCreateFirstName.Location = new System.Drawing.Point(18, 48);
             this.txtCreateFirstName.Name = "txtCreateFirstName";
             this.txtCreateFirstName.Size = new System.Drawing.Size(100, 20);
             this.txtCreateFirstName.TabIndex = 2;
@@ -421,7 +428,7 @@
             // 
             // txtCreateCompany
             // 
-            this.txtCreateCompany.Location = new System.Drawing.Point(329, 52);
+            this.txtCreateCompany.Location = new System.Drawing.Point(329, 47);
             this.txtCreateCompany.Name = "txtCreateCompany";
             this.txtCreateCompany.Size = new System.Drawing.Size(100, 20);
             this.txtCreateCompany.TabIndex = 0;
@@ -430,7 +437,7 @@
             // labelSearch
             // 
             this.labelSearch.AutoSize = true;
-            this.labelSearch.Location = new System.Drawing.Point(972, 224);
+            this.labelSearch.Location = new System.Drawing.Point(14, 30);
             this.labelSearch.Name = "labelSearch";
             this.labelSearch.Size = new System.Drawing.Size(107, 13);
             this.labelSearch.TabIndex = 7;
@@ -439,7 +446,7 @@
             // chkStudent
             // 
             this.chkStudent.AutoSize = true;
-            this.chkStudent.Location = new System.Drawing.Point(975, 165);
+            this.chkStudent.Location = new System.Drawing.Point(23, 140);
             this.chkStudent.Name = "chkStudent";
             this.chkStudent.Size = new System.Drawing.Size(98, 17);
             this.chkStudent.TabIndex = 8;
@@ -450,7 +457,7 @@
             // chkEmployed
             // 
             this.chkEmployed.AutoSize = true;
-            this.chkEmployed.Location = new System.Drawing.Point(975, 188);
+            this.chkEmployed.Location = new System.Drawing.Point(23, 163);
             this.chkEmployed.Name = "chkEmployed";
             this.chkEmployed.Size = new System.Drawing.Size(102, 17);
             this.chkEmployed.TabIndex = 9;
@@ -462,7 +469,7 @@
             // 
             this.chkSortDirection.Appearance = System.Windows.Forms.Appearance.Button;
             this.chkSortDirection.AutoSize = true;
-            this.chkSortDirection.Location = new System.Drawing.Point(1065, 55);
+            this.chkSortDirection.Location = new System.Drawing.Point(131, 30);
             this.chkSortDirection.MaximumSize = new System.Drawing.Size(40, 0);
             this.chkSortDirection.MinimumSize = new System.Drawing.Size(40, 0);
             this.chkSortDirection.Name = "chkSortDirection";
@@ -477,7 +484,7 @@
             this.radioOrderBySalary.AutoSize = true;
             this.radioOrderBySalary.BackColor = System.Drawing.Color.DimGray;
             this.radioOrderBySalary.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioOrderBySalary.Location = new System.Drawing.Point(970, 138);
+            this.radioOrderBySalary.Location = new System.Drawing.Point(17, 113);
             this.radioOrderBySalary.Name = "radioOrderBySalary";
             this.radioOrderBySalary.Padding = new System.Windows.Forms.Padding(7, 2, 2, 2);
             this.radioOrderBySalary.Size = new System.Drawing.Size(108, 21);
@@ -498,34 +505,58 @@
             this.label1.Text = "Student/Employee Manager";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.chkSortDirection);
+            this.groupBox1.Controls.Add(this.radioOrderBySalary);
+            this.groupBox1.Controls.Add(this.chkEmployed);
+            this.groupBox1.Controls.Add(this.chkStudent);
+            this.groupBox1.Controls.Add(this.buttonSort);
+            this.groupBox1.Controls.Add(this.radioOrderByName);
+            this.groupBox1.Controls.Add(this.radioOrderByAge);
+            this.groupBox1.Location = new System.Drawing.Point(954, 54);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(185, 198);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Søg og sorter";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.labelSearch);
+            this.groupBox2.Controls.Add(this.txtFilter);
+            this.groupBox2.Location = new System.Drawing.Point(954, 258);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(185, 134);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Filtrer";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 632);
+            this.ClientSize = new System.Drawing.Size(1158, 632);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.radioOrderBySalary);
-            this.Controls.Add(this.chkSortDirection);
-            this.Controls.Add(this.chkEmployed);
-            this.Controls.Add(this.chkStudent);
-            this.Controls.Add(this.labelSearch);
             this.Controls.Add(this.grpCreate);
             this.Controls.Add(this.grpUpdateDelete);
-            this.Controls.Add(this.radioOrderByAge);
-            this.Controls.Add(this.radioOrderByName);
-            this.Controls.Add(this.txtFilter);
-            this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.grpUpdateDelete.ResumeLayout(false);
             this.grpUpdateDelete.PerformLayout();
             this.grpCreate.ResumeLayout(false);
             this.grpCreate.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -568,6 +599,8 @@
         private System.Windows.Forms.Label labelDelete;
         private System.Windows.Forms.Label labelCreate;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 
