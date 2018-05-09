@@ -28,12 +28,12 @@ namespace Manager.Models
               new Student() { TLF = 77777777, FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming"}
             };
 
-            for (uint i = 0; i < 100000; i++)
-            {
-                {
-                    _people.Add(new Employed() { TLF = 10000000 + i, FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
-                }
-            }
+            //for (uint i = 0; i < 100000; i++)
+            //{
+            //    {
+            //        _people.Add(new Employed() { TLF = 10000000 + i, FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
+            //    }
+            //}
 
         }
 
