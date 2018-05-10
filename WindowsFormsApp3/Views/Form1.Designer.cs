@@ -440,9 +440,9 @@
             this.labelSearch.AutoSize = true;
             this.labelSearch.Location = new System.Drawing.Point(13, 44);
             this.labelSearch.Name = "labelSearch";
-            this.labelSearch.Size = new System.Drawing.Size(85, 13);
+            this.labelSearch.Size = new System.Drawing.Size(89, 13);
             this.labelSearch.TabIndex = 7;
-            this.labelSearch.Text = "Hurtig søg på Tlf";
+            this.labelSearch.Text = "Søg på efternavn";
             // 
             // chkStudent
             // 
@@ -539,9 +539,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(14, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.Size = new System.Drawing.Size(124, 13);
             this.label2.TabIndex = 8;
-            this.label2.Text = "... eller navn";
+            this.label2.Text = "... eller tlf.(kræver 8 cifre)";
             // 
             // Form1
             // 
