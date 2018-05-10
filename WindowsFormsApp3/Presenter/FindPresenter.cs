@@ -13,6 +13,7 @@ namespace Manager.Presenter
         private IFind _view;
         private PersonRepository _manage = new PersonRepository();
         private Determine determine = new Determine();
+        bool skipSort = false;
         public FindPresenter(IFind view, UpdateDeletePresenter updateDeletePresenter, CreatePresenter createPresenter)
         {
             _view = view;
@@ -21,7 +22,7 @@ namespace Manager.Presenter
             createPresenter.CallShow += FilterSort;
 
         }
-        private void FilterSort()
+        private void FilterSort() // TODO : cache sorteret liste ved tryk på hent og sort. Implementer binær søgning på andre egenskaber
         {
             
             // hvis vis studerende, ikke vis employed
@@ -35,7 +36,7 @@ namespace Manager.Presenter
             }
             else
             {
-                _view.PersonList = SortList(Filter(_manage.MergeTypes()), o => o.Type);
+                _view.PersonList = SortList(Filter(_manage.MergeTypes()), o => o.Status);
             }
 
             _view.ColumnOrder(); // kald columnOrder i view
@@ -50,11 +51,18 @@ namespace Manager.Presenter
             {
 
                 return list.Where(n => n.FirstName.StartsWith(_view.FilterText) || n.LastName.StartsWith(_view.FilterText));
-                //return list.Where(n => n.FirstName.StartsWith(_view.FilterText) || n.LastName.StartsWith(_view.FilterText));
+         
             }
             else if (determine.IfUint(_view.FilterText))
             {
-                  return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
+                skipSort = true;
+               // return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
+             
+                
+                return ReadTlfBinary.GetListWithBinary<T>(list.ToList(), Convert.ToUInt32(_view.FilterText)); 
+                // find udsnit af liste med binær søgning - tillader meget hurtigere filtrering (1/2 million personer uden lag)
+                //  TODO : kræver at listen er indexeret efter tlf i db - lav et indexeret view i db med merged  
+                
 
             }
             return list; // TODO : returner ingen eller hel liste ved fejlindtastning?
@@ -63,7 +71,9 @@ namespace Manager.Presenter
 
         private List<T> SortList<T>(IEnumerable<T> list, Func<T, dynamic> lambda) where T : IPerson
         {
-             //if (sortCache.Count() != 0) return sortCache.OfType<T>().ToList();
+   
+             if (skipSort == true) return list.ToList();
+            Console.WriteLine("hello from sort function");
  
             if (_view.SortNameRadio)
             {
@@ -84,20 +94,8 @@ namespace Manager.Presenter
         {
             return list.AsEnumerable().Reverse().ToList();
         }
+       
 
 
     }
 }
-//Console.WriteLine(cachedString == _view.FilterText.Substring(0, _view.FilterText.Length - 1));
-//                if (cachedString != _view.FilterText.Substring(0, _view.FilterText.Length - 1))
-//                {
-//                    Console.WriteLine("Hello from filter");
-//                    cachedString = _view.FilterText;
-//                    return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
-//                }
-//                else if (cachedString == _view.FilterText.Substring(0, _view.FilterText.Length - 1))
-//                {
-//                    cachedString = _view.FilterText;
-//                    return _view.PersonList.Where(n => n.TLF.ToString().StartsWith(_view.FilterText)).OfType<T>();
-    
-//                }
