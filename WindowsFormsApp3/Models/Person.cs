@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Manager.Models // TODO : tilføj flere egenskaber
 {
-    abstract class Person : IPerson
+    public abstract class Person : IPerson
     {
      //   [System.ComponentModel.DisplayName("Key")]
         public uint TLF { get; set; }
@@ -21,7 +21,7 @@ namespace Manager.Models // TODO : tilføj flere egenskaber
         }
     }
 
-    class Employed : Person // TODO : Implementer IEmployed interface ?
+    public class Employed : Person // TODO : Implementer IEmployed interface ?
     {
        
         public override string Status { get; set; } = "Employed";
@@ -32,7 +32,7 @@ namespace Manager.Models // TODO : tilføj flere egenskaber
             return base.ToString() + ", " + Status;
         }
     }
-    class Student : Person
+    public class Student : Person
     {
         public string Major{ get; set; }
         public override string Status { get; set; } = "Student";
@@ -41,7 +41,7 @@ namespace Manager.Models // TODO : tilføj flere egenskaber
             return base.ToString() + ", " + Status;
         }
     }
-    class Merged : Person // Merged : Student og Employed som ét object
+    public class Merged : Person // Merged : Student og Employed som ét object
     {
         public string Major { get; set; }
         public uint Salary { get; set; }

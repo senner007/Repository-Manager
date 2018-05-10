@@ -30,7 +30,7 @@ namespace Manager.Models
             //_people = _people.OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();
 
 
-
+            
             _people = new List<IPerson>()
             {
               new Employed() { TLF = 11111111, FirstName = "Poul", LastName = "Irish", Age  = 40 , Company= "Google", Salary = 10000},
