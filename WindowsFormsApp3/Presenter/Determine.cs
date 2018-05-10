@@ -47,6 +47,7 @@ namespace Manager.Presenter
             if (prop == "Company") return true;
             if (prop == "Major") return true;
             return false;
+            // Status kan ikke ændres
         }
       
 

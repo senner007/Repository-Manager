@@ -28,12 +28,13 @@ namespace Manager.Models
               new Student() { TLF = 77777777, FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming"}
             };
 
-            //for (uint i = 0; i < 100000; i++)
-            //{
-            //    {
-            //        _people.Add(new Employed() { TLF = 10000000 + i, FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
-            //    }
-            //}
+
+            for (uint i = 0; i < 500000; i++)
+            {
+                {
+                    _people.Add(new Employed() { TLF = 10000000 + i * 173, FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
+                }
+            }
 
         }
 
@@ -53,7 +54,7 @@ namespace Manager.Models
             return _people.Select(lambda).Where(p => p != null);
 
         }
-        internal IEnumerable<Merged> MergeTypes()
+        internal IEnumerable<Merged> MergeTypes() // TODO : langsommere - cache ? 
         {
             Console.WriteLine("from merged");
             IEnumerable<Merged> mStudents = GetByType(o => o as Student).Select(s => new Merged // TODO : forbedre/simplificer
@@ -62,7 +63,7 @@ namespace Manager.Models
                 FirstName = s.FirstName,
                 LastName = s.LastName,
                 Age = s.Age,
-                Type = s.Type,
+                Status = s.Status,
                 Major = s.Major,
                 Company = null,
                 Salary = 0
@@ -74,7 +75,7 @@ namespace Manager.Models
                 FirstName = w.FirstName,
                 LastName = w.LastName,
                 Age = w.Age,
-                Type = w.Type,
+                Status = w.Status,
                 Major = null,
                 Company = w.Company,
                 Salary = w.Salary

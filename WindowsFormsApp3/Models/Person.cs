@@ -13,7 +13,7 @@ namespace Manager.Models // TODO : tilføj flere egenskaber
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public uint Age { get; set; }
-        public virtual string Type { get; set; }
+        public virtual string Status { get; set; }
 
         public override string ToString()
         {
@@ -24,21 +24,21 @@ namespace Manager.Models // TODO : tilføj flere egenskaber
     class Employed : Person // TODO : Implementer IEmployed interface ?
     {
        
-        public override string Type { get; set; } = "Employed";
+        public override string Status { get; set; } = "Employed";
         public uint Salary { get; set; }
         public string Company { get; set; }
         public override string ToString()
         {
-            return base.ToString() + ", " + Type;
+            return base.ToString() + ", " + Status;
         }
     }
     class Student : Person
     {
         public string Major{ get; set; }
-        public override string Type { get; set; } = "Student";
+        public override string Status { get; set; } = "Student";
         public override string ToString()
         {
-            return base.ToString() + ", " + Type;
+            return base.ToString() + ", " + Status;
         }
     }
     class Merged : Person // Merged : Student og Employed som ét object
@@ -48,7 +48,7 @@ namespace Manager.Models // TODO : tilføj flere egenskaber
         public string Company { get; set; }
         public override string ToString()
         {
-            return base.ToString() + ", " + Type;
+            return base.ToString() + ", " + Status;
         }
     }
 

@@ -12,6 +12,6 @@ namespace Manager.Models
         string FirstName { get; set; }
         string LastName { get; set; }
         uint Age { get; set; }
-        string Type { get; set; }
+        string Status { get; set; }
     }
 }
