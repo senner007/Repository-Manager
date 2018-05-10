@@ -42,7 +42,6 @@ namespace Manager.Models
               new Student() { TLF = 77777777, FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming"}
             }.OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();
 
-
             //for (uint i = 0; i < 100000; i++)
             //{
             //    {
@@ -50,7 +49,7 @@ namespace Manager.Models
             //    }
             //}
             PersonRepository pr = new PersonRepository();
-                mergeCache = pr.MergeTypes().ToList();
+                mergeCache = pr.MergeTypes().OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();
         }
 
         public void ReOrder()
