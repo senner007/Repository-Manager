@@ -79,6 +79,7 @@ namespace Manager.Views
         public event Action OnCreate;
         public event Action OnDisplayLabels;
         public event Action OnDelete;
+        public event Action OnFilter;
 
        
 
@@ -117,9 +118,8 @@ namespace Manager.Views
         }
         // kaldes for hver tekstændring i filtertekstboks - opdaterer liste efter hver ændring
         private void textFilter_TextChanged(object sender, EventArgs e) 
-        {
-          
-            OnShow();
+        {         
+            OnFilter();
            
         }
         // opdater person

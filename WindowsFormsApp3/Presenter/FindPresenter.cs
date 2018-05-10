@@ -18,13 +18,15 @@ namespace Manager.Presenter
         {
             _view = view;
             _view.OnShow += FilterSort;
+            _view.OnFilter += () => skipSort = true;
+            _view.OnFilter += FilterSort;
             updateDeletePresenter.CallShow += FilterSort;
             createPresenter.CallShow += FilterSort;
 
         }
         private void FilterSort() // TODO : cache sorteret liste ved tryk på hent og sort. Implementer binær søgning på andre egenskaber
         {
-            
+
             // hvis vis studerende, ikke vis employed
             if (_view.ShowStudentsCheck && !_view.ShowEmployedCheck)
             {   // kald sort med student objecter og lambda med filtrer - sorter efter fag
@@ -38,7 +40,8 @@ namespace Manager.Presenter
             {
                 _view.PersonList = SortList(Filter(_manage.MergeTypes()), o => o.Status);
             }
-
+     
+            skipSort = false;
             _view.ColumnOrder(); // kald columnOrder i view
         }
 
@@ -46,23 +49,23 @@ namespace Manager.Presenter
             // TODO : øjeblikkelig fokus på filter tekstbox ved programstart
             // TODO : tilføj case-insensitive filter
         {
-
+           
             if (determine.IfName(_view.FilterText))
             {
-
-                return list.Where(n => n.FirstName.StartsWith(_view.FilterText) || n.LastName.StartsWith(_view.FilterText));
+                // find efternavn med binær/liniær søgning
+                Console.WriteLine("Hello there");
+                Console.WriteLine(list.Count());
          
-            }
-            else if (determine.IfUint(_view.FilterText))
-            {
-                skipSort = true;
-               // return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
-             
-                
-                return ReadTlfBinary.GetListWithBinary<T>(list.ToList(), Convert.ToUInt32(_view.FilterText)); 
+                return ReadTlfBinary.GetListWithBinaryLetters<T>(list.ToList(), _view.FilterText);
                 // find udsnit af liste med binær søgning - tillader meget hurtigere filtrering (1/2 million personer uden lag)
-                //  TODO : kræver at listen er indexeret efter tlf i db - lav et indexeret view i db med merged  
-                
+                // TODO : kræver at listen er indexeret efter navn - lav evt. et indexeret view i db med merged  
+
+            }
+            else if (determine.IfUint(_view.FilterText) && _view.FilterText.Length == 8)
+            {
+                // find tlf med liniær søgning - kræver alle 8 cifre
+                return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
+               // return ReadTlfBinary.GetListWithBinary<T>(list.ToList(), Convert.ToUInt32(_view.FilterText));    
 
             }
             return list; // TODO : returner ingen eller hel liste ved fejlindtastning?
@@ -71,10 +74,10 @@ namespace Manager.Presenter
 
         private List<T> SortList<T>(IEnumerable<T> list, Func<T, dynamic> lambda) where T : IPerson
         {
-   
-             if (skipSort == true) return list.ToList();
-            Console.WriteLine("hello from sort function");
- 
+            if (skipSort == true) return list.ToList();
+
+             Console.WriteLine("hello from sort function");
+
             if (_view.SortNameRadio)
             {
                 list = list.OrderBy(o => o.LastName).ThenBy(o => o.FirstName);

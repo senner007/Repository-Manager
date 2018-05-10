@@ -51,6 +51,7 @@ namespace Manager.Views
         public event Action OnDisplayLabels;
         public event Action OnCreate;
         public event Action OnDelete;
+        public event Action OnFilter;
 
         public void buttonSort() => OnShow();
 
