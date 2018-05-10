@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonSort = new System.Windows.Forms.Button();
             this.txtFilter = new System.Windows.Forms.TextBox();
@@ -68,10 +68,11 @@
             this.chkStudent = new System.Windows.Forms.CheckBox();
             this.chkEmployed = new System.Windows.Forms.CheckBox();
             this.chkSortDirection = new System.Windows.Forms.CheckBox();
-            this.radioOrderBySalary = new System.Windows.Forms.RadioButton();
+            this.radioOrderByVarious = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grpUpdateDelete.SuspendLayout();
             this.grpCreate.SuspendLayout();
@@ -82,39 +83,39 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.Location = new System.Drawing.Point(32, 54);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(905, 338);
             this.dataGridView1.TabIndex = 0;
@@ -132,7 +133,7 @@
             // 
             // txtFilter
             // 
-            this.txtFilter.Location = new System.Drawing.Point(16, 55);
+            this.txtFilter.Location = new System.Drawing.Point(16, 65);
             this.txtFilter.MaxLength = 8;
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.Size = new System.Drawing.Size(140, 20);
@@ -147,10 +148,10 @@
             this.radioOrderByName.Location = new System.Drawing.Point(17, 59);
             this.radioOrderByName.Name = "radioOrderByName";
             this.radioOrderByName.Padding = new System.Windows.Forms.Padding(7, 2, 2, 2);
-            this.radioOrderByName.Size = new System.Drawing.Size(145, 21);
+            this.radioOrderByName.Size = new System.Drawing.Size(154, 21);
             this.radioOrderByName.TabIndex = 3;
             this.radioOrderByName.TabStop = true;
-            this.radioOrderByName.Text = "Sorter på EFTERNAVN";
+            this.radioOrderByName.Text = "Sorter efter EFTERNAVN";
             this.radioOrderByName.UseVisualStyleBackColor = false;
             // 
             // radioOrderByAge
@@ -161,10 +162,10 @@
             this.radioOrderByAge.Location = new System.Drawing.Point(17, 86);
             this.radioOrderByAge.Name = "radioOrderByAge";
             this.radioOrderByAge.Padding = new System.Windows.Forms.Padding(7, 2, 2, 2);
-            this.radioOrderByAge.Size = new System.Drawing.Size(113, 21);
+            this.radioOrderByAge.Size = new System.Drawing.Size(122, 21);
             this.radioOrderByAge.TabIndex = 4;
             this.radioOrderByAge.TabStop = true;
-            this.radioOrderByAge.Text = "Soter på ALDER";
+            this.radioOrderByAge.Text = "Soter efter ALDER";
             this.radioOrderByAge.UseVisualStyleBackColor = false;
             // 
             // grpUpdateDelete
@@ -437,11 +438,11 @@
             // labelSearch
             // 
             this.labelSearch.AutoSize = true;
-            this.labelSearch.Location = new System.Drawing.Point(14, 30);
+            this.labelSearch.Location = new System.Drawing.Point(13, 44);
             this.labelSearch.Name = "labelSearch";
-            this.labelSearch.Size = new System.Drawing.Size(107, 13);
+            this.labelSearch.Size = new System.Drawing.Size(85, 13);
             this.labelSearch.TabIndex = 7;
-            this.labelSearch.Text = "Søg på Tlf eller Navn";
+            this.labelSearch.Text = "Hurtig søg på Tlf";
             // 
             // chkStudent
             // 
@@ -479,19 +480,19 @@
             this.chkSortDirection.UseVisualStyleBackColor = true;
             this.chkSortDirection.CheckedChanged += new System.EventHandler(this.chkSortDirection_CheckedChanged);
             // 
-            // radioOrderBySalary
+            // radioOrderByVarious
             // 
-            this.radioOrderBySalary.AutoSize = true;
-            this.radioOrderBySalary.BackColor = System.Drawing.Color.DimGray;
-            this.radioOrderBySalary.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioOrderBySalary.Location = new System.Drawing.Point(17, 113);
-            this.radioOrderBySalary.Name = "radioOrderBySalary";
-            this.radioOrderBySalary.Padding = new System.Windows.Forms.Padding(7, 2, 2, 2);
-            this.radioOrderBySalary.Size = new System.Drawing.Size(108, 21);
-            this.radioOrderBySalary.TabIndex = 11;
-            this.radioOrderBySalary.TabStop = true;
-            this.radioOrderBySalary.Text = "Sorter på TYPE";
-            this.radioOrderBySalary.UseVisualStyleBackColor = false;
+            this.radioOrderByVarious.AutoSize = true;
+            this.radioOrderByVarious.BackColor = System.Drawing.Color.DimGray;
+            this.radioOrderByVarious.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.radioOrderByVarious.Location = new System.Drawing.Point(17, 113);
+            this.radioOrderByVarious.Name = "radioOrderByVarious";
+            this.radioOrderByVarious.Padding = new System.Windows.Forms.Padding(7, 2, 2, 2);
+            this.radioOrderByVarious.Size = new System.Drawing.Size(132, 21);
+            this.radioOrderByVarious.TabIndex = 11;
+            this.radioOrderByVarious.TabStop = true;
+            this.radioOrderByVarious.Text = "Sorter efter STATUS";
+            this.radioOrderByVarious.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -508,7 +509,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.chkSortDirection);
-            this.groupBox1.Controls.Add(this.radioOrderBySalary);
+            this.groupBox1.Controls.Add(this.radioOrderByVarious);
             this.groupBox1.Controls.Add(this.chkEmployed);
             this.groupBox1.Controls.Add(this.chkStudent);
             this.groupBox1.Controls.Add(this.buttonSort);
@@ -523,6 +524,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.labelSearch);
             this.groupBox2.Controls.Add(this.txtFilter);
             this.groupBox2.Location = new System.Drawing.Point(954, 258);
@@ -531,6 +533,15 @@
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtrer";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 90);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "... eller navn";
             // 
             // Form1
             // 
@@ -575,7 +586,7 @@
         private System.Windows.Forms.CheckBox chkStudent;
         private System.Windows.Forms.CheckBox chkEmployed;
         private System.Windows.Forms.CheckBox chkSortDirection;
-        private System.Windows.Forms.RadioButton radioOrderBySalary;
+        private System.Windows.Forms.RadioButton radioOrderByVarious;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.RadioButton radioCreateEmployed;
         private System.Windows.Forms.RadioButton radioCreateStudent;
@@ -600,6 +611,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label2;
     }
 }
 
