@@ -92,6 +92,8 @@ namespace Manager.Presenter
                 return determine.TlfFail;
             else if (_propToUpdate == "Salary" && !determine.ValidateUpdate(_propToUpdate, _view.UpdateText))
                 return determine.NumberFail;
+            else if (_propToUpdate == "Status" && !determine.ValidateUpdate(_propToUpdate, _view.UpdateText))
+                return determine.NumberFail;
             else if (_propToUpdate == "Company")
                 return "";
             else if (_propToUpdate == "Major")

@@ -33,7 +33,7 @@ namespace Manager.Views
         public IEnumerable<IPerson> PersonList { get => (IEnumerable<IPerson>)dataGridView1.DataSource;  set => dataGridView1.DataSource = value; }
         public bool SortNameRadio => radioOrderByName.Checked;
         public bool SortAgeRadio => radioOrderByAge.Checked;
-        public bool Sort_Salary_Major_Type_Radio => radioOrderBySalary.Checked;
+        public bool Sort_Salary_Major_Type_Radio => radioOrderByVarious.Checked;
         public bool ShowStudentsCheck { get => chkStudent.Checked; set => chkStudent.Checked = value; }
         public bool ShowEmployedCheck { get => chkEmployed.Checked; set => chkEmployed.Checked = value; }
         public bool SortDirectionCheck { get => chkSortDirection.Checked; set => chkSortDirection.Checked = value; }
@@ -75,7 +75,6 @@ namespace Manager.Views
         public string _errorCreateSalaryText { get => labelCreateSalary.Text; set => labelCreateSalary.Text = value; }
         public string _errorCreateMajorText { get => labelCreateMajor.Text; set => labelCreateMajor.Text = value; }
         public string CreatePersonText { get => labelCreate.Text; set => labelCreate.Text = value; }
-      
 
         public event Action OnCreate;
         public event Action OnDisplayLabels;
@@ -94,7 +93,7 @@ namespace Manager.Views
          
 
             //Console.WriteLine("columnorder");
-            dataGridView1.Columns["Type"].DisplayIndex = 0; // sikrer samme rækkefølge
+            dataGridView1.Columns["Status"].DisplayIndex = 0; // sikrer samme rækkefølge
             dataGridView1.Columns["FirstName"].DisplayIndex = 1;
             dataGridView1.Columns["LastName"].DisplayIndex = 2;
             dataGridView1.Columns["Age"].DisplayIndex = 3;
@@ -102,7 +101,7 @@ namespace Manager.Views
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // stræk for udfulde plads
            // dataGridView1.AutoResizeColumns(); // skaber performance bottleneck
            // dataGridView1.AutoResizeRows(); //skaber performance bottleneck
-            dataGridView1.Columns["Type"].Width = 80;
+            dataGridView1.Columns["Status"].Width = 80;
             dataGridView1.Columns["FirstName"].Width = 120;
             dataGridView1.Columns["LastName"].Width = 120;
             dataGridView1.Columns["Age"].Width = 50;
@@ -158,15 +157,15 @@ namespace Manager.Views
         {
             if (chkStudent.Checked && !chkEmployed.Checked)
             {
-                radioOrderBySalary.Text = "Sorter efter FAG";
+                radioOrderByVarious.Text = "Sorter efter FAG";
             }
             else if (!chkStudent.Checked && chkEmployed.Checked)
             {
-                radioOrderBySalary.Text = "Sorter efter LØN";
+                radioOrderByVarious.Text = "Sorter efter LØN";
             }
             else
             {
-                radioOrderBySalary.Text = "Sorter efter TYPE";
+                radioOrderByVarious.Text = "Sorter efter STATUS";
             }
         }
         // kaldes for hver tekstændring - validerer input med feedback
