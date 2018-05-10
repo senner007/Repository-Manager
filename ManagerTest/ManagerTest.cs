@@ -48,30 +48,30 @@ namespace ManagerTest
          * 
          */
 
-        [TestMethod]
-        public void Model_Get_First_Person()
-        {
-            string actual = _manage.GetPeople.FirstOrDefault().ToString();
+        //[TestMethod]
+        //public void Model_Get_First_Person()
+        //{
+        //    string actual = _manage.GetPeople.FirstOrDefault().ToString();
 
-            string expected = "Poul Irish, Alder: 40, Tlf: 11111111, Employed";
-
-
-            Trace.WriteLine(actual);
-
-            Assert.AreEqual(expected, actual);
-        }
-        [TestMethod]
-        public void Model_Get_Last_Person()
-        {
-            string actual = _manage.GetPeople.LastOrDefault().ToString();
-
-            string expected = "Jane Doe, Alder: 25, Tlf: 77777777, Student";
+        //    string expected = "Poul Irish, Alder: 40, Tlf: 11111111, Employed";
 
 
-            Trace.WriteLine(actual);
+        //    Trace.WriteLine(actual);
 
-            Assert.AreEqual(expected, actual);
-        }
+        //    Assert.AreEqual(expected, actual);
+        //}
+        //[TestMethod]
+        //public void Model_Get_Last_Person()
+        //{
+        //    string actual = _manage.GetPeople.LastOrDefault().ToString();
+
+        //    string expected = "Jane Doe, Alder: 25, Tlf: 77777777, Student";
+
+
+        //    Trace.WriteLine(actual);
+
+        //    Assert.AreEqual(expected, actual);
+        //}
 
         /*
          * 
