@@ -72,7 +72,7 @@ namespace Manager.Presenter
                     length = item.LastName.Length;
                 }
 
-                if (item.LastName.Substring(0, length) == val)
+                if (item.LastName.Substring(0, length) == val) // TODO : korrekt?
                 {
                     newList.Add(item);
                     index++;

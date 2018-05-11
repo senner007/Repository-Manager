@@ -40,7 +40,7 @@ namespace ManagerTest
             object[] parameters = new object[0];
             ci.Invoke(null, parameters);
         }
-       
+
         /* // TODO : Tilføj flere/manglende tests - løs click test problem - coded UI tests?
          * 
          * Model IFind tests
@@ -48,30 +48,30 @@ namespace ManagerTest
          * 
          */
 
-        //[TestMethod]
-        //public void Model_Get_First_Person()
-        //{
-        //    string actual = _manage.GetPeople.FirstOrDefault().ToString();
+        [TestMethod]
+        public void Model_Get_First_Person()
+        {
+            string actual = _manage.GetPeople.FirstOrDefault().ToString();
 
-        //    string expected = "Poul Irish, Alder: 40, Tlf: 11111111, Employed";
-
-
-        //    Trace.WriteLine(actual);
-
-        //    Assert.AreEqual(expected, actual);
-        //}
-        //[TestMethod]
-        //public void Model_Get_Last_Person()
-        //{
-        //    string actual = _manage.GetPeople.LastOrDefault().ToString();
-
-        //    string expected = "Jane Doe, Alder: 25, Tlf: 77777777, Student";
+            string expected = "Thomas Anderson, Alder: 20, Tlf: 55555555, Student";
 
 
-        //    Trace.WriteLine(actual);
+            Trace.WriteLine(actual);
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Model_Get_Last_Person()
+        {
+            string actual = _manage.GetPeople.LastOrDefault().ToString();
+
+            string expected = "Jeremy McPeak, Alder: 40, Tlf: 33333333, Employed";
+
+
+            Trace.WriteLine(actual);
+
+            Assert.AreEqual(expected, actual);
+        }
 
         /*
          * 
@@ -181,14 +181,14 @@ namespace ManagerTest
             _view.FilterText = "Doe";
             _view.SortNameRadio = true;
             _view.ShowStudentsCheck = true;
-            _view.SortDirectionCheck = true;
+            _view.SortDirectionCheck = false;
             _view.buttonSort();
 
             string actual = _view.PersonList.FirstOrDefault().ToString();
 
             Trace.WriteLine(actual);
 
-            string expected = "John Doe, Alder: 30, Tlf: 66666666, Student";
+            string expected = "Jane Doe, Alder: 25, Tlf: 77777777, Student";
 
             Assert.AreEqual(expected, actual);
         }

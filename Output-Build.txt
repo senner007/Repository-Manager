@@ -1,0 +1,10 @@
+﻿1>------ Build started: Project: Manager, Configuration: Debug Any CPU ------
+1>C:\Users\niels\source\repos\WindowsFormsApp3\WindowsFormsApp3\Views\MockView.cs(54,29,54,37): warning CS0067: The event 'MockView.OnFilter' is never used
+1>C:\Users\niels\source\repos\WindowsFormsApp3\WindowsFormsApp3\Views\MockView.cs(51,29,51,44): warning CS0067: The event 'MockView.OnDisplayLabels' is never used
+1>C:\Users\niels\source\repos\WindowsFormsApp3\WindowsFormsApp3\Views\MockView.cs(49,29,49,41): warning CS0067: The event 'MockView.OnTextUpdate' is never used
+1>C:\Users\niels\source\repos\WindowsFormsApp3\WindowsFormsApp3\Views\MockView.cs(52,29,52,37): warning CS0067: The event 'MockView.OnCreate' is never used
+1>C:\Users\niels\source\repos\WindowsFormsApp3\WindowsFormsApp3\Views\MockView.cs(48,46,48,54): warning CS0067: The event 'MockView.OnUpdate' is never used
+1>C:\Users\niels\source\repos\WindowsFormsApp3\WindowsFormsApp3\Views\MockView.cs(53,29,53,37): warning CS0067: The event 'MockView.OnDelete' is never used
+1>C:\Users\niels\source\repos\WindowsFormsApp3\WindowsFormsApp3\Views\MockView.cs(50,36,50,47): warning CS0067: The event 'MockView.OnListClick' is never used
+1>  Manager -> C:\Users\niels\source\repos\WindowsFormsApp3\WindowsFormsApp3\bin\Debug\WindowsFormsApp3.exe
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

@@ -150,6 +150,7 @@ namespace Manager.Views
         private void chkSortDirection_CheckedChanged(object sender, EventArgs e)
         {
             chkSortDirection.Text = chkSortDirection.Checked ? "Asc" : "Desc";
+            Console.WriteLine(chkSortDirection.Checked);
             //https://stackoverflow.com/questions/30717616/winform-image-toggle-button
         }
         // checkbokse for at vælge mellem student og/eller employed visning

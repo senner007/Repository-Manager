@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Manager.Models // TODO : tilføj flere egenskaber
 {
-    public abstract class Person : IPerson
+    public abstract class Person : IPerson, IComparable
     {
      //   [System.ComponentModel.DisplayName("Key")]
         public uint TLF { get; set; }
@@ -14,6 +14,20 @@ namespace Manager.Models // TODO : tilføj flere egenskaber
         public string LastName { get; set; }
         public uint Age { get; set; }
         public virtual string Status { get; set; }
+
+        public int CompareTo(object obj)
+        {
+            Person p = obj as Person;
+            if(p !=null)
+            {            
+                if(LastName.CompareTo(p.LastName) != 0)
+                    return LastName.CompareTo(p.LastName);
+                else 
+                   return FirstName.CompareTo(p.FirstName);
+            }
+       
+            return -1;
+        }
 
         public override string ToString()
         {

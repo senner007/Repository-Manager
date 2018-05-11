@@ -12,9 +12,11 @@ namespace Manager.Models
     {
 
         
-        public readonly static List<IPerson> _people = new List<IPerson>();
+        private readonly static List<IPerson> _people;
 
-       // public static List<Merged> mergeCache;
+        public List<IPerson> GetPeople { get => _people; }
+
+        // public static List<Merged> mergeCache;
         private static Random random = new Random();
         public static string RandomString(int length)
         {
@@ -75,9 +77,9 @@ namespace Manager.Models
               new Student() { TLF = 55555555, FirstName = "Thomas", LastName = "Anderson", Age = 20, Major = "Computer Science 101"},
               new Student() { TLF = 66666666, FirstName = "John", LastName = "Doe", Age = 30, Major = "Computer Science 201"},
               new Student() { TLF = 77777777, FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming"}
-            }.OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();
+            };
 
-
+            _people.Sort();
 
             // TODO : implementer ObservableCollection
             // undgår at sortere hele listen hver gang
@@ -85,8 +87,10 @@ namespace Manager.Models
 
         public void ReOrder() // TODO: insert i stedet for komplet sortering
         {
-            _people.OrderBy(p => p.LastName).ThenBy(p => p.FirstName);
-          //  mergeCache = null;
+            //_people.OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();
+            _people.Sort();
+            //  mergeCache = null;
+            Console.WriteLine(_people.LastOrDefault().ToString());
         }
         public bool UpdatePerson(IPerson personCopy, string propertyName, string value) // IPerson parameter er value kopi fra Datagridview
         {
