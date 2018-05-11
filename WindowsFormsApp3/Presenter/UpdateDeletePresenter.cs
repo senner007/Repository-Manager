@@ -52,10 +52,10 @@ namespace Manager.Presenter
                             _view.UpdateText);
 
             if (success)
-            {
-                _view.ErrorLabel = "Opdatering gennemført!"; // omdøb variabel fra Errorlabel til feedbacklabel
+            { 
                 ClearPerson();
                 CallShow(); // Call show in FindPresenter
+                _view.ErrorLabel = "Opdatering gennemført!"; // omdøb variabel fra Errorlabel til feedbacklabel
             }
             else
                 _view.ErrorLabel = "Fejl! person ikke opdateret";
@@ -109,9 +109,9 @@ namespace Manager.Presenter
 
             if (success)
             {
-                _view.PersonDeleteText = "Person slettet!"; // omdøb variabel fra Errorlabel til feedbacklabel
                 ClearPerson();
                 CallShow();
+                _view.PersonDeleteText = "Person slettet!"; // omdøb variabel fra Errorlabel til feedbacklabel
             }
             else
                 _view.PersonDeleteText = "Fejl! - person ikke slettet";
