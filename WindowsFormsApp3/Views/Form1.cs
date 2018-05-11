@@ -31,7 +31,7 @@ namespace Manager.Views
 
         //IFind View-Presenter--------------
         public IEnumerable<IPerson> PersonList { get => (IEnumerable<IPerson>)dataGridView1.DataSource;  set => dataGridView1.DataSource = value; }
-        public bool SortNameRadio => radioOrderByName.Checked;
+        public bool SortNameRadio { get => radioOrderByName.Checked; set => radioOrderByName.Checked = value; }
         public bool SortAgeRadio => radioOrderByAge.Checked;
         public bool Sort_Salary_Major_Type_Radio => radioOrderByVarious.Checked;
         public bool ShowStudentsCheck { get => chkStudent.Checked; set => chkStudent.Checked = value; }

@@ -6,7 +6,7 @@ namespace Manager.Views
 {
     public interface IFind
     {
-        bool SortNameRadio { get; }
+        bool SortNameRadio { get; set; }
         bool SortAgeRadio { get; }
         bool Sort_Salary_Major_Type_Radio { get; }
 
