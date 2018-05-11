@@ -26,7 +26,7 @@ namespace Manager.Presenter
         }
         private void FilterSort() // TODO : cache sorteret liste ved tryk på hent og sort. Implementer binær søgning på andre egenskaber
         {
-
+            
             // hvis vis studerende, ikke vis employed
             if (_view.ShowStudentsCheck && !_view.ShowEmployedCheck)
             {   // kald sort med student objecter og lambda med filtrer - sorter efter fag
@@ -52,18 +52,18 @@ namespace Manager.Presenter
            
             if (determine.IfName(_view.FilterText))
             {
-                // find efternavn med binær/liniær søgning
-                Console.WriteLine("Hello there");
-                Console.WriteLine(list.Count());
+                // set sortby radiobuttons to false
+                Console.WriteLine("binary sort");
          
-                return ReadTlfBinary.GetListWithBinaryLetters<T>(list.ToList(), _view.FilterText);
+                // find efternavn med binær/liniær søgning
+                return ReadBinary.GetListWithBinaryLetters<T>(list.ToList(), _view.FilterText);
                 // find udsnit af liste med binær søgning - tillader meget hurtigere filtrering (1/2 million personer uden lag)
                 // TODO : kræver at listen er indexeret efter navn - lav evt. et indexeret view i db med merged  
 
             }
             else if (determine.IfUint(_view.FilterText) && _view.FilterText.Length == 8)
             {
-                // find tlf med liniær søgning - kræver alle 8 cifre
+          
                 return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
                // return ReadTlfBinary.GetListWithBinary<T>(list.ToList(), Convert.ToUInt32(_view.FilterText));    
 
