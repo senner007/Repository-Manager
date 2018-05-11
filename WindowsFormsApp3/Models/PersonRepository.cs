@@ -31,9 +31,9 @@ namespace Manager.Models
 
             //Console.WriteLine("People static contructor");
 
-            //// testing large numbers
+            // testing large numbers
             //uint largeNumber = 500000;
-
+            //_people = new List<IPerson>();
             //List<string> ln = new List<string>();
             //string saved = RandomString(12);
             //int counter = 20;
@@ -64,7 +64,7 @@ namespace Manager.Models
             //    _people.Add(new Employed() { TLF = Convert.ToUInt32(10000000 + i * 111), FirstName = fn[i], LastName = ln[i], Age = 40, Company = "Google", Salary = 10000 });
 
             //}
-            //_people = _people.OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();
+           // _people = _people.OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();
 
 
 

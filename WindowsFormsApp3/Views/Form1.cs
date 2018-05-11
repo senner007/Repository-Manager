@@ -17,6 +17,7 @@ namespace Manager.Views
             _updatedDeletePresenter = new UpdateDeletePresenter(this); // instantiate UpdateDeletePresenter presenter
             _createPresenter = new CreatePresenter(this);
             _findPresenter = new FindPresenter(this, _updatedDeletePresenter, _createPresenter);
+
             // instantiate FindPresenter presenter - indsæt presenters for at kalde event i findpresenter
  
         }
@@ -28,6 +29,7 @@ namespace Manager.Views
         public FindPresenter _findPresenter;
         public UpdateDeletePresenter _updatedDeletePresenter;
         public CreatePresenter _createPresenter;
+        public Determine determine = new Determine();
 
         //IFind View-Presenter--------------
         public IEnumerable<IPerson> PersonList { get => (IEnumerable<IPerson>)dataGridView1.DataSource;  set => dataGridView1.DataSource = value; }
@@ -121,7 +123,9 @@ namespace Manager.Views
         }
         // kaldes for hver tekstændring i filtertekstboks - opdaterer liste efter hver ændring
         private void textFilter_TextChanged(object sender, EventArgs e) 
-        {         
+        {
+            // hop ud når indtastet er tal og mindre end 8 cifre
+            if (determine.IfUint(txtFilter.Text) && !determine.IfTLF(txtFilter.Text)) return;
             OnFilter();
            
         }
