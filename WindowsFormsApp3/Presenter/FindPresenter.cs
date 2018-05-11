@@ -60,7 +60,7 @@ namespace Manager.Presenter
                 Console.WriteLine("binary sort");
                
                 // find efternavn med binær/liniær søgning
-                return ReadBinary.GetListWithBinaryLetters<T>(list.ToList(), _view.FilterText);
+                return ReadBinary.ListBinary<T>(list.ToList(), _view.FilterText);
                 // find udsnit af liste med binær søgning - tillader meget hurtigere filtrering (1/2 million personer uden lag)
                 // TODO : kræver at listen er indexeret efter navn - lav evt. et indexeret view i db med merged  
 

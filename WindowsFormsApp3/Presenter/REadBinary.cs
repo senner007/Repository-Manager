@@ -50,12 +50,12 @@ namespace Manager.Presenter
         //-------------------------------------------------------------------------------------------//
         //TODO : optimer
 
-        public static IEnumerable<T> GetListWithBinaryLetters<T>(List<T> list, string val) where T : IPerson
+        public static IEnumerable<T> ListBinary<T>(List<T> list, string val) where T : IPerson
         {
           //  Console.WriteLine(list[0]);
             var listCount = list.Count();
        
-            int index = BinSearchLetters(list, val, 0, listCount);
+            int index = BinaryCompareStrings(list, val, 0, listCount);
 
             List<T> newList = new List<T>();
             bool condition = true;
@@ -85,7 +85,7 @@ namespace Manager.Presenter
             return newList;
 
         }
-        private static int BinSearchLetters<T>(List<T> a, string mystring, int left, int right) where T : IPerson
+        private static int BinaryCompareStrings<T>(List<T> a, string mystring, int left, int right) where T : IPerson
         {
             if (left == right)
             {
@@ -101,7 +101,7 @@ namespace Manager.Presenter
                 mylength = a[mid].LastName.Length;
 
             }
-            return (string.Compare(mystring, a[mid].LastName.Substring(0, mylength)) == 1) ? BinSearchLetters(a, mystring, mid + 1, right) : BinSearchLetters(a, mystring, left, mid);
+            return (string.Compare(mystring, a[mid].LastName.Substring(0, mylength)) == 1) ? BinaryCompareStrings(a, mystring, mid + 1, right) : BinaryCompareStrings(a, mystring, left, mid);
         }
 
     }
