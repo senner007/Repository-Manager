@@ -10,9 +10,11 @@ namespace Manager.Models
     
     public class PersonRepository
     {
+
+        
         public readonly static List<IPerson> _people = new List<IPerson>();
 
-        public static List<Merged> mergeCache;
+       // public static List<Merged> mergeCache;
         private static Random random = new Random();
         public static string RandomString(int length)
         {
@@ -24,21 +26,22 @@ namespace Manager.Models
 
         static PersonRepository() // static constructor
         {
-            Console.WriteLine("People static contructor");
+
+            //Console.WriteLine("People static contructor");
 
             //// testing large numbers
             //uint largeNumber = 500000;
 
             //List<string> ln = new List<string>();
             //string saved = RandomString(12);
-            //int counter = 50;
+            //int counter = 20;
             //for (int i = 0; i < largeNumber; i++)
             //{
             //    counter--;
-            //    if ( counter == 0)
+            //    if (counter == 0)
             //    {
             //        saved = RandomString(12);
-            //        ln.Add(saved);       
+            //        ln.Add(saved);
             //    }
             //    else
             //    {
@@ -74,14 +77,16 @@ namespace Manager.Models
               new Student() { TLF = 77777777, FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming"}
             }.OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();
 
-            PersonRepository pr = new PersonRepository();
-                mergeCache = pr.MergeTypes().OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();
+
+
+            // TODO : implementer ObservableCollection
+            // undgår at sortere hele listen hver gang
         }
 
-        public void ReOrder()
+        public void ReOrder() // TODO: insert i stedet for komplet sortering
         {
             _people.OrderBy(p => p.LastName).ThenBy(p => p.FirstName);
-            mergeCache = null;
+          //  mergeCache = null;
         }
         public bool UpdatePerson(IPerson personCopy, string propertyName, string value) // IPerson parameter er value kopi fra Datagridview
         {
@@ -102,34 +107,40 @@ namespace Manager.Models
         }
         public IEnumerable<Merged> MergeTypes() // TODO : langsommere - cache ? 
         {
-            if (mergeCache != null) return mergeCache;
-            Console.WriteLine("from merged");
-            IEnumerable<Merged> mStudents = GetByType(o => o as Student).Select(s => new Merged // TODO : forbedre/simplificer
+ 
+            return _people.Select(p  =>
             {
-                TLF = s.TLF,
-                FirstName = s.FirstName,
-                LastName = s.LastName,
-                Age = s.Age,
-                Status = s.Status,
-                Major = s.Major,
-                Company = null,
-                Salary = 0
+                if (p is Student)
+                {
+                    Student s = p as Student;
+                    return new Merged
+                    {
+                        TLF = s.TLF,
+                        FirstName = s.FirstName,
+                        LastName = s.LastName,
+                        Age = s.Age,
+                        Status = s.Status,
+                        Major = s.Major,
+                        Company = null,
+                        Salary = 0
+                    };
+                }
+                else 
+                {
+                    Employed e = p as Employed;
+                    return new Merged
+                    {
+                        TLF = e.TLF,
+                        FirstName = e.FirstName,
+                        LastName = e.LastName,
+                        Age = e.Age,
+                        Status = e.Status,
+                        Major = null,
+                        Company = e.Company,
+                        Salary = e.Salary
+                    };
+                }
             });
-
-            IEnumerable<Merged> mEmployed = GetByType(o => o as Employed).Select(w => new Merged
-            {
-                TLF = w.TLF,
-                FirstName = w.FirstName,
-                LastName = w.LastName,
-                Age = w.Age,
-                Status = w.Status,
-                Major = null,
-                Company = w.Company,
-                Salary = w.Salary
-            });
-            mergeCache = mEmployed.Concat(mStudents).OrderBy(m => m.LastName).ThenBy(m => m.FirstName).ToList();
-            return mEmployed.Concat(mStudents); // Concat bedre for performance
-            // return mEmployed.Union(mStudents); //Union ikke nødvendig da alle gerne skulle være unikke
         }
 
         internal bool DeletePerson(IPerson person)
@@ -150,7 +161,7 @@ namespace Manager.Models
             if (TlfExists(tlf)) return false;
            
             _people.Add(new Student() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Major = major });
-            Console.WriteLine("Hello from student create model");
+            Console.WriteLine("from student create model");
             ReOrder();
             return true;
             
