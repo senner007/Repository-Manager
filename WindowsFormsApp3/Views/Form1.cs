@@ -37,7 +37,9 @@ namespace Manager.Views
         public bool ShowStudentsCheck { get => chkStudent.Checked; set => chkStudent.Checked = value; }
         public bool ShowEmployedCheck { get => chkEmployed.Checked; set => chkEmployed.Checked = value; }
         public bool SortDirectionCheck { get => chkSortDirection.Checked; set => chkSortDirection.Checked = value; }
-        public string FilterText => txtFilter.Text;
+        public string FilterSortResult_LABEL { get => labelResult.Text; set => labelResult.Text = value; }
+        public string FilterText { get => txtFilter.Text; }
+
         public event Action OnShow;
 
      
@@ -75,6 +77,7 @@ namespace Manager.Views
         public string _errorCreateSalaryText { get => labelCreateSalary.Text; set => labelCreateSalary.Text = value; }
         public string _errorCreateMajorText { get => labelCreateMajor.Text; set => labelCreateMajor.Text = value; }
         public string CreatePersonText { get => labelCreate.Text; set => labelCreate.Text = value; }
+        
 
         public event Action OnCreate;
         public event Action OnDisplayLabels;

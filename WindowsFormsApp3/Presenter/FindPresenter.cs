@@ -45,6 +45,7 @@ namespace Manager.Presenter
             }
      
             skipSort = false;
+            _view.FilterSortResult_LABEL = "Antal : " + _view.PersonList.Count();
             _view.ColumnOrder(); // kald columnOrder i view
         }
 

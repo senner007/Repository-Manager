@@ -70,16 +70,17 @@
             this.chkSortDirection = new System.Windows.Forms.CheckBox();
             this.radioOrderByVarious = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grpSort = new System.Windows.Forms.GroupBox();
+            this.labelResult = new System.Windows.Forms.Label();
+            this.grpFilter = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.labelSkipSort = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.grpResult = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grpUpdateDelete.SuspendLayout();
             this.grpCreate.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grpSort.SuspendLayout();
+            this.grpFilter.SuspendLayout();
+            this.grpResult.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -508,35 +509,43 @@
             this.label1.Text = "Student/Employee Manager";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // groupBox1
+            // grpSort
             // 
-            this.groupBox1.Controls.Add(this.labelSkipSort);
-            this.groupBox1.Controls.Add(this.chkSortDirection);
-            this.groupBox1.Controls.Add(this.radioOrderByVarious);
-            this.groupBox1.Controls.Add(this.chkEmployed);
-            this.groupBox1.Controls.Add(this.chkStudent);
-            this.groupBox1.Controls.Add(this.buttonSort);
-            this.groupBox1.Controls.Add(this.radioOrderByName);
-            this.groupBox1.Controls.Add(this.radioOrderByAge);
-            this.groupBox1.Location = new System.Drawing.Point(954, 9);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(185, 243);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Søg og sorter";
+            this.grpSort.Controls.Add(this.chkSortDirection);
+            this.grpSort.Controls.Add(this.radioOrderByVarious);
+            this.grpSort.Controls.Add(this.chkEmployed);
+            this.grpSort.Controls.Add(this.chkStudent);
+            this.grpSort.Controls.Add(this.buttonSort);
+            this.grpSort.Controls.Add(this.radioOrderByName);
+            this.grpSort.Controls.Add(this.radioOrderByAge);
+            this.grpSort.Location = new System.Drawing.Point(954, 9);
+            this.grpSort.Name = "grpSort";
+            this.grpSort.Size = new System.Drawing.Size(185, 201);
+            this.grpSort.TabIndex = 13;
+            this.grpSort.TabStop = false;
+            this.grpSort.Text = "Søg og sorter";
             // 
-            // groupBox2
+            // labelResult
             // 
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.labelSearch);
-            this.groupBox2.Controls.Add(this.txtFilter);
-            this.groupBox2.Location = new System.Drawing.Point(954, 258);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(185, 134);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filtrer";
+            this.labelResult.AutoSize = true;
+            this.labelResult.Location = new System.Drawing.Point(13, 33);
+            this.labelResult.MaximumSize = new System.Drawing.Size(160, 0);
+            this.labelResult.Name = "labelResult";
+            this.labelResult.Size = new System.Drawing.Size(37, 13);
+            this.labelResult.TabIndex = 12;
+            this.labelResult.Text = "Antal :";
+            // 
+            // grpFilter
+            // 
+            this.grpFilter.Controls.Add(this.label2);
+            this.grpFilter.Controls.Add(this.labelSearch);
+            this.grpFilter.Controls.Add(this.txtFilter);
+            this.grpFilter.Location = new System.Drawing.Point(954, 216);
+            this.grpFilter.Name = "grpFilter";
+            this.grpFilter.Size = new System.Drawing.Size(185, 105);
+            this.grpFilter.TabIndex = 14;
+            this.grpFilter.TabStop = false;
+            this.grpFilter.Text = "Filtrer";
             // 
             // label2
             // 
@@ -547,31 +556,24 @@
             this.label2.TabIndex = 8;
             this.label2.Text = " - eller tlf.(kræver 8 cifre)";
             // 
-            // labelSkipSort
+            // grpResult
             // 
-            this.labelSkipSort.AutoSize = true;
-            this.labelSkipSort.Location = new System.Drawing.Point(23, 199);
-            this.labelSkipSort.Name = "labelSkipSort";
-            this.labelSkipSort.Size = new System.Drawing.Size(72, 13);
-            this.labelSkipSort.TabIndex = 12;
-            this.labelSkipSort.Text = "sort feedback";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 101);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "label3";
+            this.grpResult.Controls.Add(this.labelResult);
+            this.grpResult.Location = new System.Drawing.Point(954, 328);
+            this.grpResult.Name = "grpResult";
+            this.grpResult.Size = new System.Drawing.Size(185, 77);
+            this.grpResult.TabIndex = 15;
+            this.grpResult.TabStop = false;
+            this.grpResult.Text = "Sortering/Filtrering resultat";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1158, 632);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpResult);
+            this.Controls.Add(this.grpFilter);
+            this.Controls.Add(this.grpSort);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grpCreate);
             this.Controls.Add(this.grpUpdateDelete);
@@ -584,10 +586,12 @@
             this.grpUpdateDelete.PerformLayout();
             this.grpCreate.ResumeLayout(false);
             this.grpCreate.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.grpSort.ResumeLayout(false);
+            this.grpSort.PerformLayout();
+            this.grpFilter.ResumeLayout(false);
+            this.grpFilter.PerformLayout();
+            this.grpResult.ResumeLayout(false);
+            this.grpResult.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -631,11 +635,11 @@
         private System.Windows.Forms.Label labelDelete;
         private System.Windows.Forms.Label labelCreate;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpSort;
+        private System.Windows.Forms.GroupBox grpFilter;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label labelSkipSort;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelResult;
+        private System.Windows.Forms.GroupBox grpResult;
     }
 }
 

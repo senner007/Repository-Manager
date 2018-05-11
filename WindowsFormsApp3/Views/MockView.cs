@@ -43,6 +43,7 @@ namespace Manager.Views
 
         public string CreatePersonText { get; set; }
         public string PersonDeleteText { get; set; }
+        public string FilterSortResult_LABEL { get; set; }
 
         public event Action OnShow;
         public event EventHandler<EventArgs> OnUpdate;
