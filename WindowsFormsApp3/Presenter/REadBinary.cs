@@ -14,12 +14,12 @@ namespace Manager.Presenter
         private static CultureInfo culture = CultureInfo.CurrentCulture; // TODO : performance ?
         public static IEnumerable<T> ListBinary<T>(List<T> list, string val) where T : IPerson
         {
-            val = val.ToLower(culture);
+            val = val.ToLower(culture); // TODO : bestem i stedet at navne skal starte med et stort bogstav og de mange tolower ?
             int valLength = val.Length;
             
             var listCount = list.Count();
        
-            int index = BinaryCompareStrings(list, 0, listCount);
+            int index = BinaryCompareStrings(0, listCount);
 
             List<T> newList = new List<T>();
             bool condition = true;
@@ -41,17 +41,17 @@ namespace Manager.Presenter
             }
             return newList;
 
-            int BinaryCompareStrings<T>(List<T> a,int left, int right) where T : IPerson
+            int BinaryCompareStrings(int left, int right)
             {
                 if (left == right)
                 {
-                    return left >= 0 && left < a.Count && a[left].LastName.ToLower(culture).StartsWith(val) ? left : -1;
+                    return left >= 0 && left < listCount && list[left].LastName.ToLower(culture).StartsWith(val) ? left : -1;
                 }
                 int mid = (right + left) / 2;
 
-                int mylength = valLength > a[mid].LastName.Length ? a[mid].LastName.Length : valLength;
+                int mylength = valLength > list[mid].LastName.Length ? list[mid].LastName.Length : valLength;
 
-                return (string.Compare(val, a[mid].LastName.ToLower(culture).Substring(0, mylength)) == 1) ? BinaryCompareStrings(a, mid + 1, right) : BinaryCompareStrings(a, left, mid);
+                return (string.Compare(val, list[mid].LastName.ToLower(culture).Substring(0, mylength)) == 1) ? BinaryCompareStrings(mid + 1, right) : BinaryCompareStrings(left, mid);
             }
         }
     }
