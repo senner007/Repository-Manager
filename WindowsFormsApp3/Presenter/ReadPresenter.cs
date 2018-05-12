@@ -8,17 +8,18 @@ using Manager.Views;
 
 namespace Manager.Presenter
 {
-    public class FindPresenter
+    public class ReadPresenter
     {
         private IFind _view;
         private PersonRepository _manage = new PersonRepository();
         private Determine determine = new Determine();
         bool skipSort = false;
-        public FindPresenter(IFind view, UpdateDeletePresenter updateDeletePresenter, CreatePresenter createPresenter)
+        public ReadPresenter(IFind view, UpdateDeletePresenter updateDeletePresenter, CreatePresenter createPresenter)
         {
             _view = view;
             _view.OnShow += FilterSort;
             // hop over sortering og sæt radioSortName og sortdirection, når der indtastes filterkriterie 
+            // TODO : omskriv ?
             _view.OnFilter += () => skipSort = true;
             _view.OnFilter += () => _view.SortNameRadio = true;
             _view.OnFilter += () =>  _view.SortDirectionCheck = false;
@@ -49,7 +50,6 @@ namespace Manager.Presenter
         }
 
         public IEnumerable<T> Filter<T>(IEnumerable<T> list) where T : IPerson 
-            // TODO : øjeblikkelig fokus på filter tekstbox ved programstart
             // TODO : tilføj case-insensitive filter
         {
            

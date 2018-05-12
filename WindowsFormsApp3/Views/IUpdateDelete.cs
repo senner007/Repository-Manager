@@ -14,7 +14,7 @@ namespace Manager.Views
 
         string PersonDeleteText { get; set; }
 
-        event EventHandler<EventArgs> OnUpdate;
+        event Action OnUpdate;
         event Action OnTextUpdate;
         event EventWithArgs OnListClick;
         event Action OnDelete;

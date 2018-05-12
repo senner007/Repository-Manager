@@ -16,7 +16,7 @@ namespace Manager.Views
              AllocConsole();    
             _updatedDeletePresenter = new UpdateDeletePresenter(this); // instantiate UpdateDeletePresenter presenter
             _createPresenter = new CreatePresenter(this);
-            _findPresenter = new FindPresenter(this, _updatedDeletePresenter, _createPresenter);
+            _readPresenter = new ReadPresenter(this, _updatedDeletePresenter, _createPresenter);
             this.ActiveControl = txtFilter; // fokus på filtrering ved programstart
             // instantiate FindPresenter presenter - indsæt presenters for at kalde event i findpresenter
 
@@ -26,7 +26,7 @@ namespace Manager.Views
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
 
-        public FindPresenter _findPresenter;
+        public ReadPresenter _readPresenter;
         public UpdateDeletePresenter _updatedDeletePresenter;
         public CreatePresenter _createPresenter;
         public Determine determine = new Determine();
@@ -47,7 +47,7 @@ namespace Manager.Views
      
         // IUpdateDelete View-Presenter--------------------
         public event EventWithArgs OnListClick; 
-        public event EventHandler<EventArgs> OnUpdate;
+        public event Action OnUpdate;
         public event Action OnTextUpdate;
         
         public string UpdateText { get => txtUpdateProperty.Text; set => txtUpdateProperty.Text = value; }
@@ -132,24 +132,25 @@ namespace Manager.Views
         // opdater person
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            OnUpdate.Invoke(labelPersonInfo.Text, EventArgs.Empty);
+            OnUpdate();
         }
 
         // find person med egenskab til opdatering eller sletning
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)     
         {
+          
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return; // hvis der klikkes på en række eller kolonne uden data
            // Console.WriteLine(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].DataGridView.DataSource);
 
-            IPerson currentObject = (IPerson)dataGridView1.CurrentRow.DataBoundItem; // udtræk person object(value) fra datagrid
-            Console.WriteLine(dataGridView1.CurrentRow.Selected); 
+          //  Console.WriteLine(dataGridView1.CurrentRow.Selected); 
             var propValue = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-
+            if (propValue == null) return;
 
             OnListClick.Invoke(
-                currentObject,  
-                propValue != null ? dataGridView1.Columns[e.ColumnIndex].HeaderText : "", // kolonnenavn
-                propValue != null ? propValue.ToString() : ""); // cellens værdi
+                (IPerson)dataGridView1.CurrentRow.DataBoundItem,  // udtræk person object(value) fra datagrid
+                dataGridView1.Columns[e.ColumnIndex].HeaderText, // kolonnenavn
+                propValue.ToString() // cellens værdi
+            );
 
             Console.WriteLine("Række index: " + e.RowIndex.ToString() + " Kolonne index: " + e.ColumnIndex.ToString()); // find række og kolonne index
         }
