@@ -83,19 +83,17 @@ namespace Manager.Models
             //_people = _people.OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();
 
 
+            _people = new List<IPerson>();
 
-            _people = new List<IPerson>()
-            {
-              new Employed() { TLF = 11111111, FirstName = "Poul", LastName = "Irish", Age  = 40 , Company= "Google", Salary = 10000},
-              new Employed() { TLF = 22222222, FirstName = "Bill", LastName = "Gates", Age = 70, Company = "Microsoft", Salary = 5000000},
-              new Employed() { TLF = 33333333, FirstName = "Jeremy", LastName = "McPeak", Age = 40, Company = "Envato", Salary = 3500},
-              new Employed() { TLF = 44444444, FirstName = "Douglas", LastName = "Crockford", Age = 70, Company = "Yahoo", Salary = 35000},
-              new Student() { TLF = 55555555, FirstName = "Thomas", LastName = "Anderson", Age = 20, Major = "Computer Science 101"},
-              new Student() { TLF = 66666666, FirstName = "John", LastName = "Doe", Age = 30, Major = "Computer Science 201"},
-              new Student() { TLF = 77777777, FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming"}
-            };
-
-            _people.Sort();
+            _people.AddSorted(new Employed() { TLF = 11111111, FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
+            _people.AddSorted(new Employed() { TLF = 22222222, FirstName = "Poul", LastName = "Anderson", Age = 40, Company = "Google", Salary = 10000 });
+            _people.AddSorted(new Employed() { TLF = 33333333, FirstName = "Poul", LastName = "Adams", Age = 40, Company = "Google", Salary = 10000 });
+            _people.AddSorted(new Employed() { TLF = 44444444, FirstName = "Bill", LastName = "Gates", Age = 70, Company = "Microsoft", Salary = 5000000 });
+            _people.AddSorted(new Employed() { TLF = 55555555, FirstName = "Jeremy", LastName = "McPeak", Age = 40, Company = "Envato", Salary = 3500 });
+            _people.AddSorted(new Employed() { TLF = 66666666, FirstName = "Douglas", LastName = "Crockford", Age = 70, Company = "Yahoo", Salary = 35000 });
+            _people.AddSorted(new Student() { TLF = 77777777, FirstName = "Thomas", LastName = "Anderson", Age = 20, Major = "Computer Science 101" });
+            _people.AddSorted(new Student() { TLF = 88888888, FirstName = "John", LastName = "Doe", Age = 30, Major = "Computer Science 201" });
+            _people.AddSorted(new Student() { TLF = 99999999, FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming" });
 
             // TODO : implementer ObservableCollection
 
