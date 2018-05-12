@@ -17,9 +17,9 @@ namespace Manager.Views
             _updatedDeletePresenter = new UpdateDeletePresenter(this); // instantiate UpdateDeletePresenter presenter
             _createPresenter = new CreatePresenter(this);
             _findPresenter = new FindPresenter(this, _updatedDeletePresenter, _createPresenter);
-
+            this.ActiveControl = txtFilter; // fokus på filtrering ved programstart
             // instantiate FindPresenter presenter - indsæt presenters for at kalde event i findpresenter
- 
+
         }
 
         [DllImport("kernel32.dll", SetLastError = true)] // Console output
