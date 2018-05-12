@@ -55,10 +55,10 @@ namespace Manager.Presenter
             { 
                 ClearPerson();
                 CallShow(); // Call show in FindPresenter
-                _view.ErrorLabel = "Opdatering gennemført!"; // omdøb variabel fra Errorlabel til feedbacklabel
+                _view.UpdateResponseLabel = "Opdatering gennemført!"; // omdøb variabel fra Errorlabel til feedbacklabel
             }
             else
-                _view.ErrorLabel = "Fejl! person ikke opdateret";
+                _view.UpdateResponseLabel = "Fejl! person ikke opdateret";
 
 
             
@@ -76,7 +76,7 @@ namespace Manager.Presenter
         }
         public void  DisplayLabels()
         {
-            _view.ErrorLabel = Labels();
+            _view.UpdateResponseLabel = Labels();
         }
 
 

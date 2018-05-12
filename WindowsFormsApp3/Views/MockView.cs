@@ -21,7 +21,7 @@ namespace Manager.Views
         public string UpdateText { get; set; }
         public string PersonInfoLabel { get; set; }
         public string PropertyLabel { get; set; }
-        public string ErrorLabel { get; set; }
+        public string UpdateResponseLabel { get; set; }
 
         public string CreateFirstNameText { get; set; }
         public string CreateLastNameText { get; set; }

@@ -10,7 +10,7 @@ namespace Manager.Views
         string UpdateText { get; set; }
         string PersonInfoLabel { get; set; }
         string PropertyLabel { get; set; }
-        string ErrorLabel { get; set; }
+        string UpdateResponseLabel { get; set; }
 
         string PersonDeleteText { get; set; }
 

@@ -52,7 +52,7 @@ namespace Manager.Views
         
         public string UpdateText { get => txtUpdateProperty.Text; set => txtUpdateProperty.Text = value; }
         public string PropertyLabel { get => labelUpdateProperty.Text ; set => labelUpdateProperty.Text = value; }
-        public string ErrorLabel { get => labelError.Text; set => labelError.Text = value; }
+        public string UpdateResponseLabel { get => labelUpdateResponse.Text; set => labelUpdateResponse.Text = value; }
         public string PersonInfoLabel { get => labelPersonInfo.Text; set => labelPersonInfo.Text = value; }
 
         public string PersonDeleteText { get => labelDelete.Text; set => labelDelete.Text = value; }
