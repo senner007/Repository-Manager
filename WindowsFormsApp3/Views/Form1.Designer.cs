@@ -128,7 +128,7 @@
             // 
             this.buttonSort.Location = new System.Drawing.Point(16, 30);
             this.buttonSort.Name = "buttonSort";
-            this.buttonSort.Size = new System.Drawing.Size(109, 23);
+            this.buttonSort.Size = new System.Drawing.Size(100, 23);
             this.buttonSort.TabIndex = 1;
             this.buttonSort.Text = "Hent og Sorter";
             this.buttonSort.UseVisualStyleBackColor = true;
@@ -136,7 +136,7 @@
             // 
             // txtFilter
             // 
-            this.txtFilter.Location = new System.Drawing.Point(16, 65);
+            this.txtFilter.Location = new System.Drawing.Point(16, 67);
             this.txtFilter.MaxLength = 8;
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.Size = new System.Drawing.Size(140, 20);
@@ -148,13 +148,13 @@
             this.radioOrderByName.AutoSize = true;
             this.radioOrderByName.BackColor = System.Drawing.Color.DimGray;
             this.radioOrderByName.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioOrderByName.Location = new System.Drawing.Point(17, 59);
+            this.radioOrderByName.Location = new System.Drawing.Point(17, 61);
             this.radioOrderByName.Name = "radioOrderByName";
             this.radioOrderByName.Padding = new System.Windows.Forms.Padding(7, 2, 2, 2);
-            this.radioOrderByName.Size = new System.Drawing.Size(154, 21);
+            this.radioOrderByName.Size = new System.Drawing.Size(148, 21);
             this.radioOrderByName.TabIndex = 3;
             this.radioOrderByName.TabStop = true;
-            this.radioOrderByName.Text = "Sorter efter EFTERNAVN";
+            this.radioOrderByName.Text = "Sorter efter EFTERnavn";
             this.radioOrderByName.UseVisualStyleBackColor = false;
             // 
             // radioOrderByAge
@@ -162,7 +162,7 @@
             this.radioOrderByAge.AutoSize = true;
             this.radioOrderByAge.BackColor = System.Drawing.Color.DimGray;
             this.radioOrderByAge.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioOrderByAge.Location = new System.Drawing.Point(17, 86);
+            this.radioOrderByAge.Location = new System.Drawing.Point(17, 88);
             this.radioOrderByAge.Name = "radioOrderByAge";
             this.radioOrderByAge.Padding = new System.Windows.Forms.Padding(7, 2, 2, 2);
             this.radioOrderByAge.Size = new System.Drawing.Size(122, 21);
@@ -190,7 +190,7 @@
             // labelDelete
             // 
             this.labelDelete.AutoSize = true;
-            this.labelDelete.Location = new System.Drawing.Point(105, 172);
+            this.labelDelete.Location = new System.Drawing.Point(126, 172);
             this.labelDelete.Name = "labelDelete";
             this.labelDelete.Size = new System.Drawing.Size(75, 13);
             this.labelDelete.TabIndex = 6;
@@ -198,9 +198,9 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(10, 167);
+            this.buttonDelete.Location = new System.Drawing.Point(11, 167);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.Size = new System.Drawing.Size(101, 23);
             this.buttonDelete.TabIndex = 5;
             this.buttonDelete.Text = "Slet Person";
             this.buttonDelete.UseVisualStyleBackColor = true;
@@ -209,7 +209,7 @@
             // labelError
             // 
             this.labelError.AutoSize = true;
-            this.labelError.Location = new System.Drawing.Point(7, 117);
+            this.labelError.Location = new System.Drawing.Point(9, 117);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(216, 13);
             this.labelError.TabIndex = 4;
@@ -217,9 +217,9 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(214, 82);
+            this.buttonUpdate.Location = new System.Drawing.Point(187, 84);
             this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(75, 22);
+            this.buttonUpdate.Size = new System.Drawing.Size(101, 22);
             this.buttonUpdate.TabIndex = 3;
             this.buttonUpdate.Text = "Opdater";
             this.buttonUpdate.UseVisualStyleBackColor = true;
@@ -228,7 +228,7 @@
             // labelPersonInfo
             // 
             this.labelPersonInfo.AutoSize = true;
-            this.labelPersonInfo.Location = new System.Drawing.Point(6, 28);
+            this.labelPersonInfo.Location = new System.Drawing.Point(9, 28);
             this.labelPersonInfo.Name = "labelPersonInfo";
             this.labelPersonInfo.Size = new System.Drawing.Size(112, 13);
             this.labelPersonInfo.TabIndex = 2;
@@ -236,16 +236,16 @@
             // 
             // txtUpdateProperty
             // 
-            this.txtUpdateProperty.Location = new System.Drawing.Point(9, 84);
+            this.txtUpdateProperty.Location = new System.Drawing.Point(10, 84);
             this.txtUpdateProperty.Name = "txtUpdateProperty";
-            this.txtUpdateProperty.Size = new System.Drawing.Size(183, 20);
+            this.txtUpdateProperty.Size = new System.Drawing.Size(163, 20);
             this.txtUpdateProperty.TabIndex = 1;
             this.txtUpdateProperty.TextChanged += new System.EventHandler(this.txtUpdateProperty_TextChanged);
             // 
             // labelUpdateProperty
             // 
             this.labelUpdateProperty.AutoSize = true;
-            this.labelUpdateProperty.Location = new System.Drawing.Point(7, 55);
+            this.labelUpdateProperty.Location = new System.Drawing.Point(8, 55);
             this.labelUpdateProperty.Name = "labelUpdateProperty";
             this.labelUpdateProperty.Size = new System.Drawing.Size(86, 13);
             this.labelUpdateProperty.TabIndex = 0;
@@ -281,7 +281,7 @@
             // labelCreate
             // 
             this.labelCreate.AutoSize = true;
-            this.labelCreate.Location = new System.Drawing.Point(448, 172);
+            this.labelCreate.Location = new System.Drawing.Point(446, 171);
             this.labelCreate.Name = "labelCreate";
             this.labelCreate.Size = new System.Drawing.Size(83, 13);
             this.labelCreate.TabIndex = 17;
@@ -291,7 +291,7 @@
             // 
             this.buttonCreate.Location = new System.Drawing.Point(329, 167);
             this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(103, 23);
+            this.buttonCreate.Size = new System.Drawing.Size(100, 23);
             this.buttonCreate.TabIndex = 16;
             this.buttonCreate.Text = "Opret";
             this.buttonCreate.UseVisualStyleBackColor = true;
@@ -300,7 +300,7 @@
             // labelCreateMajor
             // 
             this.labelCreateMajor.AutoSize = true;
-            this.labelCreateMajor.Location = new System.Drawing.Point(445, 131);
+            this.labelCreateMajor.Location = new System.Drawing.Point(445, 132);
             this.labelCreateMajor.Name = "labelCreateMajor";
             this.labelCreateMajor.Size = new System.Drawing.Size(60, 13);
             this.labelCreateMajor.TabIndex = 15;
@@ -327,7 +327,7 @@
             // labelCreateTlf
             // 
             this.labelCreateTlf.AutoSize = true;
-            this.labelCreateTlf.Location = new System.Drawing.Point(135, 154);
+            this.labelCreateTlf.Location = new System.Drawing.Point(135, 155);
             this.labelCreateTlf.Name = "labelCreateTlf";
             this.labelCreateTlf.Size = new System.Drawing.Size(115, 13);
             this.labelCreateTlf.TabIndex = 12;
@@ -345,24 +345,24 @@
             // labelCreateLastName
             // 
             this.labelCreateLastName.AutoSize = true;
-            this.labelCreateLastName.Location = new System.Drawing.Point(135, 86);
+            this.labelCreateLastName.Location = new System.Drawing.Point(135, 84);
             this.labelCreateLastName.Name = "labelCreateLastName";
-            this.labelCreateLastName.Size = new System.Drawing.Size(87, 13);
+            this.labelCreateLastName.Size = new System.Drawing.Size(101, 13);
             this.labelCreateLastName.TabIndex = 10;
-            this.labelCreateLastName.Text = "Indtast efternavn";
+            this.labelCreateLastName.Text = "Indtast EFTERnavn";
             // 
             // labelCreateFirstName
             // 
             this.labelCreateFirstName.AutoSize = true;
-            this.labelCreateFirstName.Location = new System.Drawing.Point(135, 51);
+            this.labelCreateFirstName.Location = new System.Drawing.Point(135, 46);
             this.labelCreateFirstName.Name = "labelCreateFirstName";
-            this.labelCreateFirstName.Size = new System.Drawing.Size(78, 13);
+            this.labelCreateFirstName.Size = new System.Drawing.Size(88, 13);
             this.labelCreateFirstName.TabIndex = 9;
-            this.labelCreateFirstName.Text = "Indtast fornavn";
+            this.labelCreateFirstName.Text = "Indtast FORnavn";
             // 
             // txtCreateTlf
             // 
-            this.txtCreateTlf.Location = new System.Drawing.Point(18, 151);
+            this.txtCreateTlf.Location = new System.Drawing.Point(18, 152);
             this.txtCreateTlf.Name = "txtCreateTlf";
             this.txtCreateTlf.Size = new System.Drawing.Size(100, 20);
             this.txtCreateTlf.TabIndex = 8;
@@ -370,7 +370,7 @@
             // 
             // txtCreateAge
             // 
-            this.txtCreateAge.Location = new System.Drawing.Point(18, 117);
+            this.txtCreateAge.Location = new System.Drawing.Point(18, 116);
             this.txtCreateAge.Name = "txtCreateAge";
             this.txtCreateAge.Size = new System.Drawing.Size(100, 20);
             this.txtCreateAge.TabIndex = 7;
@@ -379,7 +379,7 @@
             // radioCreateEmployed
             // 
             this.radioCreateEmployed.AutoSize = true;
-            this.radioCreateEmployed.Location = new System.Drawing.Point(329, 24);
+            this.radioCreateEmployed.Location = new System.Drawing.Point(329, 26);
             this.radioCreateEmployed.Name = "radioCreateEmployed";
             this.radioCreateEmployed.Size = new System.Drawing.Size(71, 17);
             this.radioCreateEmployed.TabIndex = 6;
@@ -390,7 +390,7 @@
             // radioCreateStudent
             // 
             this.radioCreateStudent.AutoSize = true;
-            this.radioCreateStudent.Location = new System.Drawing.Point(329, 105);
+            this.radioCreateStudent.Location = new System.Drawing.Point(329, 109);
             this.radioCreateStudent.Name = "radioCreateStudent";
             this.radioCreateStudent.Size = new System.Drawing.Size(62, 17);
             this.radioCreateStudent.TabIndex = 5;
@@ -400,7 +400,7 @@
             // 
             // txtCreateMajor
             // 
-            this.txtCreateMajor.Location = new System.Drawing.Point(329, 128);
+            this.txtCreateMajor.Location = new System.Drawing.Point(329, 130);
             this.txtCreateMajor.Name = "txtCreateMajor";
             this.txtCreateMajor.Size = new System.Drawing.Size(100, 20);
             this.txtCreateMajor.TabIndex = 4;
@@ -408,7 +408,7 @@
             // 
             // txtCreateLastName
             // 
-            this.txtCreateLastName.Location = new System.Drawing.Point(18, 84);
+            this.txtCreateLastName.Location = new System.Drawing.Point(18, 79);
             this.txtCreateLastName.Name = "txtCreateLastName";
             this.txtCreateLastName.Size = new System.Drawing.Size(100, 20);
             this.txtCreateLastName.TabIndex = 3;
@@ -416,7 +416,7 @@
             // 
             // txtCreateFirstName
             // 
-            this.txtCreateFirstName.Location = new System.Drawing.Point(18, 48);
+            this.txtCreateFirstName.Location = new System.Drawing.Point(18, 43);
             this.txtCreateFirstName.Name = "txtCreateFirstName";
             this.txtCreateFirstName.Size = new System.Drawing.Size(100, 20);
             this.txtCreateFirstName.TabIndex = 2;
@@ -424,7 +424,7 @@
             // 
             // txtCreateSalary
             // 
-            this.txtCreateSalary.Location = new System.Drawing.Point(329, 79);
+            this.txtCreateSalary.Location = new System.Drawing.Point(329, 76);
             this.txtCreateSalary.Name = "txtCreateSalary";
             this.txtCreateSalary.Size = new System.Drawing.Size(100, 20);
             this.txtCreateSalary.TabIndex = 1;
@@ -443,14 +443,14 @@
             this.labelSearch.AutoSize = true;
             this.labelSearch.Location = new System.Drawing.Point(14, 29);
             this.labelSearch.Name = "labelSearch";
-            this.labelSearch.Size = new System.Drawing.Size(109, 13);
+            this.labelSearch.Size = new System.Drawing.Size(103, 13);
             this.labelSearch.TabIndex = 7;
-            this.labelSearch.Text = "Søg på EFTERNAVN";
+            this.labelSearch.Text = "Søg på EFTERnavn";
             // 
             // chkStudent
             // 
             this.chkStudent.AutoSize = true;
-            this.chkStudent.Location = new System.Drawing.Point(23, 140);
+            this.chkStudent.Location = new System.Drawing.Point(23, 150);
             this.chkStudent.Name = "chkStudent";
             this.chkStudent.Size = new System.Drawing.Size(98, 17);
             this.chkStudent.TabIndex = 8;
@@ -461,7 +461,7 @@
             // chkEmployed
             // 
             this.chkEmployed.AutoSize = true;
-            this.chkEmployed.Location = new System.Drawing.Point(23, 163);
+            this.chkEmployed.Location = new System.Drawing.Point(23, 171);
             this.chkEmployed.Name = "chkEmployed";
             this.chkEmployed.Size = new System.Drawing.Size(102, 17);
             this.chkEmployed.TabIndex = 9;
@@ -473,13 +473,14 @@
             // 
             this.chkSortDirection.Appearance = System.Windows.Forms.Appearance.Button;
             this.chkSortDirection.AutoSize = true;
-            this.chkSortDirection.Location = new System.Drawing.Point(131, 30);
-            this.chkSortDirection.MaximumSize = new System.Drawing.Size(40, 0);
-            this.chkSortDirection.MinimumSize = new System.Drawing.Size(40, 0);
+            this.chkSortDirection.Location = new System.Drawing.Point(122, 30);
+            this.chkSortDirection.MaximumSize = new System.Drawing.Size(50, 0);
+            this.chkSortDirection.MinimumSize = new System.Drawing.Size(50, 0);
             this.chkSortDirection.Name = "chkSortDirection";
-            this.chkSortDirection.Size = new System.Drawing.Size(40, 23);
+            this.chkSortDirection.Size = new System.Drawing.Size(50, 23);
             this.chkSortDirection.TabIndex = 10;
             this.chkSortDirection.Text = "Desc";
+            this.chkSortDirection.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkSortDirection.UseVisualStyleBackColor = true;
             this.chkSortDirection.CheckedChanged += new System.EventHandler(this.chkSortDirection_CheckedChanged);
             // 
@@ -488,7 +489,7 @@
             this.radioOrderByVarious.AutoSize = true;
             this.radioOrderByVarious.BackColor = System.Drawing.Color.DimGray;
             this.radioOrderByVarious.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioOrderByVarious.Location = new System.Drawing.Point(17, 113);
+            this.radioOrderByVarious.Location = new System.Drawing.Point(17, 115);
             this.radioOrderByVarious.Name = "radioOrderByVarious";
             this.radioOrderByVarious.Padding = new System.Windows.Forms.Padding(7, 2, 2, 2);
             this.radioOrderByVarious.Size = new System.Drawing.Size(132, 21);
@@ -528,7 +529,7 @@
             // labelResult
             // 
             this.labelResult.AutoSize = true;
-            this.labelResult.Location = new System.Drawing.Point(13, 33);
+            this.labelResult.Location = new System.Drawing.Point(13, 31);
             this.labelResult.MaximumSize = new System.Drawing.Size(160, 0);
             this.labelResult.Name = "labelResult";
             this.labelResult.Size = new System.Drawing.Size(37, 13);
@@ -561,7 +562,7 @@
             this.grpResult.Controls.Add(this.labelResult);
             this.grpResult.Location = new System.Drawing.Point(954, 328);
             this.grpResult.Name = "grpResult";
-            this.grpResult.Size = new System.Drawing.Size(185, 77);
+            this.grpResult.Size = new System.Drawing.Size(185, 64);
             this.grpResult.TabIndex = 15;
             this.grpResult.TabStop = false;
             this.grpResult.Text = "Sortering/Filtrering resultat";

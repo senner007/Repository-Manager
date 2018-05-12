@@ -107,9 +107,7 @@ namespace Manager.Models
             if (propInfo == null || propertyName == "TLF" && TlfExists(Convert.ToUInt32(value))) return false;
 
             propInfo.SetValue(clone, Convert.ChangeType(value, propInfo.PropertyType), null);
-
-            // Da vi ikke kan ændre i objecter i et sortedSet, fordi det ødelægger hashstrukturen, må vi i stedet slette personen og indsætte en ny
-            //https://social.msdn.microsoft.com/Forums/vstudio/en-US/45f4645f-9274-416b-b5c8-f3a58e5571d8/reorder-sortedsett-or-remove-item-that-isnt-sorted-correctly?forum=netfxbcl
+  
             if (_person is Employed)
             {
                 //Objektet skal slettes først. 
