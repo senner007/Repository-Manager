@@ -107,7 +107,7 @@ namespace Manager.Models
             if (propInfo == null || propertyName == "TLF" && TlfExists(Convert.ToUInt32(value))) return false;
 
             propInfo.SetValue(clone, Convert.ChangeType(value, propInfo.PropertyType), null);
-  
+            //if (TlfExists(clone.TLF)) return false;
             if (_person is Employed)
             {
                 //Objektet skal slettes først. 

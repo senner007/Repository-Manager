@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using Manager.Models;
 
 namespace Manager.Views
@@ -46,7 +47,7 @@ namespace Manager.Views
         public string FilterSortResult_LABEL { get; set; }
 
         public event Action OnShow;
-        public event EventHandler<EventArgs> OnUpdate;
+        public event Action OnUpdate;
         public event Action OnTextUpdate;
         public event EventWithArgs OnListClick;
         public event Action OnDisplayLabels;
@@ -55,6 +56,15 @@ namespace Manager.Views
         public event Action OnFilter;
 
         public void buttonSort() => OnShow();
+        public void gridListCLick(IPerson person, string prop, string propValue)
+        {
+            OnListClick(
+                person,
+                prop,
+                propValue
+           );
+        }
+        public void buttonUpdate() => OnUpdate();
 
         public void ColumnOrder() { }
 

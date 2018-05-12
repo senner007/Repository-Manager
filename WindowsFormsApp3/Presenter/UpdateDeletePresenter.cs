@@ -39,7 +39,7 @@ namespace Manager.Presenter
 
         }
 
-        private void Update(object PropertyName, EventArgs e)  // TODO : call FindPresenter to update
+        private void Update()  // TODO : call FindPresenter to update
         { 
             // updater fornavn, efternavn, alder, tlf
             // TODO : tilføj manglende opdateringsmuligheder
