@@ -53,7 +53,7 @@ namespace ManagerTest
         {
             string actual = _manage.GetPeople.FirstOrDefault().ToString();
 
-            string expected = "Thomas Anderson, Alder: 20, Tlf: 55555555, Student";
+            string expected = "Poul Adams, Alder: 40, Tlf: 33333333, Employed";
 
 
             Trace.WriteLine(actual);
@@ -65,7 +65,7 @@ namespace ManagerTest
         {
             string actual = _manage.GetPeople.LastOrDefault().ToString();
 
-            string expected = "Jeremy McPeak, Alder: 40, Tlf: 33333333, Employed";
+            string expected = "Jeremy McPeak, Alder: 40, Tlf: 55555555, Employed";
 
 
             Trace.WriteLine(actual);
@@ -89,7 +89,7 @@ namespace ManagerTest
 
             string actual = _view.PersonList.FirstOrDefault().ToString();
 
-            string expected = "Thomas Anderson, Alder: 20, Tlf: 55555555, Student";
+            string expected = "Poul Adams, Alder: 40, Tlf: 33333333, Employed";
 
             Assert.AreEqual(expected, actual);
         }
@@ -103,7 +103,7 @@ namespace ManagerTest
 
             string actual = _view.PersonList.FirstOrDefault().ToString();
 
-            string expected = "Thomas Anderson, Alder: 20, Tlf: 55555555, Student";
+            string expected = "Thomas Anderson, Alder: 20, Tlf: 77777777, Student";
 
             Assert.AreEqual(expected, actual);
         }
@@ -117,7 +117,7 @@ namespace ManagerTest
 
             string actual = _view.PersonList.FirstOrDefault().ToString();
 
-            string expected = "Douglas Crockford, Alder: 70, Tlf: 44444444, Employed";
+            string expected = "Poul Adams, Alder: 40, Tlf: 33333333, Employed";
 
             Assert.AreEqual(expected, actual);
         }
@@ -132,7 +132,7 @@ namespace ManagerTest
 
             string actual = _view.PersonList.FirstOrDefault().ToString();
 
-            string expected = "Douglas Crockford, Alder: 70, Tlf: 44444444, Employed";
+            string expected = "Poul Adams, Alder: 40, Tlf: 33333333, Employed";
 
             Assert.AreEqual(expected, actual);
         }
@@ -148,7 +148,7 @@ namespace ManagerTest
 
             string actual = _view.PersonList.FirstOrDefault().ToString();
 
-            string expected = "Jeremy McPeak, Alder: 40, Tlf: 33333333, Employed";
+            string expected = "Jeremy McPeak, Alder: 40, Tlf: 55555555, Employed";
 
             Assert.AreEqual(expected, actual);
         }
@@ -188,7 +188,7 @@ namespace ManagerTest
 
             Trace.WriteLine(actual);
 
-            string expected = "Jane Doe, Alder: 25, Tlf: 77777777, Student";
+            string expected = "Jane Doe, Alder: 25, Tlf: 99999999, Student";
 
             Assert.AreEqual(expected, actual);
         }
