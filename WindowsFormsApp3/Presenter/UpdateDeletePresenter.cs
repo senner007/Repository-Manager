@@ -83,9 +83,9 @@ namespace Manager.Presenter
         public string Labels()
         {
             if (_propToUpdate == "FirstName" && !determine.ValidateUpdate(_propToUpdate, _view.UpdateText))
-                return determine.NameFail;
+                return determine.FirstNameFail;
             else if (_propToUpdate == "LastName" && !determine.ValidateUpdate(_propToUpdate, _view.UpdateText))
-                return determine.NameFail;
+                return determine.LastNameFail;
             else if (_propToUpdate == "Age" && !determine.ValidateUpdate(_propToUpdate, _view.UpdateText))
                 return determine.AgeFail;
             else if (_propToUpdate == "TLF" && !determine.ValidateUpdate(_propToUpdate, _view.UpdateText))

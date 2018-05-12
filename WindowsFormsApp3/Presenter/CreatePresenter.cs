@@ -23,13 +23,13 @@ namespace Manager.Presenter
 
         public void DisplayLabels()
         {
-            _view._errorCreateFirstNameText = determine.IfName(_view.CreateFirstNameText) ? "" : determine.NameFail;
-            _view._errorCreateLastNameText = determine.IfName(_view.CreateLastNameText) ? "" : determine.NameFail;
-            _view._errorCreateMajorText = determine.IfMisc(_view.CreateMajorText) ? "" : determine.NameFail;
-            _view._errorCreateCompanyText = determine.IfMisc(_view.CreateCompanyText) ? "" : determine.NameFail;
-            _view._errorCreateSalaryText = determine.IfUint(_view.CreateSalaryText) ? "" : determine.NumberFail;
-            _view._errorCreateAgeText = determine.IfAge(_view.CreateAgeText) ? "" : determine.AgeFail;
-            _view._errorCreateTlfText = determine.IfTLF(_view.CreateTlfText) ? "" : determine.TlfFail;
+            _view._errorCreateFirstNameText = determine.IfName(_view.CreateFirstNameText) ? "FORnavn \u2713" : determine.FirstNameFail;
+            _view._errorCreateLastNameText = determine.IfName(_view.CreateLastNameText) ? "EFTERnavn \u2713" : determine.LastNameFail;
+            _view._errorCreateMajorText = determine.IfMisc(_view.CreateMajorText) ? "Fag \u2713" : determine.MajorNameFail;
+            _view._errorCreateCompanyText = determine.IfMisc(_view.CreateCompanyText) ? "Firma \u2713" : determine.CompanyNameFail;
+            _view._errorCreateSalaryText = determine.IfUint(_view.CreateSalaryText) ? "Løn \u2713" : determine.NumberFail;
+            _view._errorCreateAgeText = determine.IfAge(_view.CreateAgeText) ? "Alder \u2713" : determine.AgeFail;
+            _view._errorCreateTlfText = determine.IfTLF(_view.CreateTlfText) ? "Tlf \u2713" : determine.TlfFail;
 
             _view.CreatePersonText = "";
         }

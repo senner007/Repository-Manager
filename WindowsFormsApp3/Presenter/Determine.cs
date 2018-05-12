@@ -25,7 +25,10 @@ namespace Manager.Presenter
 
         public bool IfAddress(string input) => Regex.IsMatch(input, @"^([a-zA-Z]).+\s(?=.*[0-9]).*$") == true ? true : false;
         // TODO: forbedre adressekode - tilføj adresse
-        public string NameFail => "Indtast et navn (bogstaver)";
+        public string FirstNameFail => "Indtast et FORnavn (bogstaver)";
+        public string LastNameFail => "Indtast et EFTERnavn (bogstaver)";
+        public string CompanyNameFail => "Indtast et firmanavn";
+        public string MajorNameFail => "Indtast et fag";
         public string AgeFail => "Indtast alder (tal 16-99)";
         public string TlfFail => "Indtast telefonnummer (8 tal)";
         public string NumberFail => "Indtast (tal)";
