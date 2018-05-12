@@ -7,7 +7,22 @@ using System.Threading.Tasks;
 
 namespace Manager.Models
 {
-    
+    public static class Extentions
+    {
+        // extenstion metode der indsætter objekted på den rigtige plads i stedet for at sortere hele listen
+        //(O(n)) TODO: kan forbedres med binær ?
+        public static void AddSorted<T>(this IList<T> list, T item, IComparer<T> comparer = null)
+        {
+            if (comparer == null)
+                comparer = Comparer<T>.Default;
+
+            int i = 0;
+            while (i < list.Count && comparer.Compare(list[i], item) < 0)
+                i++;
+
+            list.Insert(i, item);
+        }
+    }
     public class PersonRepository
     {
 
@@ -32,11 +47,12 @@ namespace Manager.Models
             //Console.WriteLine("People static contructor");
 
             // testing large numbers
+
             //uint largeNumber = 500000;
             //_people = new List<IPerson>();
             //List<string> ln = new List<string>();
             //string saved = RandomString(12);
-            //int counter = 20;
+            //int counter = 5;
             //for (int i = 0; i < largeNumber; i++)
             //{
             //    counter--;
@@ -49,7 +65,7 @@ namespace Manager.Models
             //    {
             //        ln.Add(saved);
             //    }
-            //    if (counter == 0) counter = 50;
+            //    if (counter == 0) counter = 5;
 
             //}
             //List<string> fn = new List<string>();
@@ -64,7 +80,7 @@ namespace Manager.Models
             //    _people.Add(new Employed() { TLF = Convert.ToUInt32(10000000 + i * 111), FirstName = fn[i], LastName = ln[i], Age = 40, Company = "Google", Salary = 10000 });
 
             //}
-           // _people = _people.OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();
+            //_people = _people.OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();
 
 
 
@@ -82,27 +98,34 @@ namespace Manager.Models
             _people.Sort();
 
             // TODO : implementer ObservableCollection
-            // undgår at sortere hele listen hver gang
+
         }
 
-        public void ReOrder() // TODO: insert i stedet for komplet sortering
+        public bool UpdatePerson(dynamic clone, string propertyName, string value) // IPerson parameter er value kopi fra Datagridview
         {
-            //_people.OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();
-            _people.Sort();
-            //  mergeCache = null;
-            Console.WriteLine(_people.LastOrDefault().ToString());
-        }
-        public bool UpdatePerson(IPerson personCopy, string propertyName, string value) // IPerson parameter er value kopi fra Datagridview
-        {
-            IPerson _person = _people.FirstOrDefault(p => p.TLF == personCopy.TLF); // Find matching person in db                                                                                   
-            PropertyInfo propInfo = _person.GetType().GetProperty(propertyName);
+            IPerson _person = _people.FirstOrDefault(p => p.TLF == clone.TLF); // Find matching person in db                                                                                   
+            PropertyInfo propInfo = clone.GetType().GetProperty(propertyName);
 
             if (propInfo == null || propertyName == "TLF" && TlfExists(Convert.ToUInt32(value))) return false;
 
-                propInfo.SetValue(_person, Convert.ChangeType(value, propInfo.PropertyType), null);
-                ReOrder();
-                return true;
-   
+            propInfo.SetValue(clone, Convert.ChangeType(value, propInfo.PropertyType), null);
+
+            // Da vi ikke kan ændre i objecter i et sortedSet, fordi det ødelægger hashstrukturen, må vi i stedet slette personen og indsætte en ny
+            //https://social.msdn.microsoft.com/Forums/vstudio/en-US/45f4645f-9274-416b-b5c8-f3a58e5571d8/reorder-sortedsett-or-remove-item-that-isnt-sorted-correctly?forum=netfxbcl
+            if (_person is Employed)
+            {
+                //Objektet skal slettes først. 
+                //Ellers vil den ikke indsætte, da sortedSet ikke tillader ens objekter baseret på compare
+                DeletePerson(_person);
+                CreateEmployed(clone.TLF, clone.FirstName, clone.LastName, clone.Age, clone.Company, clone.Salary);
+            }
+            else if (_person is Student)
+            {
+                DeletePerson(_person);
+                CreateStudent(clone.TLF, clone.FirstName, clone.LastName, clone.Age, clone.Major);
+            }
+            return true; // TODO : hvornår/hvoprfor skal der returneres true ?
+
         }
         public IEnumerable<T> GetByType<T>(Func<IPerson, T> lambda) where T : IPerson
         {
@@ -154,7 +177,6 @@ namespace Manager.Models
             if (_person != null)
             {
                 _people.Remove(_person);
-                ReOrder();
                 return true;
             }
             return false;
@@ -164,17 +186,15 @@ namespace Manager.Models
         {
             if (TlfExists(tlf)) return false;
            
-            _people.Add(new Student() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Major = major });
+            _people.AddSorted(new Student() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Major = major });
             Console.WriteLine("from student create model");
-            ReOrder();
             return true;
             
         }
         public bool CreateEmployed(uint tlf, string firstname, string lastname, uint age, string company, uint salary)
         {
             if (TlfExists(tlf)) return false;
-            _people.Add(new Employed() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Company = company, Salary = salary });
-            ReOrder();
+            _people.AddSorted(new Employed() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Company = company, Salary = salary });
             return true;
         }
         private bool TlfExists(uint tlf) => _people.FirstOrDefault(t => t.TLF == tlf) != null;
