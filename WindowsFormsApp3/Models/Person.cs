@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Manager.Models // TODO : tilføj flere egenskaber
-{
+{  
     public abstract class Person : IPerson, IComparable
     {
      //   [System.ComponentModel.DisplayName("Key")]
@@ -19,13 +19,15 @@ namespace Manager.Models // TODO : tilføj flere egenskaber
         {
             Person p = obj as Person;
             if(p !=null)
-            {            
-                if(LastName.CompareTo(p.LastName) != 0)
-                    return LastName.CompareTo(p.LastName);
-                else 
-                   return FirstName.CompareTo(p.FirstName);
+            {
+                int result;
+                result = LastName.CompareTo(p.LastName); // hvis FORnavn
+                if (result != 0) return result;
+                result = FirstName.CompareTo(p.FirstName); // hvis EFTERnavn
+                if (result != 0) return result;
+
+                return TLF.CompareTo(p.TLF); // hvis TLF
             }
-       
             return -1;
         }
 
