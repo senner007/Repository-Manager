@@ -109,7 +109,11 @@ namespace UpdateTests
             string expected = "James";
             string actual = _view.PersonList.FirstOrDefault().FirstName;
 
+            string expectedFeedback = "Opdatering gennemført!";
+            string actualFeedback = _view.UpdateResponseLabel;
+
             Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expectedFeedback, actualFeedback);
         }
         [TestMethod]
         public void View_Update_First_Person_Student_FirstName()
@@ -141,7 +145,11 @@ namespace UpdateTests
             string expected = "James";
             string actual = _view.PersonList.FirstOrDefault().FirstName;
 
+            string expectedFeedback = "Opdatering gennemført!";
+            string actualFeedback = _view.UpdateResponseLabel;
+
             Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expectedFeedback, actualFeedback);
         }
 
     }
