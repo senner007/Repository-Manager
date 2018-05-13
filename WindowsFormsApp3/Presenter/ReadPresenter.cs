@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,13 @@ namespace Manager.Presenter
             _view.OnShow += FilterSort;
             // hop over sortering og sæt radioSortName og sortdirection, når der indtastes filterkriterie 
             // TODO : omskriv ?
-            _view.OnFilter += () => skipSort = true;
-            _view.OnFilter += () => _view.SortNameRadio = true;
-            _view.OnFilter += () =>  _view.SortDirectionCheck = false;
-            _view.OnFilter += FilterSort;
+            _view.OnFilter += () =>
+            {
+                skipSort = true;
+                _view.SortNameRadio = true;
+                _view.SortDirectionCheck = false;
+                FilterSort();
+            };
             updateDeletePresenter.CallShow += FilterSort;
             createPresenter.CallShow += FilterSort;
 
@@ -61,6 +65,7 @@ namespace Manager.Presenter
                
                 // find efternavn med binær/liniær søgning
                 return ReadBinary.ListBinary<T>(list.ToList(), _view.FilterText);
+
                 // find udsnit af liste med binær søgning - tillader meget hurtigere filtrering (1/2 million personer uden lag)
                 // TODO : kræver at listen er indexeret efter navn - lav evt. et indexeret view i db med merged  
 
