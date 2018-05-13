@@ -130,7 +130,7 @@
             this.buttonSort.Name = "buttonSort";
             this.buttonSort.Size = new System.Drawing.Size(100, 23);
             this.buttonSort.TabIndex = 1;
-            this.buttonSort.Text = "Hent og Sorter";
+            this.buttonSort.Text = "Sorter";
             this.buttonSort.UseVisualStyleBackColor = true;
             this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
             // 
@@ -147,13 +147,14 @@
             this.radioOrderByName.AutoSize = true;
             this.radioOrderByName.BackColor = System.Drawing.Color.DimGray;
             this.radioOrderByName.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioOrderByName.Location = new System.Drawing.Point(17, 61);
+            this.radioOrderByName.Location = new System.Drawing.Point(16, 69);
+            this.radioOrderByName.MinimumSize = new System.Drawing.Size(140, 0);
             this.radioOrderByName.Name = "radioOrderByName";
             this.radioOrderByName.Padding = new System.Windows.Forms.Padding(7, 2, 2, 2);
-            this.radioOrderByName.Size = new System.Drawing.Size(148, 21);
+            this.radioOrderByName.Size = new System.Drawing.Size(140, 21);
             this.radioOrderByName.TabIndex = 3;
             this.radioOrderByName.TabStop = true;
-            this.radioOrderByName.Text = "Sorter efter EFTERnavn";
+            this.radioOrderByName.Text = "Sorter efter FORnavn";
             this.radioOrderByName.UseVisualStyleBackColor = false;
             // 
             // radioOrderByAge
@@ -161,10 +162,11 @@
             this.radioOrderByAge.AutoSize = true;
             this.radioOrderByAge.BackColor = System.Drawing.Color.DimGray;
             this.radioOrderByAge.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioOrderByAge.Location = new System.Drawing.Point(17, 88);
+            this.radioOrderByAge.Location = new System.Drawing.Point(16, 96);
+            this.radioOrderByAge.MinimumSize = new System.Drawing.Size(140, 0);
             this.radioOrderByAge.Name = "radioOrderByAge";
             this.radioOrderByAge.Padding = new System.Windows.Forms.Padding(7, 2, 2, 2);
-            this.radioOrderByAge.Size = new System.Drawing.Size(122, 21);
+            this.radioOrderByAge.Size = new System.Drawing.Size(140, 21);
             this.radioOrderByAge.TabIndex = 4;
             this.radioOrderByAge.TabStop = true;
             this.radioOrderByAge.Text = "Soter efter ALDER";
@@ -440,16 +442,17 @@
             // labelSearch
             // 
             this.labelSearch.AutoSize = true;
+            this.labelSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSearch.Location = new System.Drawing.Point(14, 29);
             this.labelSearch.Name = "labelSearch";
-            this.labelSearch.Size = new System.Drawing.Size(103, 13);
+            this.labelSearch.Size = new System.Drawing.Size(152, 13);
             this.labelSearch.TabIndex = 7;
-            this.labelSearch.Text = "Søg på EFTERnavn";
+            this.labelSearch.Text = "Filtrer of Sorter på EFTERnavn";
             // 
             // chkStudent
             // 
             this.chkStudent.AutoSize = true;
-            this.chkStudent.Location = new System.Drawing.Point(23, 150);
+            this.chkStudent.Location = new System.Drawing.Point(20, 105);
             this.chkStudent.Name = "chkStudent";
             this.chkStudent.Size = new System.Drawing.Size(98, 17);
             this.chkStudent.TabIndex = 8;
@@ -460,7 +463,7 @@
             // chkEmployed
             // 
             this.chkEmployed.AutoSize = true;
-            this.chkEmployed.Location = new System.Drawing.Point(23, 171);
+            this.chkEmployed.Location = new System.Drawing.Point(20, 124);
             this.chkEmployed.Name = "chkEmployed";
             this.chkEmployed.Size = new System.Drawing.Size(102, 17);
             this.chkEmployed.TabIndex = 9;
@@ -488,10 +491,11 @@
             this.radioOrderByVarious.AutoSize = true;
             this.radioOrderByVarious.BackColor = System.Drawing.Color.DimGray;
             this.radioOrderByVarious.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioOrderByVarious.Location = new System.Drawing.Point(17, 115);
+            this.radioOrderByVarious.Location = new System.Drawing.Point(16, 123);
+            this.radioOrderByVarious.MinimumSize = new System.Drawing.Size(140, 0);
             this.radioOrderByVarious.Name = "radioOrderByVarious";
             this.radioOrderByVarious.Padding = new System.Windows.Forms.Padding(7, 2, 2, 2);
-            this.radioOrderByVarious.Size = new System.Drawing.Size(132, 21);
+            this.radioOrderByVarious.Size = new System.Drawing.Size(140, 21);
             this.radioOrderByVarious.TabIndex = 11;
             this.radioOrderByVarious.TabStop = true;
             this.radioOrderByVarious.Text = "Sorter efter STATUS";
@@ -513,22 +517,20 @@
             // 
             this.grpSort.Controls.Add(this.chkSortDirection);
             this.grpSort.Controls.Add(this.radioOrderByVarious);
-            this.grpSort.Controls.Add(this.chkEmployed);
-            this.grpSort.Controls.Add(this.chkStudent);
             this.grpSort.Controls.Add(this.buttonSort);
             this.grpSort.Controls.Add(this.radioOrderByName);
             this.grpSort.Controls.Add(this.radioOrderByAge);
-            this.grpSort.Location = new System.Drawing.Point(954, 9);
+            this.grpSort.Location = new System.Drawing.Point(954, 236);
             this.grpSort.Name = "grpSort";
-            this.grpSort.Size = new System.Drawing.Size(185, 201);
+            this.grpSort.Size = new System.Drawing.Size(185, 156);
             this.grpSort.TabIndex = 13;
             this.grpSort.TabStop = false;
-            this.grpSort.Text = "Søg og sorter";
+            this.grpSort.Text = "Sorter";
             // 
             // labelResult
             // 
             this.labelResult.AutoSize = true;
-            this.labelResult.Location = new System.Drawing.Point(13, 31);
+            this.labelResult.Location = new System.Drawing.Point(13, 25);
             this.labelResult.MaximumSize = new System.Drawing.Size(160, 0);
             this.labelResult.Name = "labelResult";
             this.labelResult.Size = new System.Drawing.Size(37, 13);
@@ -539,10 +541,12 @@
             // 
             this.grpFilter.Controls.Add(this.label2);
             this.grpFilter.Controls.Add(this.labelSearch);
+            this.grpFilter.Controls.Add(this.chkEmployed);
             this.grpFilter.Controls.Add(this.txtFilter);
-            this.grpFilter.Location = new System.Drawing.Point(954, 216);
+            this.grpFilter.Controls.Add(this.chkStudent);
+            this.grpFilter.Location = new System.Drawing.Point(954, 9);
             this.grpFilter.Name = "grpFilter";
-            this.grpFilter.Size = new System.Drawing.Size(185, 105);
+            this.grpFilter.Size = new System.Drawing.Size(185, 151);
             this.grpFilter.TabIndex = 14;
             this.grpFilter.TabStop = false;
             this.grpFilter.Text = "Filtrer";
@@ -559,12 +563,12 @@
             // grpResult
             // 
             this.grpResult.Controls.Add(this.labelResult);
-            this.grpResult.Location = new System.Drawing.Point(954, 328);
+            this.grpResult.Location = new System.Drawing.Point(954, 171);
             this.grpResult.Name = "grpResult";
-            this.grpResult.Size = new System.Drawing.Size(185, 64);
+            this.grpResult.Size = new System.Drawing.Size(185, 59);
             this.grpResult.TabIndex = 15;
             this.grpResult.TabStop = false;
-            this.grpResult.Text = "Sortering/Filtrering resultat";
+            this.grpResult.Text = "Filtreringsresultat";
             // 
             // Form1
             // 
