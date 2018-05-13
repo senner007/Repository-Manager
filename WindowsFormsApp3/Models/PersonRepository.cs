@@ -20,7 +20,7 @@ namespace Manager.Models
 
             Console.WriteLine("People static contructor");
 
-            // _people = BigListTest.GetBigList();
+            //  _people = BigListTest.GetBigList(500000, 200);
             _people = new List<IPerson>();
 
             _people.AddSorted(new Employed() { TLF = 11111111, FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
@@ -64,6 +64,7 @@ namespace Manager.Models
         public IEnumerable<T> GetByType<T>(Func<IPerson, T> lambda) where T : IPerson
         {
             return _people.Select(lambda).Where(p => p != null);
+
 
         }
         public IEnumerable<Merged> MergeTypes() // TODO : langsommere - cache ? 

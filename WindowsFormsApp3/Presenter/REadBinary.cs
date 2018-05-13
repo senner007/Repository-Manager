@@ -15,19 +15,19 @@ namespace Manager.Presenter
         private static CultureInfo culture = CultureInfo.CurrentCulture; // TODO : performance ?
         public static IEnumerable<T> ListBinary<T>(List<T> list, string val) where T : IPerson
         {
-           // Stopwatch stopwatch = Stopwatch.StartNew();
+          // Stopwatch stopwatch = Stopwatch.StartNew();
             val = val.ToLower(culture);
             int valLength = val.Length;
             
             var listCount = list.Count();
-
+            // database simulering hvor der søges på laveste og højeste forekomst, der opfylder søgningskriteriet
             int index = BinaryLowest(0, listCount);
             if (index == -1) return new List<T>();
             int indexHigh = BinaryHighest(index, listCount);
             if (indexHigh == -1) return new List<T>();
 
-           // Console.WriteLine(index);
-            // Console.WriteLine(indexHigh);
+            Console.WriteLine(index);
+            Console.WriteLine(indexHigh);
 
             // GetRange(O(n)) er åbenbart hurtigere end et while loop
             // parametre er index , count
@@ -35,7 +35,7 @@ namespace Manager.Presenter
 
 
             //stopwatch.Stop();
-            //Console.WriteLine(stopwatch.Elapsed);
+            //onsole.WriteLine(stopwatch.Elapsed);
 
             return newlist;
 
