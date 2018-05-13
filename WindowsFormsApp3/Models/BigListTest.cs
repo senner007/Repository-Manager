@@ -22,13 +22,13 @@ namespace Manager.Models
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-        public static List<IPerson> GetBigList() // TODO : tilføj parametre/options
+        public static List<IPerson> GetBigList(uint size, int forevery) // TODO : tilføj parametre/options
         {
-            uint largeNumber = 500000;
+            uint largeNumber = size;
             List<IPerson> _people = new List<IPerson>();
             List<string> ln = new List<string>();
             string saved = RandomString(12);
-            int counter = 5;
+            int counter = forevery;
             for (int i = 0; i < largeNumber; i++)
             {
                 counter--;
@@ -41,7 +41,7 @@ namespace Manager.Models
                 {
                     ln.Add(saved);
                 }
-                if (counter == 0) counter = 5;
+                if (counter == 0) counter = forevery;
 
             }
             List<string> fn = new List<string>();
