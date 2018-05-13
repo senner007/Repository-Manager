@@ -65,7 +65,7 @@ namespace Manager.Presenter
                 // TODO : kræver at listen er indexeret efter navn - lav evt. et indexeret view i db med merged  
 
             }
-            else if (determine.IfUint(_view.FilterText) && _view.FilterText.Length == 8) 
+            else if (determine.IfTLF(_view.FilterText)) 
             {
                 // Find tlf med liniær
                 return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
