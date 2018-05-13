@@ -19,12 +19,15 @@ namespace Manager.Presenter
         {
             _view = view;
             _view.OnShow += FilterSort;
-            // hop over sortering og sæt radioSortName og sortdirection, når der indtastes filterkriterie 
-            // TODO : omskriv ?
             _view.OnFilter += () =>
             {
+                //Hop over sortering og sæt radioSortName og sortdirection, når der indtastes filterkriterie:
+                //Hvis der er tale om en meget stor datasamling eg. 1/2 million+, 
+                //kan man vælge at undlade sortering efterfølgende og kun vise listen som den er sorteret i forvejen (efter LastName)
                 skipSort = true;
-                _view.SortNameRadio = true;
+                _view.SortNameRadio = false;
+                _view.SortAgeRadio = false;
+                _view.Sort_Salary_Major_Type_Radio = false;
                 _view.SortDirectionCheck = false;
                 FilterSort();
             };
@@ -34,6 +37,7 @@ namespace Manager.Presenter
         }
         private void FilterSort() // TODO : cache sorteret liste ved tryk på hent og sort. Implementer binær søgning på andre egenskaber
         {
+            Stopwatch sw = Stopwatch.StartNew();
             // hvis vis studerende, ikke vis employed
             if (_view.ShowStudentsCheck && !_view.ShowEmployedCheck)
             {   // kald sort med student objecter og lambda med filtrer - sorter efter fag
@@ -51,8 +55,10 @@ namespace Manager.Presenter
             skipSort = false;
             _view.FilterSortResult_LABEL = "Antal : " + _view.PersonList.Count(); // TODO : Count hurtig nok? eller gem i SortList methoden
             _view.ColumnOrder(); // kald columnOrder i view
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed);
         }
-
+        
         public IEnumerable<T> Filter<T>(IEnumerable<T> list) where T : IPerson 
             // TODO : tilføj case-insensitive filter
         {
@@ -60,8 +66,8 @@ namespace Manager.Presenter
             if (determine.IfName(_view.FilterText))
             {
                 
-                // set sortby radiobuttons to false
-                Console.WriteLine("binary sort");
+          
+                //Console.WriteLine("binary sort");
                
                 // find efternavn med binær/liniær søgning
                 return ReadBinary.ListBinary<T>(list.ToList(), _view.FilterText);
@@ -87,9 +93,9 @@ namespace Manager.Presenter
 
              Console.WriteLine("hello from sort function");
 
-            if (_view.SortNameRadio)
+            if (_view.SortNameRadio) // TODO : tilføj sorter på efternavn
             {
-                list = list.OrderBy(o => o.LastName).ThenBy(o => o.FirstName);
+                list = list.OrderBy(o => o.FirstName).ThenBy(o => o.LastName);
             }
             else if (_view.SortAgeRadio) 
             {

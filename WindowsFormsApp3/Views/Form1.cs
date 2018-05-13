@@ -19,7 +19,7 @@ namespace Manager.Views
             _readPresenter = new ReadPresenter(this, _updatedDeletePresenter, _createPresenter);
             this.ActiveControl = txtFilter; // fokus på filtrering ved programstart
             // instantiate FindPresenter presenter - indsæt presenters for at kalde event i findpresenter
-
+            Load += buttonSort_Click;
         }
 
         [DllImport("kernel32.dll", SetLastError = true)] // Console output
@@ -34,8 +34,8 @@ namespace Manager.Views
         //IFind View-Presenter--------------
         public IEnumerable<IPerson> PersonList { get => (IEnumerable<IPerson>)dataGridView1.DataSource;  set => dataGridView1.DataSource = value; }
         public bool SortNameRadio { get => radioOrderByName.Checked; set => radioOrderByName.Checked = value; }
-        public bool SortAgeRadio => radioOrderByAge.Checked;
-        public bool Sort_Salary_Major_Type_Radio => radioOrderByVarious.Checked;
+        public bool SortAgeRadio { get => radioOrderByAge.Checked; set => radioOrderByAge.Checked = value; }
+        public bool Sort_Salary_Major_Type_Radio { get => radioOrderByVarious.Checked; set => radioOrderByVarious.Checked = value; }
         public bool ShowStudentsCheck { get => chkStudent.Checked; set => chkStudent.Checked = value; }
         public bool ShowEmployedCheck { get => chkEmployed.Checked; set => chkEmployed.Checked = value; }
         public bool SortDirectionCheck { get => chkSortDirection.Checked; set => chkSortDirection.Checked = value; }
@@ -126,6 +126,7 @@ namespace Manager.Views
         {
             // hop ud når indtastet er tal og mindre end 8 cifre
             if (determine.IfUint(txtFilter.Text) && !determine.IfTLF(txtFilter.Text)) return;
+            Console.WriteLine("hello");
             OnFilter();
            
         }
@@ -176,6 +177,7 @@ namespace Manager.Views
             {
                 radioOrderByVarious.Text = "Sorter efter STATUS";
             }
+            OnShow();
         }
         // kaldes for hver tekstændring - validerer input med feedback
         private void txtUpdateProperty_TextChanged(object sender, EventArgs e) => OnTextUpdate();
@@ -186,6 +188,5 @@ namespace Manager.Views
         // slet person
         private void buttonDelete_Click(object sender, EventArgs e) => OnDelete();
 
-   
     }
 }
