@@ -81,7 +81,7 @@ namespace UpdateTests
         }
         [TestMethod]
         public void View_Update_First_Person_Merged_FirstName()
-        {
+          {
 
             _view.FilterText = "";
             _view.SortNameRadio = true;
@@ -98,15 +98,22 @@ namespace UpdateTests
                 Major = clicked.Major,
                 Salary = clicked.Salary
             };
+            Console.WriteLine(obj.FirstName);
+
             _view.gridListCLick(
               (IPerson)obj,
               "FirstName",
-              "Poul");
+              obj.FirstName);
+
+            string expectedNameShown = "Bill";
+            string actualNameShown = _view.UpdateText;
+
+            Assert.AreEqual(expectedNameShown, actualNameShown);
 
             _view.UpdateText = "James";
             _view.buttonUpdate();
 
-            string expected = "James";
+            string expected = "Douglas";
             string actual = _view.PersonList.FirstOrDefault().FirstName;
 
             string expectedFeedback = "Opdatering gennemført!";
