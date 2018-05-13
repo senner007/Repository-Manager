@@ -1,6 +1,7 @@
 ﻿using Manager.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -14,34 +15,33 @@ namespace Manager.Presenter
         private static CultureInfo culture = CultureInfo.CurrentCulture; // TODO : performance ?
         public static IEnumerable<T> ListBinary<T>(List<T> list, string val) where T : IPerson
         {
-            val = val.ToLower(culture); // TODO : bestem i stedet at navne skal starte med et stort bogstav og de mange tolower ?
+           // Stopwatch stopwatch = Stopwatch.StartNew();
+            val = val.ToLower(culture);
             int valLength = val.Length;
             
             var listCount = list.Count();
-       
-            int index = BinaryCompareStrings(0, listCount);
 
-            List<T> newList = new List<T>();
-            bool condition = true;
-            if (index == -1) return newList;
-            while (condition && index < listCount)
-            {
-                T item = list[index];
-                int length = valLength > item.LastName.Length ? item.LastName.Length : valLength;
-        
-                if (item.LastName.Substring(0, length).ToLower(culture) == val) // TODO : korrekt?
-                {
-                    newList.Add(item);
-                    index++;
-                }
-                else
-                {
-                    condition = false;
-                }
-            }
-            return newList;
+            int index = BinaryLowest(0, listCount);
+            if (index == -1) return new List<T>();
+            int indexHigh = BinaryHighest(index, listCount);
+            if (indexHigh == -1) return new List<T>();
 
-            int BinaryCompareStrings(int left, int right)
+           // Console.WriteLine(index);
+            // Console.WriteLine(indexHigh);
+
+            // GetRange(O(n)) er åbenbart hurtigere end et while loop
+            // parametre er index , count
+            List<T> newlist = list.GetRange(index, indexHigh - index + 1);
+
+
+            //stopwatch.Stop();
+            //Console.WriteLine(stopwatch.Elapsed);
+
+            return newlist;
+
+           // return newlist;
+
+            int BinaryLowest(int left, int right)
             {
                 if (left == right)
                 {
@@ -51,7 +51,17 @@ namespace Manager.Presenter
 
                 int mylength = valLength > list[mid].LastName.Length ? list[mid].LastName.Length : valLength;
 
-                return (string.Compare(val, list[mid].LastName.ToLower(culture).Substring(0, mylength)) == 1) ? BinaryCompareStrings(mid + 1, right) : BinaryCompareStrings(left, mid);
+                return (string.Compare(val, list[mid].LastName.ToLower(culture).Substring(0, mylength)) == 1) ? BinaryLowest(mid + 1, right) : BinaryLowest(left, mid);
+            }
+            int BinaryHighest(int left, int right)
+            {
+                if (left == right)
+                {
+                    return left - 1 >= 0 && left - 1 < listCount && list[left - 1].LastName.ToLower(culture).StartsWith(val) ? left - 1 : -1;
+                }
+                int mid = (right + left) / 2;
+                int mylength = valLength > list[mid].LastName.Length ? list[mid].LastName.Length : valLength;
+                return (string.Compare(val, list[mid].LastName.ToLower(culture).Substring(0, mylength)) == -1) ? BinaryHighest(left, mid) : BinaryHighest(mid + 1, right);
             }
         }
     }
