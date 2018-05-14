@@ -30,6 +30,8 @@ namespace Manager.Presenter
             Console.WriteLine(indexHigh);
 
             // GetRange(O(n)) er åbenbart hurtigere end et while loop
+            // Jeg antager, at det er fordi, at array størrelsen kan defineres fra start uden at skulle modificeret.
+
             // parametre er index , count
             List<T> newlist = list.GetRange(index, indexHigh - index + 1);
 
