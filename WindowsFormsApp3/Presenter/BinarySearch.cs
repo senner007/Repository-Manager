@@ -18,7 +18,7 @@ namespace Manager.Presenter
           // Stopwatch stopwatch = Stopwatch.StartNew();
             val = val.ToLower(culture);
             int valLength = val.Length;
-            
+            Console.WriteLine("FROM binary");
             var listCount = list.Count();
             // database simulering hvor der søges på laveste og højeste forekomst, der opfylder søgningskriteriet
             int index = BinaryLowest(0, listCount);

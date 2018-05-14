@@ -49,9 +49,15 @@ namespace Manager.Presenter
             }
             else
             {
-                _view.PersonList = SortList(Filter(_manage.MergeTypes()), o => o.Status);
+                List<IPerson> lst = SortList(Filter(_manage.GetPeople), o => o.Status);
+                _view.PersonList = _manage.MergeTypes(lst).ToList();
+                //MergeTypes som udfører flere operationer i et sekventielt loop (O(n)) er performancekrævende. 
+                //Derfor kaldes den først på den liste, som binær sægning returnerer og IKKE hele listen. 
+                //Dette gør filtrering efter efternavn MEGET hurtig
+                //TODO : noter forskellen
+                // _view.PersonList = SortList(Filter(_manage.MergeTypes()), o => o.Status);
             }
-     
+
             skipSort = false;
             _view.FilterSortResult_LABEL = "Antal : " + _view.PersonList.Count(); // TODO : Count hurtig nok? eller gem i SortList methoden
             _view.ColumnOrder(); // kald columnOrder i view
@@ -65,11 +71,12 @@ namespace Manager.Presenter
            
             if (determine.IfName(_view.FilterText))
             {
-                
-          
+
+
                 //Console.WriteLine("binary sort");
-               
+
                 // find efternavn med binær/liniær søgning
+               // return list.Where(l => l.LastName.StartsWith(_view.FilterText));
                 return ReadBinary.ListBinary<T>(list.ToList(), _view.FilterText);
 
                 // find udsnit af liste med binær søgning - tillader meget hurtigere filtrering (1/2 million personer uden lag)
@@ -90,8 +97,8 @@ namespace Manager.Presenter
         private List<T> SortList<T>(IEnumerable<T> list, Func<T, dynamic> lambda) where T : IPerson
         {
             if (skipSort == true) return list.ToList();
+            Console.WriteLine("FROM beginning of sort function");
 
-             Console.WriteLine("hello from sort function");
 
             if (_view.SortNameRadio) // TODO : tilføj sorter på efternavn
             {
@@ -105,6 +112,7 @@ namespace Manager.Presenter
             {
                 list = list.OrderBy(lambda).ThenBy(o => o.LastName);
             }
+            Console.WriteLine("FROM end of sort function");
             return _view.SortDirectionCheck ? OrderReverse(list) : list.ToList();
         }
         

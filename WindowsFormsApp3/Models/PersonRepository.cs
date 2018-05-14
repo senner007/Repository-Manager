@@ -67,14 +67,15 @@ namespace Manager.Models
 
 
         }
-        public IEnumerable<Merged> MergeTypes() // TODO : langsommere - cache ? 
+        public IEnumerable<Merged> MergeTypes<T>(List<T> list) // TODO : langsommere - cache ? 
         {
  
-            return _people.Select(p  =>
+            return list.Select(p  =>
             {
                 if (p is Student)
                 {
                     Student s = p as Student;
+                    Console.WriteLine(s.FirstName);
                     return new Merged
                     {
                         TLF = s.TLF,
