@@ -50,7 +50,7 @@
     <Compile Include="Models\PersonRepository.cs" />
     <Compile Include="Presenter\CreatePresenter.cs" />
     <Compile Include="Presenter\ReadPresenter.cs" />
-    <Compile Include="Presenter\ReadBinary.cs" />
+    <Compile Include="Presenter\BinarySearch.cs" />
     <Compile Include="Presenter\UpdateDeletePresenter.cs" />
     <Compile Include="Presenter\Determine.cs" />
     <Compile Include="Views\Form1.cs">

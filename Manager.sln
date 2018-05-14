@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager", "WindowsFormsApp3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3E5C8345-892B-49FC-A8AD-B0BE6FF4DCEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagerTest", "ManagerTest\ManagerTest.csproj", "{4755F5F1-A06E-410B-8C9A-14978E9A8E22}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadTest", "ManagerTest\ReadTest.csproj", "{4755F5F1-A06E-410B-8C9A-14978E9A8E22}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateTests", "UpdateTests\UpdateTests.csproj", "{A6427A8E-4E27-494A-9077-F75A7C990E47}"
 EndProject
