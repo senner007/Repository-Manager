@@ -22,7 +22,7 @@ namespace Manager.Models
         {
             Console.WriteLine("People static contructor");
 
-            //  _people = BigListTest.GetBigList(500000, 200);
+         
             OrderedDictionary _temp = new OrderedDictionary();
 
             _temp.AddSortedDict(11111111, new Employed() { TLF = 11111111, FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
@@ -36,6 +36,9 @@ namespace Manager.Models
             _temp.AddSortedDict(99999999, new Student() { TLF = 99999999, FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming" });
 
             myOrderedDictionary = _temp;
+
+            // myOrderedDictionary = BigListTest.GetBigList(500000, 200);
+
 
         }
 

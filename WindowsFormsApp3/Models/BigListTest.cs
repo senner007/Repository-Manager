@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -22,7 +23,7 @@ namespace Manager.Models
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-        public static List<IPerson> GetBigList(uint size, int forevery) // TODO : tilføj parametre/options
+        public static OrderedDictionary GetBigList(uint size, int forevery) // TODO : tilføj parametre/options
         {
             uint largeNumber = size;
             List<IPerson> _people = new List<IPerson>();
@@ -49,14 +50,17 @@ namespace Manager.Models
             {
                 fn.Add(RandomString(7));
             }
-
+            var _temp = new OrderedDictionary();
             for (int i = 0; i < largeNumber; i++)
             {
 
                 _people.Add(new Employed() { TLF = Convert.ToUInt32(10000000 + i * 111), FirstName = fn[i], LastName = ln[i], Age = 40, Company = "Google", Salary = 10000 });
 
             }
-            return _people = _people.OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();
+            _people = _people.OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();
+
+            _people.ForEach(o => { _temp.Add(o.TLF, o); });
+            return _temp;
         }
        
     }

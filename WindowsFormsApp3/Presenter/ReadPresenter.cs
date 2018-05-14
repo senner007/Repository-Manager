@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -81,10 +82,11 @@ namespace Manager.Presenter
             else if (determine.IfTLF(_view.FilterText)) 
             {
 
-                //return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
+             //  var lst =  list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
                 // find i OrderedDictionary (O(1))
-                return new List<T> { (T)_manage.GetDict[Convert.ToUInt32(_view.FilterText)] };
- 
+
+               return new List<T> { (T)_manage.GetDict[Convert.ToUInt32(_view.FilterText)] };
+
 
             }
             return list; // TODO : returner ingen eller hel liste ved fejlindtastning?
