@@ -49,7 +49,9 @@ namespace Manager.Presenter
             }
             else
             {
-                _view.PersonList = SortList(Filter(_manage.MergeTypes()), o => o.Status);
+                List<IPerson> lst = SortList(Filter(_manage.GetPeople), o => o.Status);
+               _view.PersonList = _manage.MergeTypes(lst).ToList();
+
             }
      
             skipSort = false;
@@ -78,9 +80,11 @@ namespace Manager.Presenter
             }
             else if (determine.IfTLF(_view.FilterText)) 
             {
-                // Find tlf med liniær
-                return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
-               // return ReadTlfBinary.GetListWithBinary<T>(list.ToList(), Convert.ToUInt32(_view.FilterText));    
+
+                //return list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
+                // find i OrderedDictionary (O(1))
+                return new List<T> { (T)_manage.GetDict[Convert.ToUInt32(_view.FilterText)] };
+ 
 
             }
             return list; // TODO : returner ingen eller hel liste ved fejlindtastning?

@@ -17,7 +17,8 @@ namespace Manager.Models
 
         private readonly static OrderedDictionary myOrderedDictionary = new OrderedDictionary();
 
-        public OrderedDictionary GetPeople { get => myOrderedDictionary; }
+        public IEnumerable<IPerson> GetPeople => myOrderedDictionary.Values.OfType<IPerson>();
+        public OrderedDictionary GetDict => myOrderedDictionary;
 
         static PersonRepository() // static constructor
         {
@@ -42,7 +43,7 @@ namespace Manager.Models
             _people.ForEach(o => { myOrderedDictionary.Add(o.TLF, o); });
 
 
-
+          
 
 
 
@@ -82,10 +83,10 @@ namespace Manager.Models
 
 
         }
-        public IEnumerable<Merged> MergeTypes() // TODO : langsommere - cache ? 
+        public IEnumerable<Merged> MergeTypes<T>(List<T> list) // TODO : langsommere - cache ? 
         {
 
-            return myOrderedDictionary.Values.Cast<IPerson>().Select(p =>
+            return list.Select(p =>
             {
 
                 if (p is Student)
