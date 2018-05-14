@@ -54,7 +54,7 @@ namespace CreateTest
             _view.buttonCreate();
 
             string expected = "Abraham Lincoln, Alder: 19, Tlf: 11111112, Student";
-            string actual = _manage.GetPeople[8].ToString();
+            string actual = _manage.GetPeople.ToList()[8].ToString();
 
             string expectedFededback = "Oprettet!";
             string actualFeedback = _view.CreatePersonText;
@@ -76,7 +76,7 @@ namespace CreateTest
             _view.buttonCreate();
 
             string expected = "Jeremy McPeak, Alder: 40, Tlf: 55555555, Employed";
-            string actual = _manage.GetPeople[8].ToString();
+            string actual = _manage.GetPeople.ToList()[8].ToString();
 
             string expectedFededback = "Fejl! - ikke oprettet";
             string actualFeedback = _view.CreatePersonText;
