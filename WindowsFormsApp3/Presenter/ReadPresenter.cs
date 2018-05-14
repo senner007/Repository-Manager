@@ -54,7 +54,7 @@ namespace Manager.Presenter
                _view.PersonList = _manage.MergeTypes(lst).ToList();
 
             }
-     
+          
             skipSort = false;
             _view.FilterSortResult_LABEL = "Antal : " + _view.PersonList.Count(); // TODO : Count hurtig nok? eller gem i SortList methoden
             _view.ColumnOrder(); // kald columnOrder i view
@@ -82,11 +82,13 @@ namespace Manager.Presenter
             else if (determine.IfTLF(_view.FilterText)) 
             {
 
-             //  var lst =  list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
+                //  var lst =  list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
                 // find i OrderedDictionary (O(1))
 
-               return new List<T> { (T)_manage.GetDict[Convert.ToUInt32(_view.FilterText)] };
 
+                var lst = _manage.GetDict[Convert.ToUInt32(_view.FilterText)];
+                return lst is T ? new List <T> { (T)lst } : new List<T>();
+          
 
             }
             return list; // TODO : returner ingen eller hel liste ved fejlindtastning?
@@ -97,7 +99,7 @@ namespace Manager.Presenter
         {
             if (skipSort == true) return list.ToList();
 
-             Console.WriteLine("hello from sort function");
+             Console.WriteLine("from sort function");
 
             if (_view.SortNameRadio) // TODO : tilføj sorter på efternavn
             {
