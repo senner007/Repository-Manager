@@ -1,24 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
+using System.Collections;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Manager.Models
 {
-   
+
     public class PersonRepository
     {
 
         private readonly static List<IPerson> _people;
 
-        public List<IPerson> GetPeople { get => _people; }
+        private readonly static OrderedDictionary myOrderedDictionary = new OrderedDictionary();
+
+        public OrderedDictionary GetPeople { get => myOrderedDictionary; }
 
         static PersonRepository() // static constructor
         {
 
             Console.WriteLine("People static contructor");
+            //IEqualityComparer comp = (IEqualityComparer)Comparer<Person>.Default;
+            // myOrderedDictionary = new OrderedDictionary();
 
             //  _people = BigListTest.GetBigList(500000, 200);
             _people = new List<IPerson>();
@@ -33,13 +39,20 @@ namespace Manager.Models
             _people.AddSorted(new Student() { TLF = 88888888, FirstName = "John", LastName = "Doe", Age = 30, Major = "Computer Science 201" });
             _people.AddSorted(new Student() { TLF = 99999999, FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming" });
 
+            _people.ForEach(o => { myOrderedDictionary.Add(o.TLF, o); });
+
+
+
+
+
+
             // TODO : implementer ObservableCollection ?
 
         }
 
         public bool UpdatePerson(dynamic clone, string propertyName, string value) // IPerson parameter er value kopi fra Datagridview
         {
-            IPerson _person = _people.FirstOrDefault(p => p.TLF == clone.TLF); // Find matching person in db                                                                                   
+            IPerson _person = myOrderedDictionary.Values.Cast<IPerson>().FirstOrDefault(p => p.TLF == clone.TLF); // Find matching person in db                                                                                   
             PropertyInfo propInfo = clone.GetType().GetProperty(propertyName);
 
             if (propInfo == null || propertyName == "TLF" && TlfExists(Convert.ToUInt32(value))) return false;
@@ -63,14 +76,52 @@ namespace Manager.Models
         }
         public IEnumerable<T> GetByType<T>(Func<IPerson, T> lambda) where T : IPerson
         {
-            return _people.Select(lambda).Where(p => p != null);
+            IEnumerable<T> valueCollection = myOrderedDictionary.Values.OfType<T>();
+            // return _people.Select(lambda).Where(p => p != null);
+            return valueCollection;
 
 
         }
         public IEnumerable<Merged> MergeTypes() // TODO : langsommere - cache ? 
         {
- 
-            return _people.Select(p  =>
+
+            return myOrderedDictionary.Values.Cast<IPerson>().Select(p =>
+            {
+
+                if (p is Student)
+                {
+                    Student s = p as Student;
+                    Console.WriteLine(s.FirstName);
+                    return new Merged
+                    {
+                        TLF = s.TLF,
+                        FirstName = s.FirstName,
+                        LastName = s.LastName,
+                        Age = s.Age,
+                        Status = s.Status,
+                        Major = s.Major,
+                        Company = null,
+                        Salary = 0
+                    };
+                }
+                else
+                {
+                    Employed e = p as Employed;
+                    return new Merged
+                    {
+                        TLF = e.TLF,
+                        FirstName = e.FirstName,
+                        LastName = e.LastName,
+                        Age = e.Age,
+                        Status = e.Status,
+                        Major = null,
+                        Company = e.Company,
+                        Salary = e.Salary
+                    };
+                }
+            });
+
+            return _people.Select(p =>
             {
                 if (p is Student)
                 {
@@ -87,7 +138,7 @@ namespace Manager.Models
                         Salary = 0
                     };
                 }
-                else 
+                else
                 {
                     Employed e = p as Employed;
                     return new Merged
@@ -107,31 +158,34 @@ namespace Manager.Models
 
         internal bool DeletePerson(IPerson person)
         {
-            IPerson _person = _people.FirstOrDefault(p => p.TLF == person.TLF); // Find matching person in db
+            // IPerson _person = _people.FirstOrDefault(p => p.TLF == person.TLF); // Find matching person in db
 
-            if (_person != null)
-            {
-                _people.Remove(_person);
-                return true;
-            }
-            return false;
+            //  if (_person != null)
+            //  {
+            // _people.Remove(_person);
+            myOrderedDictionary.Remove(person.TLF);
+            return true;
+            //  }
+            //  return false;
         }
 
-        public bool CreateStudent (uint tlf, string firstname, string lastname, uint age, string major)
+        public bool CreateStudent(uint tlf, string firstname, string lastname, uint age, string major)
         {
             if (TlfExists(tlf)) return false;
-           
-            _people.AddSorted(new Student() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Major = major });
-            Console.WriteLine("from student create model");
+
+            //  _people.AddSorted(new Student() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Major = major });
+            myOrderedDictionary.AddSortedDict(tlf, new Student() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Major = major });
+            //Console.WriteLine("from student create model");
             return true;
-            
+
         }
         public bool CreateEmployed(uint tlf, string firstname, string lastname, uint age, string company, uint salary)
         {
             if (TlfExists(tlf)) return false;
-            _people.AddSorted(new Employed() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Company = company, Salary = salary });
+            // _people.AddSorted(new Employed() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Company = company, Salary = salary });
+            myOrderedDictionary.AddSortedDict(tlf, new Employed() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Company = company, Salary = salary });
             return true;
         }
-        private bool TlfExists(uint tlf) => _people.FirstOrDefault(t => t.TLF == tlf) != null;
+        private bool TlfExists(uint tlf) => myOrderedDictionary[tlf] != null;
     }
 }

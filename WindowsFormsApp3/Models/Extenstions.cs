@@ -20,6 +20,23 @@ namespace Manager.Models
 
             list.Insert(i, item);
         }
+        public static void AddSortedDict<T>(this OrderedDictionary dict, uint tlf, T item) where T : IPerson
+        {
+            Comparer<IPerson> comparer = Comparer<IPerson>.Default;
+            IEnumerable<IPerson> coll = dict.Values.OfType<IPerson>();
+
+            Console.WriteLine();
+            int i = 0;
+            Console.WriteLine(dict.Count);
+            while (i < dict.Count && comparer.Compare(coll.ToList()[i], item) < 0)
+            {
+                i++;
+                Console.WriteLine(i);
+            }
+
+            dict.Insert(i, tlf, item);
+        }
 
     }
+    
 }
