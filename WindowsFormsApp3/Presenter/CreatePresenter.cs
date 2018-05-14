@@ -36,6 +36,7 @@ namespace Manager.Presenter
 
         private bool Create()
         {
+           // Console.WriteLine(_view.CreateFirstNameText);
             if (_view.CreateStudentRadio)
             {
                 if (!determine.ValidateNewStudent(
@@ -45,6 +46,7 @@ namespace Manager.Presenter
                         _view.CreateAgeText,
                         _view.CreateMajorText
                     )) return false;
+                Console.WriteLine(_view.CreateFirstNameText);
 
                 return _manage.CreateStudent(
                        Convert.ToUInt32(_view.CreateTlfText),

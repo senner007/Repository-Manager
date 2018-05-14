@@ -48,8 +48,8 @@ namespace Manager.Models
             //if (TlfExists(clone.TLF)) return false;
             if (_person is Employed)
             {
-                //Objektet skal slettes først. 
-                //Ellers vil den ikke indsætte, da sortedSet ikke tillader ens objekter baseret på compare
+                //Objektet slettes først og derpå oprettes på ny.
+                // På den måde kan vi genbruge metoder som bruger addSorted, hvor listen ikke behøver sortering.
                 DeletePerson(_person);
                 CreateEmployed(clone.TLF, clone.FirstName, clone.LastName, clone.Age, clone.Company, clone.Salary);
             }
