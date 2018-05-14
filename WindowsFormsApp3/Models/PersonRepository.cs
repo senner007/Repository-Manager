@@ -13,41 +13,29 @@ namespace Manager.Models
     public class PersonRepository
     {
 
-        private readonly static List<IPerson> _people;
-
-        private readonly static OrderedDictionary myOrderedDictionary = new OrderedDictionary();
+        private readonly static OrderedDictionary myOrderedDictionary;
 
         public IEnumerable<IPerson> GetPeople => myOrderedDictionary.Values.OfType<IPerson>();
         public OrderedDictionary GetDict => myOrderedDictionary;
 
         static PersonRepository() // static constructor
         {
-
             Console.WriteLine("People static contructor");
-            //IEqualityComparer comp = (IEqualityComparer)Comparer<Person>.Default;
-            // myOrderedDictionary = new OrderedDictionary();
 
             //  _people = BigListTest.GetBigList(500000, 200);
-            _people = new List<IPerson>();
+            OrderedDictionary _temp = new OrderedDictionary();
 
-            _people.AddSorted(new Employed() { TLF = 11111111, FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
-            _people.AddSorted(new Employed() { TLF = 22222222, FirstName = "Poul", LastName = "Anderson", Age = 40, Company = "Google", Salary = 10000 });
-            _people.AddSorted(new Employed() { TLF = 33333333, FirstName = "Poul", LastName = "Adams", Age = 40, Company = "Google", Salary = 10000 });
-            _people.AddSorted(new Employed() { TLF = 44444444, FirstName = "Bill", LastName = "Gates", Age = 70, Company = "Microsoft", Salary = 5000000 });
-            _people.AddSorted(new Employed() { TLF = 55555555, FirstName = "Jeremy", LastName = "McPeak", Age = 40, Company = "Envato", Salary = 3500 });
-            _people.AddSorted(new Employed() { TLF = 66666666, FirstName = "Douglas", LastName = "Crockford", Age = 70, Company = "Yahoo", Salary = 35000 });
-            _people.AddSorted(new Student() { TLF = 77777777, FirstName = "Thomas", LastName = "Anderson", Age = 20, Major = "Computer Science 101" });
-            _people.AddSorted(new Student() { TLF = 88888888, FirstName = "John", LastName = "Doe", Age = 30, Major = "Computer Science 201" });
-            _people.AddSorted(new Student() { TLF = 99999999, FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming" });
+            _temp.AddSortedDict(11111111, new Employed() { TLF = 11111111, FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
+            _temp.AddSortedDict(22222222, new Employed() { TLF = 22222222, FirstName = "Poul", LastName = "Anderson", Age = 40, Company = "Google", Salary = 10000 });
+            _temp.AddSortedDict(33333333, new Employed() { TLF = 33333333, FirstName = "Poul", LastName = "Adams", Age = 40, Company = "Google", Salary = 10000 });
+            _temp.AddSortedDict(44444444, new Employed() { TLF = 44444444, FirstName = "Bill", LastName = "Gates", Age = 70, Company = "Microsoft", Salary = 5000000 });
+            _temp.AddSortedDict(55555555, new Employed() { TLF = 55555555, FirstName = "Jeremy", LastName = "McPeak", Age = 40, Company = "Envato", Salary = 3500 });
+            _temp.AddSortedDict(66666666, new Employed() { TLF = 66666666, FirstName = "Douglas", LastName = "Crockford", Age = 70, Company = "Yahoo", Salary = 35000 });
+            _temp.AddSortedDict(77777777, new Student() { TLF = 77777777, FirstName = "Thomas", LastName = "Anderson", Age = 20, Major = "Computer Science 101" });
+            _temp.AddSortedDict(88888888, new Student() { TLF = 88888888, FirstName = "John", LastName = "Doe", Age = 30, Major = "Computer Science 201" });
+            _temp.AddSortedDict(99999999, new Student() { TLF = 99999999, FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming" });
 
-            _people.ForEach(o => { myOrderedDictionary.Add(o.TLF, o); });
-
-
-          
-
-
-
-            // TODO : implementer ObservableCollection ?
+            myOrderedDictionary = _temp;
 
         }
 
@@ -122,52 +110,12 @@ namespace Manager.Models
                 }
             });
 
-            return _people.Select(p =>
-            {
-                if (p is Student)
-                {
-                    Student s = p as Student;
-                    return new Merged
-                    {
-                        TLF = s.TLF,
-                        FirstName = s.FirstName,
-                        LastName = s.LastName,
-                        Age = s.Age,
-                        Status = s.Status,
-                        Major = s.Major,
-                        Company = null,
-                        Salary = 0
-                    };
-                }
-                else
-                {
-                    Employed e = p as Employed;
-                    return new Merged
-                    {
-                        TLF = e.TLF,
-                        FirstName = e.FirstName,
-                        LastName = e.LastName,
-                        Age = e.Age,
-                        Status = e.Status,
-                        Major = null,
-                        Company = e.Company,
-                        Salary = e.Salary
-                    };
-                }
-            });
         }
 
         internal bool DeletePerson(IPerson person)
         {
-            // IPerson _person = _people.FirstOrDefault(p => p.TLF == person.TLF); // Find matching person in db
-
-            //  if (_person != null)
-            //  {
-            // _people.Remove(_person);
             myOrderedDictionary.Remove(person.TLF);
             return true;
-            //  }
-            //  return false;
         }
 
         public bool CreateStudent(uint tlf, string firstname, string lastname, uint age, string major)
@@ -176,7 +124,6 @@ namespace Manager.Models
 
             //  _people.AddSorted(new Student() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Major = major });
             myOrderedDictionary.AddSortedDict(tlf, new Student() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Major = major });
-            //Console.WriteLine("from student create model");
             return true;
 
         }
