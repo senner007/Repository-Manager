@@ -65,6 +65,7 @@ namespace Manager.Views
            );
         }
         public void buttonUpdate() => OnUpdate();
+        public void buttonCreate() => OnCreate();
 
         public void ColumnOrder() { }
 
