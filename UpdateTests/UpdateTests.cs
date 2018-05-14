@@ -71,10 +71,10 @@ namespace UpdateTests
             _view.gridListCLick(
              (IPerson)obj,
               "FirstName",
-              "Poul");
+              obj.FirstName);
 
             string actual = _view.UpdateText;
-            string expected = "Poul";
+            string expected = "Bill";
 
             Assert.AreEqual(expected, actual);
         
@@ -104,11 +104,6 @@ namespace UpdateTests
               (IPerson)obj,
               "FirstName",
               obj.FirstName);
-
-            string expectedNameShown = "Bill";
-            string actualNameShown = _view.UpdateText;
-
-            Assert.AreEqual(expectedNameShown, actualNameShown);
 
             _view.UpdateText = "James";
             _view.buttonUpdate();
@@ -144,7 +139,7 @@ namespace UpdateTests
             _view.gridListCLick(
               (IPerson)obj,
               "FirstName",
-              "Thomas");
+              obj.FirstName);
 
             _view.UpdateText = "James";
             _view.buttonUpdate();
@@ -158,6 +153,79 @@ namespace UpdateTests
             Assert.AreEqual(expected, actual);
             Assert.AreEqual(expectedFeedback, actualFeedback);
         }
+        [TestMethod]
+        public void View_Update_First_Person_Student_Tlf()
+        {
+
+            _view.FilterText = "";
+            _view.SortNameRadio = true;
+            _view.ShowStudentsCheck = true;
+            _view.buttonSort();
+
+            Student clicked = _view.PersonList.FirstOrDefault() as Student;
+            var obj = new Student
+            {
+                TLF = clicked.TLF,
+                FirstName = clicked.FirstName,
+                LastName = clicked.LastName,
+                Age = clicked.Age,
+                Major = clicked.Major,
+            };
+
+            _view.gridListCLick(
+              (IPerson)obj,
+              "TLF",
+              obj.TLF.ToString());
+
+            _view.UpdateText = "11111112";
+            _view.buttonUpdate();
+
+            string expected = "11111112";
+            string actual = _view.PersonList.FirstOrDefault().TLF.ToString();
+
+            string expectedFeedback = "Opdatering gennemført!";
+            string actualFeedback = _view.UpdateResponseLabel;
+
+            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expectedFeedback, actualFeedback);
+        }
+        [TestMethod]
+        public void View_Update_First_Person_Student_Tlf_FAIL()
+        {
+
+            _view.FilterText = "";
+            _view.SortNameRadio = true;
+            _view.ShowStudentsCheck = true;
+            _view.buttonSort();
+
+            Student clicked = _view.PersonList.FirstOrDefault() as Student;
+            var obj = new Student
+            {
+                TLF = clicked.TLF,
+                FirstName = clicked.FirstName,
+                LastName = clicked.LastName,
+                Age = clicked.Age,
+                Major = clicked.Major,
+            };
+
+            _view.gridListCLick(
+              (IPerson)obj,
+              "TLF",
+              obj.TLF.ToString());
+
+            _view.UpdateText = "11111111";
+            _view.buttonUpdate();
+
+            string expected = "99999999";
+            string actual = _view.PersonList.FirstOrDefault().TLF.ToString();
+
+            string expectedFeedback = "Fejl! person ikke opdateret";
+            string actualFeedback = _view.UpdateResponseLabel;
+
+            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expectedFeedback, actualFeedback);
+        }
+
 
     }
 }
