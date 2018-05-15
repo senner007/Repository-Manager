@@ -44,7 +44,7 @@ namespace Manager.Models
 
         public bool UpdatePerson(dynamic clone, string propertyName, string value) // IPerson parameter er value kopi fra Datagridview
         {
-            IPerson _person = myOrderedDictionary.Values.Cast<IPerson>().FirstOrDefault(p => p.TLF == clone.TLF); // Find matching person in db                                                                                   
+            IPerson _person = myOrderedDictionary[clone.TLF]; // Find matching person in db                                                                                   
             PropertyInfo propInfo = clone.GetType().GetProperty(propertyName);
 
             if (propInfo == null || propertyName == "TLF" && TlfExists(Convert.ToUInt32(value))) return false;
