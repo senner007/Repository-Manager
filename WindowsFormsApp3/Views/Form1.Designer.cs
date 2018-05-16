@@ -445,9 +445,9 @@
             this.labelSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSearch.Location = new System.Drawing.Point(14, 29);
             this.labelSearch.Name = "labelSearch";
-            this.labelSearch.Size = new System.Drawing.Size(152, 13);
+            this.labelSearch.Size = new System.Drawing.Size(155, 13);
             this.labelSearch.TabIndex = 7;
-            this.labelSearch.Text = "Filtrer of Sorter på EFTERnavn";
+            this.labelSearch.Text = "Filtrer og Sorter på EFTERnavn";
             // 
             // chkStudent
             // 
