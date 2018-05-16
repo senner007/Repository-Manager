@@ -69,12 +69,12 @@ namespace Manager.Models
         public IEnumerable<T> GetByType<T>(Func<IPerson, T> lambda) where T : IPerson
         {
             IEnumerable<T> valueCollection = myOrderedDictionary.Values.OfType<T>();
-            // return _people.Select(lambda).Where(p => p != null);
+            // return _people.Select(lambda).Where(p => p != null); // bruges til at indætte i liste
             return valueCollection;
 
 
         }
-        public IEnumerable<Merged> MergeTypes<T>(List<T> list) // TODO : langsommere - cache ? 
+        public IEnumerable<Merged> MergeTypes<T>(IEnumerable<T> list) // TODO : langsommere - cache ? 
         {
 
             return list.Select(p =>
