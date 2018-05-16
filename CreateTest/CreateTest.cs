@@ -121,5 +121,27 @@ namespace CreateTest
 
             Assert.AreEqual(expectedFededback, actualFeedback);
         }// TODO lav view create tests
+        [TestMethod]
+        public void View_Create_Person_TLF_Leading_Zeroes()
+        {
+            _view.CreateFirstNameText = "Abraham";
+            _view.CreateLastNameText = "Lincoln";
+            _view.CreateAgeText = "19";
+            _view.CreateTlfText = "00000001";
+            _view.CreateMajorText = "Computer Science 101";
+            _view.CreateStudentRadio = true;
+
+            _view.buttonCreate();
+
+            string expected = "Abraham Lincoln, Alder: 19, Tlf: 00000001, Student";
+            string actual = _view.PersonList.ToList()[8].ToString();
+
+            Assert.AreEqual(expected, actual);
+
+            string expectedFededback = "Oprettet!";
+            string actualFeedback = _view.CreatePersonLabel;
+
+            Assert.AreEqual(expectedFededback, actualFeedback);
+        }// TODO lav view create tests
     }
 }
