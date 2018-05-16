@@ -56,12 +56,7 @@ namespace CreateTest
             string expected = "Abraham Lincoln, Alder: 19, Tlf: 11111112, Student";
             string actual = _manage.GetPeople.ToList()[8].ToString();
 
-            string expectedFededback = "Oprettet!";
-            string actualFeedback = _view.CreatePersonText;
-
-
             Assert.AreEqual(expected, actual);
-            Assert.AreEqual(expectedFededback, actualFeedback);
         }
         [TestMethod]
         public void Model_Create_Person_Tlf_FAIL()
@@ -78,15 +73,53 @@ namespace CreateTest
             string expected = "Jeremy McPeak, Alder: 40, Tlf: 55555555, Employed";
             string actual = _manage.GetPeople.ToList()[8].ToString();
 
-            string expectedFededback = "Fejl! - ikke oprettet";
-            string actualFeedback = _view.CreatePersonText;
+            Assert.AreEqual(expected, actual);
 
-            //Trace.WriteLine(actual);
+        }// TODO lav view create tests
+        [TestMethod]
+        public void View_Create_Person()
+        {
+            _view.CreateFirstNameText = "Abraham";
+            _view.CreateLastNameText = "Lincoln";
+            _view.CreateAgeText = "19";
+            _view.CreateTlfText = "11111112";
+            _view.CreateMajorText = "Computer Science 101";
+            _view.CreateStudentRadio = true;
+
+            _view.buttonCreate();
+
+            string expected = "Abraham Lincoln, Alder: 19, Tlf: 11111112, Student";
+            string actual = _view.PersonList.ToList()[8].ToString();
 
             Assert.AreEqual(expected, actual);
+
+            string expectedFededback = "Oprettet!";
+            string actualFeedback = _view.CreatePersonLabel;
+
             Assert.AreEqual(expectedFededback, actualFeedback);
-        }
+        }// TODO lav view create tests
+        [TestMethod]
+        public void View_Create_Person_TLF_Fail()
+        {
+            _view.textChangeFilter();
+            _view.CreateFirstNameText = "Abraham";
+            _view.CreateLastNameText = "Adams";
+            _view.CreateAgeText = "19";
+            _view.CreateTlfText = "22222222";
+            _view.CreateMajorText = "Computer Science 101";
+            _view.CreateStudentRadio = true;
 
+            _view.buttonCreate();
 
+            string expected = "Poul Adams, Alder: 40, Tlf: 33333333, Employed";
+            string actual = _view.PersonList.FirstOrDefault().ToString();
+
+            Assert.AreEqual(expected, actual);
+
+            string expectedFededback = "Fejl! - ikke oprettet";
+            string actualFeedback = _view.CreatePersonLabel;
+
+            Assert.AreEqual(expectedFededback, actualFeedback);
+        }// TODO lav view create tests
     }
 }

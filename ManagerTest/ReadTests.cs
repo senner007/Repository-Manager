@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace ManagerTest
 {
     [TestClass]
-    public class ManagerTest
+    public class ReadTests
     {
 
         private PersonRepository _manage;
@@ -49,7 +49,7 @@ namespace ManagerTest
          */
 
         [TestMethod]
-        public void Model_Get_First_Person()
+        public void Model_Read_Get_First_Person()
         {
             string actual = _manage.GetPeople.FirstOrDefault().ToString();
 
@@ -61,7 +61,7 @@ namespace ManagerTest
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void Model_Get_Last_Person()
+        public void Model_Read_Get_Last_Person()
         {
             string actual = _manage.GetPeople.LastOrDefault().ToString();
 
@@ -80,7 +80,7 @@ namespace ManagerTest
          */
 
         [TestMethod]
-        public void View_SortByName_Get_First_Person()
+        public void View_Read_SortByName_Get_First_Person()
         {
             
             _view.FilterText = "";
@@ -94,7 +94,7 @@ namespace ManagerTest
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void View_SortByAge_Get_First_Person()
+        public void View_Read_SortByAge_Get_First_Person()
         {
 
             _view.FilterText = "";
@@ -108,7 +108,7 @@ namespace ManagerTest
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void View_SortByType_Get_First_Person()
+        public void View_Read_SortByType_Get_First_Person()
         {
 
             _view.FilterText = "";
@@ -122,7 +122,7 @@ namespace ManagerTest
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void View_SortByName_Employed_Get_First_Person()
+        public void View_Read_SortByName_Employed_Get_First_Person()
         {
 
             _view.FilterText = "";
@@ -137,7 +137,7 @@ namespace ManagerTest
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void View_SortByName_Employed_Descending_Get_First_Person()
+        public void View_Read_SortByName_Employed_Descending_Get_First_Person()
         {
 
             _view.FilterText = "";
@@ -159,13 +159,12 @@ namespace ManagerTest
        * 
        */
         [TestMethod]
-        public void View_Filter_Doe_Employed_Get_First_Person()
+        public void View_Read_Filter_Doe_Employed_Get_First_Person()
         {
 
             _view.FilterText = "Doe";
             _view.ShowEmployedCheck = true;
-            _view.SortDirectionCheck = true;
-            _view.buttonSort();
+            _view.textChangeFilter();
 
             IPerson actual = _view.PersonList.FirstOrDefault();
 
@@ -174,13 +173,12 @@ namespace ManagerTest
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void View_Filter_Doe_Employed_Get_Last_Person()
+        public void View_Read_Filter_Doe_Employed_Get_Last_Person()
         {
 
             _view.FilterText = "Doe";
             _view.ShowEmployedCheck = true;
-            _view.SortDirectionCheck = true;
-            _view.buttonSort();
+            _view.textChangeFilter();
 
             IPerson actual = _view.PersonList.LastOrDefault();
 
@@ -189,32 +187,62 @@ namespace ManagerTest
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void View_Filter_Doe_Students_Get_First_Person()
+        public void View_Read_Filter_Doe_Students_Get_First_Person()
         {
 
             _view.FilterText = "Doe";
             _view.ShowStudentsCheck = true;
-            _view.SortDirectionCheck = false;
-            _view.buttonSort();
+            _view.textChangeFilter();
 
             string actual = _view.PersonList.FirstOrDefault().ToString();
 
-            Trace.WriteLine(actual);
+           
 
             string expected = "Jane Doe, Alder: 25, Tlf: 99999999, Student";
 
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void View_Filter_Doe_Students_Get_Last_Person()
+        public void View_Read_Filter_Doe_Students_Sort_Get_Last_Person()
         {
 
             _view.FilterText = "Doe";
             _view.ShowStudentsCheck = true;
-            _view.SortDirectionCheck = false;
-            _view.buttonSort();
+            _view.textChangeFilter();
 
             string actual = _view.PersonList.LastOrDefault().ToString();
+
+            Trace.WriteLine(actual);
+
+            string expected = "John Doe, Alder: 30, Tlf: 88888888, Student";
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void View_Read_Filter_Students_Get_TLF_Null()
+        {
+
+            _view.FilterText = "11111111";
+            _view.ShowStudentsCheck = true;
+            _view.textChangeFilter();
+
+            IPerson actual = _view.PersonList.FirstOrDefault();
+
+            Trace.WriteLine(actual);
+
+            string expected = null;
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void View_Read_Filter_Students_Get_TLF()
+        {
+
+            _view.FilterText = "88888888";
+            _view.ShowStudentsCheck = true;
+            _view.textChangeFilter();
+
+            string actual = _view.PersonList.FirstOrDefault().ToString();
 
             Trace.WriteLine(actual);
 
