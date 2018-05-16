@@ -29,7 +29,7 @@ namespace Manager.Views
 
         string _errorCreateMajorText { get; set; }
 
-        string CreatePersonText { get; set; }
+        string CreatePersonLabel { get; set; }
 
 
         event Action OnDisplayLabels;

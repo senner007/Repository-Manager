@@ -42,9 +42,9 @@ namespace Manager.Views
         public string _errorCreateSalaryText { get; set; }
         public string _errorCreateMajorText { get; set; }
 
-        public string CreatePersonText { get; set; }
+        public string CreatePersonLabel { get; set; }
         public string PersonDeleteText { get; set; }
-        public string FilterSortResult_LABEL { get; set; }
+        public string FilterSortResultLabel { get; set; }
 
         public event Action OnShow;
         public event Action OnUpdate;
@@ -66,7 +66,11 @@ namespace Manager.Views
         }
         public void buttonUpdate() => OnUpdate();
         public void buttonCreate() => OnCreate();
+        public void textChangeFilter()
+        {
 
+            OnFilter();    
+        }
         public void ColumnOrder() { }
 
         // TODO : tilføj manglende knapper
