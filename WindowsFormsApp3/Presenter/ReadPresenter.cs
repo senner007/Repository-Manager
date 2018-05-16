@@ -25,6 +25,7 @@ namespace Manager.Presenter
                 //Hop over sortering og sæt radioSortName og sortdirection, når der indtastes filterkriterie:
                 //Hvis der er tale om en meget stor datasamling eg. 1/2 million+, 
                 //kan man vælge at undlade sortering efterfølgende og kun vise listen som den er sorteret i forvejen (efter LastName)
+                if (determine.IfUint(_view.FilterText) && !determine.IfTLF(_view.FilterText)) return;
                 skipSort = true;
                 _view.SortNameRadio = false;
                 _view.SortAgeRadio = false;
@@ -42,41 +43,40 @@ namespace Manager.Presenter
             // hvis vis studerende, ikke vis employed
             if (_view.ShowStudentsCheck && !_view.ShowEmployedCheck)
             {   // kald sort med student objecter og lambda med filtrer - sorter efter fag
-                _view.PersonList = SortList(Filter(_manage.GetByType(s => s as Student)), o => o.Major);
+                _view.PersonList = SortList(Filter(_manage.GetByType(s => s as Student)), o => o.Major).ToList();
             }
             else if (!_view.ShowStudentsCheck && _view.ShowEmployedCheck)
             {
-                _view.PersonList = SortList(Filter(_manage.GetByType(s => s as Employed)), o => o.Salary);    
+                _view.PersonList = SortList(Filter(_manage.GetByType(s => s as Employed)), o => o.Salary).ToList();    
             }
             else
             {
-                List<IPerson> lst = SortList(Filter(_manage.GetPeople), o => o.Status);
-               _view.PersonList = _manage.MergeTypes(lst).ToList();
-
+                IEnumerable<IPerson> lst = SortList(Filter(_manage.GetPeople), o => o.Status);
+               _view.PersonList = _manage.MergeTypes(lst).ToList(); 
+                // MergeTypes kaldes efter filtrering og evt. sortering, da denne operationer tidkrævende.
             }
           
             skipSort = false;
-            _view.FilterSortResult_LABEL = "Antal : " + _view.PersonList.Count(); // TODO : Count hurtig nok? eller gem i SortList methoden
+            _view.FilterSortResultLabel = "Antal : " + _view.PersonList.Count(); // TODO : Count hurtig nok? eller gem i SortList methoden
             _view.ColumnOrder(); // kald columnOrder i view
             sw.Stop();
             Console.WriteLine(sw.Elapsed);
         }
         
         public IEnumerable<T> Filter<T>(IEnumerable<T> list) where T : IPerson 
-            // TODO : tilføj case-insensitive filter
         {
            
             if (determine.IfName(_view.FilterText))
             {
                 
           
-                //Console.WriteLine("binary sort");
+                Console.WriteLine("binary sort");
                
                 // find efternavn med binær/liniær søgning
                 return ReadBinary.ListBinary<T>(list.ToList(), _view.FilterText);
 
-                // find udsnit af liste med binær søgning - tillader meget hurtigere filtrering (1/2 million personer uden lag)
-                // TODO : kræver at listen er indexeret efter navn - lav evt. et indexeret view i db med merged  
+                // find udsnit af liste med binær søgning - 
+                // tillader meget hurtigere filtrering (1/2 million personer uden ventetid)
 
             }
             else if (determine.IfTLF(_view.FilterText)) 
@@ -84,24 +84,20 @@ namespace Manager.Presenter
 
                 //  var lst =  list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
                 // find i OrderedDictionary (O(1))
-
-
                 var lst = _manage.GetDict[Convert.ToUInt32(_view.FilterText)];
                 return lst is T ? new List <T> { (T)lst } : new List<T>();
-          
 
             }
             return list; // TODO : returner ingen eller hel liste ved fejlindtastning?
         }
 
-
-        private List<T> SortList<T>(IEnumerable<T> list, Func<T, dynamic> lambda) where T : IPerson
+        private IEnumerable<T> SortList<T>(IEnumerable<T> list, Func<T, dynamic> lambda) where T : IPerson
         {
-            if (skipSort == true) return list.ToList();
+            if (skipSort == true) return list;
 
              Console.WriteLine("from sort function");
 
-            if (_view.SortNameRadio) // TODO : tilføj sorter på efternavn
+            if (_view.SortNameRadio) 
             {
                 list = list.OrderBy(o => o.FirstName).ThenBy(o => o.LastName);
             }
@@ -113,12 +109,13 @@ namespace Manager.Presenter
             {
                 list = list.OrderBy(lambda).ThenBy(o => o.LastName);
             }
-            return _view.SortDirectionCheck ? OrderReverse(list) : list.ToList();
+            Console.WriteLine("FROM end sort function");
+            return _view.SortDirectionCheck ? OrderReverse(list) : list;
         }
         
-        private List<T> OrderReverse<T>(IEnumerable<T> list)
+        private IEnumerable<T> OrderReverse<T>(IEnumerable<T> list)
         {
-            return list.AsEnumerable().Reverse().ToList();
+            return list.AsEnumerable().Reverse();
         }
        
 
