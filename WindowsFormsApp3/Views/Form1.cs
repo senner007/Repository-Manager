@@ -185,7 +185,15 @@ namespace Manager.Views
         // kaldes for hver tekstændring under oprettelse af personer. Alle tekstbokse ved personoprettelse er bundet til denne event
         private void createText_TextChanged(object sender, EventArgs e) => OnDisplayLabels();
         // slet person
-        private void buttonDelete_Click(object sender, EventArgs e) => OnDelete();
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to save changes?", "Confirmation", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
+            {
+                OnDelete();
+            }
+            return;
+        }
 
     }
 }
