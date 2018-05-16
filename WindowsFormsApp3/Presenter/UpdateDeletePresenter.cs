@@ -39,10 +39,9 @@ namespace Manager.Presenter
 
         }
 
-        private void Update()  // TODO : call FindPresenter to update
+        private void Update()  
         { 
-            // updater fornavn, efternavn, alder, tlf
-            // TODO : tilføj manglende opdateringsmuligheder
+
            
             if (!determine.ValidateUpdate(_propToUpdate, _view.UpdateText) || _personToUpdate == null) return;
 
@@ -55,7 +54,7 @@ namespace Manager.Presenter
             { 
                 ClearPerson();
                 CallShow(); // Call show in FindPresenter
-                _view.UpdateResponseLabel = "Opdatering gennemført!"; // omdøb variabel fra Errorlabel til feedbacklabel
+                _view.UpdateResponseLabel = "Opdatering gennemført!";
             }
             else
                 _view.UpdateResponseLabel = "Fejl! person ikke opdateret";
@@ -63,9 +62,7 @@ namespace Manager.Presenter
 
             
         }
-        // TODO : genbrug i PersonCreate
         // TODO : farv rød
-        // TODO : Tilføj feedback
 
         private void ClearPerson()
         {
@@ -100,7 +97,7 @@ namespace Manager.Presenter
         }
 
 
-        private void Delete () // TODO : messageboks ved delete
+        private void Delete () 
         {
             if (_personToUpdate == null) return;
             bool success = _manage.DeletePerson(_personToUpdate);

@@ -23,7 +23,7 @@ namespace Manager.Models
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-        public static OrderedDictionary GetBigList(uint size, int forevery) // TODO : tilføj parametre/options
+        public static OrderedDictionary GetBigList(uint size, int forevery) 
         {
             uint largeNumber = size;
             List<IPerson> _people = new List<IPerson>();

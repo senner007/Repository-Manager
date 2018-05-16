@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Manager.Models // TODO : tilføj flere egenskaber
+namespace Manager.Models 
 {  
     public abstract class Person : IPerson, IComparable
     {
@@ -37,7 +37,7 @@ namespace Manager.Models // TODO : tilføj flere egenskaber
         }
     }
 
-    public class Employed : Person // TODO : Implementer IEmployed interface ?
+    public class Employed : Person 
     {
        
         public override string Status { get; set; } = "Employed";

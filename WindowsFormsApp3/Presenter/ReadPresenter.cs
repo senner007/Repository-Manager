@@ -37,7 +37,7 @@ namespace Manager.Presenter
             createPresenter.CallShow += FilterSort;
 
         }
-        private void FilterSort() // TODO : cache sorteret liste ved tryk på hent og sort. Implementer binær søgning på andre egenskaber
+        private void FilterSort() 
         {
             Stopwatch sw = Stopwatch.StartNew();
             // hvis vis studerende, ikke vis employed

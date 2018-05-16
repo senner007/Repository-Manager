@@ -75,7 +75,7 @@ namespace CreateTest
 
             Assert.AreEqual(expected, actual);
 
-        }// TODO lav view create tests
+        }
         [TestMethod]
         public void View_Create_Person()
         {
@@ -97,7 +97,7 @@ namespace CreateTest
             string actualFeedback = _view.CreatePersonLabel;
 
             Assert.AreEqual(expectedFededback, actualFeedback);
-        }// TODO lav view create tests
+        }
         [TestMethod]
         public void View_Create_Person_TLF_Fail()
         {
@@ -120,7 +120,7 @@ namespace CreateTest
             string actualFeedback = _view.CreatePersonLabel;
 
             Assert.AreEqual(expectedFededback, actualFeedback);
-        }// TODO lav view create tests
+        }
         [TestMethod]
         public void View_Create_Person_TLF_Leading_Zeroes()
         {
@@ -142,6 +142,6 @@ namespace CreateTest
             string actualFeedback = _view.CreatePersonLabel;
 
             Assert.AreEqual(expectedFededback, actualFeedback);
-        }// TODO lav view create tests
+        }
     }
 }

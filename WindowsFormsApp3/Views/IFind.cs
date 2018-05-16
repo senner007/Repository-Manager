@@ -17,7 +17,7 @@ namespace Manager.Views
         IEnumerable<IPerson> PersonList { get; set; }
 
         string FilterText { get; }
-        string FilterSortResultLabel { get; set; }// TODO : tekstboxe navngivent med _TEXT, labels med _LABEL
+        string FilterSortResultLabel { get; set; }
 
         event Action OnShow;
         event Action OnFilter;
