@@ -31,7 +31,7 @@ namespace Manager.Presenter
             _view._errorCreateAgeText = determine.IfAge(_view.CreateAgeText) ? "Alder \u2713" : determine.AgeFail;
             _view._errorCreateTlfText = determine.IfTLF(_view.CreateTlfText) ? "Tlf \u2713" : determine.TlfFail;
 
-            _view.CreatePersonText = "";
+            _view.CreatePersonLabel = "";
         }
 
         private bool Create()
@@ -88,12 +88,13 @@ namespace Manager.Presenter
             {
                 ClearPerson();
                 CallShow();
-                _view.CreatePersonText = "Oprettet!"; // omdøb variabel fra Errorlabel til feedbacklabel
+                Console.WriteLine("person oprettet");
+                _view.CreatePersonLabel = "Oprettet!"; // omdøb variabel fra Errorlabel til feedbacklabel
             }
             else
             {
                 Console.WriteLine("not created");
-                _view.CreatePersonText = "Fejl! - ikke oprettet";
+                _view.CreatePersonLabel = "Fejl! - ikke oprettet";
             }
         }    
                 
