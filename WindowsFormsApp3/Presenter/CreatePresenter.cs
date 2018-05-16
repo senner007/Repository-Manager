@@ -49,7 +49,7 @@ namespace Manager.Presenter
                 Console.WriteLine(_view.CreateFirstNameText);
 
                 return _manage.CreateStudent(
-                       Convert.ToUInt32(_view.CreateTlfText),
+                       _view.CreateTlfText,
                        _view.CreateFirstNameText,
                        _view.CreateLastNameText,
                        Convert.ToUInt32(_view.CreateAgeText),
@@ -70,7 +70,7 @@ namespace Manager.Presenter
                    )) return false;
 
                 return _manage.CreateEmployed(
-                        Convert.ToUInt32(_view.CreateTlfText),
+                        _view.CreateTlfText,
                         _view.CreateFirstNameText,
                         _view.CreateLastNameText,
                         Convert.ToUInt32(_view.CreateAgeText),

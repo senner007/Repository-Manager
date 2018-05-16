@@ -54,7 +54,7 @@ namespace Manager.Models
             for (int i = 0; i < largeNumber; i++)
             {
 
-                _people.Add(new Employed() { TLF = Convert.ToUInt32(10000000 + i * 111), FirstName = fn[i], LastName = ln[i], Age = 40, Company = "Google", Salary = 10000 });
+                _people.Add(new Employed() { TLF = (10000000 + i * 111).ToString(), FirstName = fn[i], LastName = ln[i], Age = 40, Company = "Google", Salary = 10000 });
 
             }
             _people = _people.OrderBy(p => p.LastName).ThenBy(p => p.FirstName).ToList();

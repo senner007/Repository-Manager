@@ -81,10 +81,10 @@ namespace Manager.Presenter
             }
             else if (determine.IfTLF(_view.FilterText)) 
             {
-
+                Console.WriteLine("tlf found");
                 //  var lst =  list.Where(n => n.TLF.ToString().StartsWith(_view.FilterText));
                 // find i OrderedDictionary (O(1))
-                var lst = _manage.GetDict[Convert.ToUInt32(_view.FilterText)];
+                var lst = _manage.GetDict[_view.FilterText];
                 return lst is T ? new List <T> { (T)lst } : new List<T>();
 
             }

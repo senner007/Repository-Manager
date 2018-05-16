@@ -9,7 +9,7 @@ namespace Manager.Models // TODO : tilføj flere egenskaber
     public abstract class Person : IPerson, IComparable
     {
      //   [System.ComponentModel.DisplayName("Key")]
-        public uint TLF { get; set; }
+        public string TLF { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public uint Age { get; set; }

@@ -11,7 +11,7 @@ namespace Manager.Models
     {
         // extenstion metode der indsætter objekted på den rigtige plads i stedet for at sortere hele listen
         //(O(n)) 
-        public static void AddSortedDict(this OrderedDictionary dict, uint tlf, IPerson item)
+        public static void AddSortedDict(this OrderedDictionary dict, string tlf, IPerson item)
         {
             Comparer<IPerson> comparer = Comparer<IPerson>.Default;
 

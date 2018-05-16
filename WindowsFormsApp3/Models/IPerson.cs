@@ -8,7 +8,7 @@ namespace Manager.Models
 {
     public interface IPerson
     {
-        uint TLF { get; set; }
+        string TLF { get; set; }
         string FirstName { get; set; }
         string LastName { get; set; }
         uint Age { get; set; }
