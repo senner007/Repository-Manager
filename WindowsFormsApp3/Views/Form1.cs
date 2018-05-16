@@ -39,7 +39,7 @@ namespace Manager.Views
         public bool ShowStudentsCheck { get => chkStudent.Checked; set => chkStudent.Checked = value; }
         public bool ShowEmployedCheck { get => chkEmployed.Checked; set => chkEmployed.Checked = value; }
         public bool SortDirectionCheck { get => chkSortDirection.Checked; set => chkSortDirection.Checked = value; }
-        public string FilterSortResult_LABEL { get => labelResult.Text; set => labelResult.Text = value; }
+        public string FilterSortResultLabel { get => labelResult.Text; set => labelResult.Text = value; }
         public string FilterText { get => txtFilter.Text; }
 
         public event Action OnShow;
@@ -78,7 +78,7 @@ namespace Manager.Views
         public string _errorCreateCompanyText { get => labelCreateCompany.Text; set => labelCreateCompany.Text = value; }
         public string _errorCreateSalaryText { get => labelCreateSalary.Text; set => labelCreateSalary.Text = value; }
         public string _errorCreateMajorText { get => labelCreateMajor.Text; set => labelCreateMajor.Text = value; }
-        public string CreatePersonText { get => labelCreate.Text; set => labelCreate.Text = value; }
+        public string CreatePersonLabel { get => labelCreate.Text; set => labelCreate.Text = value; }
         
 
         public event Action OnCreate;
@@ -125,8 +125,7 @@ namespace Manager.Views
         private void textFilter_TextChanged(object sender, EventArgs e) 
         {
             // hop ud når indtastet er tal og mindre end 8 cifre
-            if (determine.IfUint(txtFilter.Text) && !determine.IfTLF(txtFilter.Text)) return;
-            Console.WriteLine("hello");
+
             OnFilter();
            
         }
