@@ -143,5 +143,27 @@ namespace CreateTest
 
             Assert.AreEqual(expectedFededback, actualFeedback);
         }
+        [TestMethod]
+        public void View_Create_Person_LastName_RepeatingLetters()
+        {
+            _view.CreateFirstNameText = "Anton";
+            _view.CreateLastNameText = "Aagard";
+            _view.CreateAgeText = "19";
+            _view.CreateTlfText = "12345678";
+            _view.CreateMajorText = "Computer Science 101";
+            _view.CreateStudentRadio = true;
+
+            _view.buttonCreate();
+
+            string expected = "Anton Aagard, Alder: 19, Tlf: 12345678, Student";
+            string actual = _view.PersonList.ToList()[0].ToString();
+
+            Assert.AreEqual(expected, actual);
+
+            string expectedFededback = "Oprettet!";
+            string actualFeedback = _view.CreatePersonLabel;
+
+            Assert.AreEqual(expectedFededback, actualFeedback);
+        }
     }
 }
