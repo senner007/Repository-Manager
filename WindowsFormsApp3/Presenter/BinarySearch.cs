@@ -18,7 +18,7 @@ namespace Manager.Presenter
           // Stopwatch stopwatch = Stopwatch.StartNew();
             val = val.ToLower(culture);
             int valLength = val.Length;
-            
+            var en = new CultureInfo("en-US");
             var listCount = list.Count();
             // database simulering hvor der søges på laveste og højeste forekomst, der opfylder søgningskriteriet
             int index = BinaryLowest(0, listCount);
@@ -47,23 +47,23 @@ namespace Manager.Presenter
             {
                 if (left == right)
                 {
-                    return left >= 0 && left < listCount && list[left].LastName.ToLower(culture).StartsWith(val) ? left : -1;
+                    return left >= 0 && left < listCount && list[left].LastName.ToLower(culture).StartsWith(val, StringComparison.InvariantCultureIgnoreCase) ? left : -1;
                 }
                 int mid = (right + left) / 2;
 
                 int mylength = valLength > list[mid].LastName.Length ? list[mid].LastName.Length : valLength;
 
-                return (string.Compare(val, list[mid].LastName.ToLower(culture).Substring(0, mylength)) == 1) ? BinaryLowest(mid + 1, right) : BinaryLowest(left, mid);
+                return (string.Compare(val, list[mid].LastName.ToLower(culture).Substring(0, mylength), en , System.Globalization.CompareOptions.None) == 1) ? BinaryLowest(mid + 1, right) : BinaryLowest(left, mid);
             }
             int BinaryHighest(int left, int right)
             {
                 if (left == right)
                 {
-                    return left - 1 >= 0 && left - 1 < listCount && list[left - 1].LastName.ToLower(culture).StartsWith(val) ? left - 1 : -1;
+                    return left - 1 >= 0 && left - 1 < listCount && list[left - 1].LastName.ToLower(culture).StartsWith(val, StringComparison.InvariantCultureIgnoreCase) ? left - 1 : -1;
                 }
                 int mid = (right + left) / 2;
                 int mylength = valLength > list[mid].LastName.Length ? list[mid].LastName.Length : valLength;
-                return (string.Compare(val, list[mid].LastName.ToLower(culture).Substring(0, mylength)) == -1) ? BinaryHighest(left, mid) : BinaryHighest(mid + 1, right);
+                return (string.Compare(val, list[mid].LastName.ToLower(culture).Substring(0, mylength), en , System.Globalization.CompareOptions.None) == -1) ? BinaryHighest(left, mid) : BinaryHighest(mid + 1, right);
             }
         }
     }
