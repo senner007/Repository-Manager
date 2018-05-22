@@ -43,16 +43,19 @@ namespace Manager.Presenter
             // hvis vis studerende, ikke vis employed
             if (_view.ShowStudentsCheck && !_view.ShowEmployedCheck)
             {   // kald sort med student objecter og lambda med filtrer - sorter efter fag
-                _view.PersonList = SortList(Filter(_manage.GetByType(s => s as Student)), o => o.Major).ToList();
+
+                IEnumerable<Student> lst = Filter(PersonRepository.GetPeople).Select(p => p as Student).Where(p => p != null);
+                _view.PersonList = SortList(lst, o => o.Major).ToList();
             }
             else if (!_view.ShowStudentsCheck && _view.ShowEmployedCheck)
             {
-                _view.PersonList = SortList(Filter(_manage.GetByType(s => s as Employed)), o => o.Salary).ToList();    
+                IEnumerable<Employed> lst = Filter(PersonRepository.GetPeople).Select(p => p as Employed).Where(p => p != null);
+                _view.PersonList = SortList(lst, o => o.Salary).ToList();    
             }
             else
             {
-                IEnumerable<IPerson> lst = SortList(Filter(PersonRepository.GetPeople), o => o.Status);
-               _view.PersonList = _manage.MergeTypes(lst).ToList(); 
+                IEnumerable<IPerson> lst = Filter(PersonRepository.GetPeople);
+               _view.PersonList = SortList(_manage.MergeTypes(lst), o => o.Status).ToList(); 
                 // MergeTypes kaldes efter filtrering og evt. sortering, da denne operationer tidkrævende.
             }
           
@@ -63,7 +66,7 @@ namespace Manager.Presenter
             Console.WriteLine(sw.Elapsed);
         }
         
-        public IEnumerable<T> Filter<T>(IEnumerable<T> list) where T : IPerson 
+        public IEnumerable<T> Filter<T>(List<T> list) where T : IPerson 
         {
            
             if (determine.IfName(_view.FilterText))
@@ -73,7 +76,7 @@ namespace Manager.Presenter
                 Console.WriteLine("binary sort");
                
                 // find efternavn med binær/liniær søgning
-                return ReadBinary.ListBinary<T>(list.ToList(), _view.FilterText);
+                return ReadBinary.ListBinary<T>(list, _view.FilterText);
 
                 // find udsnit af liste med binær søgning - 
                 // tillader meget hurtigere filtrering (1/2 million personer uden ventetid)

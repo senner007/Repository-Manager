@@ -15,7 +15,7 @@ namespace Manager.Models
 
         private readonly static OrderedDictionary myOrderedDictionary;
 
-        public static List<IPerson> GetPeople;
+        public static List<IPerson> GetPeople; // TODO : skal være static ?
 
         public OrderedDictionary GetDict => myOrderedDictionary;
 
@@ -38,7 +38,6 @@ namespace Manager.Models
 
             //myOrderedDictionary = BigListTest.GetBigList(1000000, 200);
             //GetPeople = myOrderedDictionary.Values.OfType<IPerson>().ToList();
-
 
         }
 
@@ -66,11 +65,11 @@ namespace Manager.Models
             return true; // TODO : hvornår/hvoprfor skal der returneres true ?
 
         }
-        public IEnumerable<T> GetByType<T>(Func<IPerson, T> lambda) where T : IPerson
+        public List<IPerson> GetByType<T>(Func<IPerson, T> lambda) where T : IPerson
         {
-            IEnumerable<T> valueCollection = myOrderedDictionary.Values.OfType<T>();
-            // return _people.Select(lambda).Where(p => p != null); // bruges til at indætte i liste
-            return valueCollection;
+           // IEnumerable<T> valueCollection = myOrderedDictionary.Values.OfType<T>();
+            // return GetPeople.Select(lambda).Where(p => p != null); // bruges til at indætte i liste
+           return GetPeople;
 
 
         }
