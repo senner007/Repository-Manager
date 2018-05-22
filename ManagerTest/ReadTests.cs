@@ -51,7 +51,7 @@ namespace ManagerTest
         [TestMethod]
         public void Model_Read_Get_First_Person()
         {
-            string actual = _manage.GetPeople.FirstOrDefault().ToString();
+            string actual = PersonRepository.GetPeople.FirstOrDefault().ToString();
 
             string expected = "Poul Adams, Alder: 40, Tlf: 33333333, Employed";
 
@@ -63,7 +63,7 @@ namespace ManagerTest
         [TestMethod]
         public void Model_Read_Get_Last_Person()
         {
-            string actual = _manage.GetPeople.LastOrDefault().ToString();
+            string actual = PersonRepository.GetPeople.LastOrDefault().ToString();
 
             string expected = "Jeremy McPeak, Alder: 40, Tlf: 55555555, Employed";
 

@@ -51,7 +51,7 @@ namespace Manager.Presenter
             }
             else
             {
-                IEnumerable<IPerson> lst = SortList(Filter(_manage.GetPeople), o => o.Status);
+                IEnumerable<IPerson> lst = SortList(Filter(PersonRepository.GetPeople), o => o.Status);
                _view.PersonList = _manage.MergeTypes(lst).ToList(); 
                 // MergeTypes kaldes efter filtrering og evt. sortering, da denne operationer tidkrævende.
             }

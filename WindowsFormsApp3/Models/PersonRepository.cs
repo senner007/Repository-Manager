@@ -15,29 +15,29 @@ namespace Manager.Models
 
         private readonly static OrderedDictionary myOrderedDictionary;
 
-        public IEnumerable<IPerson> GetPeople => myOrderedDictionary.Values.OfType<IPerson>();
+        public static List<IPerson> GetPeople;
+
         public OrderedDictionary GetDict => myOrderedDictionary;
 
         static PersonRepository() // static constructor
         {
             Console.WriteLine("People static contructor");
 
-         
-            OrderedDictionary _temp = new OrderedDictionary();
 
-            _temp.AddSortedDict("11111111", new Employed() { TLF = "11111111", FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
-            _temp.AddSortedDict("22222222", new Employed() { TLF = "22222222", FirstName = "Poul", LastName = "Anderson", Age = 40, Company = "Google", Salary = 10000 });
-            _temp.AddSortedDict("33333333", new Employed() { TLF = "33333333", FirstName = "Poul", LastName = "Adams", Age = 40, Company = "Google", Salary = 10000 });
-            _temp.AddSortedDict("44444444", new Employed() { TLF = "44444444", FirstName = "Bill", LastName = "Gates", Age = 70, Company = "Microsoft", Salary = 5000000 });
-            _temp.AddSortedDict("55555555", new Employed() { TLF = "55555555", FirstName = "Jeremy", LastName = "McPeak", Age = 40, Company = "Envato", Salary = 3500 });
-            _temp.AddSortedDict("66666666", new Employed() { TLF = "66666666", FirstName = "Douglas", LastName = "Crockford", Age = 70, Company = "Yahoo", Salary = 35000 });
-            _temp.AddSortedDict("77777777", new Student() { TLF = "77777777", FirstName = "Thomas", LastName = "Anderson", Age = 20, Major = "Computer Science 101" });
-            _temp.AddSortedDict("88888888", new Student() { TLF = "88888888", FirstName = "John", LastName = "Doe", Age = 30, Major = "Computer Science 201" });
-            _temp.AddSortedDict("99999999", new Student() { TLF = "99999999", FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming" });
+            myOrderedDictionary = new OrderedDictionary();
 
-            myOrderedDictionary = _temp;
+            myOrderedDictionary.AddSortedDict("11111111", new Employed() { TLF = "11111111", FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
+            myOrderedDictionary.AddSortedDict("22222222", new Employed() { TLF = "22222222", FirstName = "Poul", LastName = "Anderson", Age = 40, Company = "Google", Salary = 10000 });
+            myOrderedDictionary.AddSortedDict("33333333", new Employed() { TLF = "33333333", FirstName = "Poul", LastName = "Adams", Age = 40, Company = "Google", Salary = 10000 });
+            myOrderedDictionary.AddSortedDict("44444444", new Employed() { TLF = "44444444", FirstName = "Bill", LastName = "Gates", Age = 70, Company = "Microsoft", Salary = 5000000 });
+            myOrderedDictionary.AddSortedDict("55555555", new Employed() { TLF = "55555555", FirstName = "Jeremy", LastName = "McPeak", Age = 40, Company = "Envato", Salary = 3500 });
+            myOrderedDictionary.AddSortedDict("66666666", new Employed() { TLF = "66666666", FirstName = "Douglas", LastName = "Crockford", Age = 70, Company = "Yahoo", Salary = 35000 });
+            myOrderedDictionary.AddSortedDict("77777777", new Student() { TLF = "77777777", FirstName = "Thomas", LastName = "Anderson", Age = 20, Major = "Computer Science 101" });
+            myOrderedDictionary.AddSortedDict("88888888", new Student() { TLF = "88888888", FirstName = "John", LastName = "Doe", Age = 30, Major = "Computer Science 201" });
+            myOrderedDictionary.AddSortedDict("99999999", new Student() { TLF = "99999999", FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming" });
 
-            // myOrderedDictionary = BigListTest.GetBigList(500000, 200);
+            //myOrderedDictionary = BigListTest.GetBigList(1000000, 200);
+            //GetPeople = myOrderedDictionary.Values.OfType<IPerson>().ToList();
 
 
         }
