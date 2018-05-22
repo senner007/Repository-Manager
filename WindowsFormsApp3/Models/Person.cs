@@ -20,9 +20,8 @@ namespace Manager.Models
             Person p = obj as Person;
             if(p !=null)
             {
-                var en = new System.Globalization.CultureInfo("en-US");
                 int result;
-                result = string.Compare(LastName, p.LastName,en, System.Globalization.CompareOptions.None); // hvis FORnavn
+                result = string.Compare(LastName, p.LastName, MyComparer.ENG, MyComparer.COMPOPTIONS); // hvis FORnavn
                 if (result != 0) return result;
                 result = FirstName.CompareTo(p.FirstName); // hvis EFTERnavn
                 if (result != 0) return result;

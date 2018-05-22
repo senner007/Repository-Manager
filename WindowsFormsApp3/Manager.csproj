@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\BigListTest.cs" />
+    <Compile Include="Models\CultureInfo.cs" />
     <Compile Include="Models\Extenstions.cs" />
     <Compile Include="Models\PersonRepository.cs" />
     <Compile Include="Presenter\CreatePresenter.cs" />
