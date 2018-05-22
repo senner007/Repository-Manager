@@ -23,19 +23,18 @@ namespace Manager.Models
         {
             Console.WriteLine("People static contructor");
 
-
             myOrderedDictionary = new OrderedDictionary();
 
-            myOrderedDictionary.AddSortedDict("11111111", new Employed() { TLF = "11111111", FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
-            myOrderedDictionary.AddSortedDict("22222222", new Employed() { TLF = "22222222", FirstName = "Poul", LastName = "Anderson", Age = 40, Company = "Google", Salary = 10000 });
-            myOrderedDictionary.AddSortedDict("33333333", new Employed() { TLF = "33333333", FirstName = "Poul", LastName = "Adams", Age = 40, Company = "Google", Salary = 10000 });
-            myOrderedDictionary.AddSortedDict("44444444", new Employed() { TLF = "44444444", FirstName = "Bill", LastName = "Gates", Age = 70, Company = "Microsoft", Salary = 5000000 });
-            myOrderedDictionary.AddSortedDict("55555555", new Employed() { TLF = "55555555", FirstName = "Jeremy", LastName = "McPeak", Age = 40, Company = "Envato", Salary = 3500 });
-            myOrderedDictionary.AddSortedDict("66666666", new Employed() { TLF = "66666666", FirstName = "Douglas", LastName = "Crockford", Age = 70, Company = "Yahoo", Salary = 35000 });
-            myOrderedDictionary.AddSortedDict("77777777", new Student() { TLF = "77777777", FirstName = "Thomas", LastName = "Anderson", Age = 20, Major = "Computer Science 101" });
-            myOrderedDictionary.AddSortedDict("88888888", new Student() { TLF = "88888888", FirstName = "John", LastName = "Doe", Age = 30, Major = "Computer Science 201" });
-            myOrderedDictionary.AddSortedDict("99999999", new Student() { TLF = "99999999", FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming" });
-
+            AddSortedDict("11111111", new Employed() { TLF = "11111111", FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
+            AddSortedDict("22222222", new Employed() { TLF = "22222222", FirstName = "Poul", LastName = "Anderson", Age = 40, Company = "Google", Salary = 10000 });
+            AddSortedDict("33333333", new Employed() { TLF = "33333333", FirstName = "Poul", LastName = "Adams", Age = 40, Company = "Google", Salary = 10000 });
+            AddSortedDict("44444444", new Employed() { TLF = "44444444", FirstName = "Bill", LastName = "Gates", Age = 70, Company = "Microsoft", Salary = 5000000 });
+            AddSortedDict("55555555", new Employed() { TLF = "55555555", FirstName = "Jeremy", LastName = "McPeak", Age = 40, Company = "Envato", Salary = 3500 });
+            AddSortedDict("66666666", new Employed() { TLF = "66666666", FirstName = "Douglas", LastName = "Crockford", Age = 70, Company = "Yahoo", Salary = 35000 });
+            AddSortedDict("77777777", new Student() { TLF = "77777777", FirstName = "Thomas", LastName = "Anderson", Age = 20, Major = "Computer Science 101" });
+            AddSortedDict("88888888", new Student() { TLF = "88888888", FirstName = "John", LastName = "Doe", Age = 30, Major = "Computer Science 201" });
+            AddSortedDict("99999999", new Student() { TLF = "99999999", FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming" });
+                                
             //myOrderedDictionary = BigListTest.GetBigList(1000000, 200);
             //GetPeople = myOrderedDictionary.Values.OfType<IPerson>().ToList();
 
@@ -125,7 +124,7 @@ namespace Manager.Models
             if (TlfExists(tlf)) return false;
 
             //  _people.AddSorted(new Student() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Major = major });
-            myOrderedDictionary.AddSortedDict(tlf, new Student() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Major = major });
+            AddSortedDict(tlf, new Student() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Major = major });
             return true;
 
         }
@@ -133,9 +132,19 @@ namespace Manager.Models
         {
             if (TlfExists(tlf)) return false;
             // _people.AddSorted(new Employed() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Company = company, Salary = salary });
-            myOrderedDictionary.AddSortedDict(tlf, new Employed() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Company = company, Salary = salary });
+           AddSortedDict(tlf, new Employed() { TLF = tlf, FirstName = firstname, LastName = lastname, Age = age, Company = company, Salary = salary });
             return true;
         }
         private bool TlfExists(string tlf) => myOrderedDictionary[tlf] != null;
+
+        private static void AddSortedDict(string tlf, IPerson person) 
+        {
+            Comparer<IPerson> comparer = Comparer<IPerson>.Default;
+            int i = 0; 
+            while (i< myOrderedDictionary.Count && comparer.Compare(GetPeople[i], person) < 0) i++;
+
+            myOrderedDictionary.Insert(i, tlf, person);
+            GetPeople = myOrderedDictionary.Values.OfType<IPerson>().ToList();
+        }
     }
 }
