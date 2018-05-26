@@ -115,7 +115,10 @@ namespace Manager.Models
 
         internal bool DeletePerson(IPerson person)
         {
+            Console.WriteLine("deleting person:!");
+
             myOrderedDictionary.Remove(person.TLF);
+            GetPeople.RemoveAt(GetPeople.BinarySearch(person, Comparer<IPerson>.Default));
             return true;
         }
 
@@ -141,9 +144,18 @@ namespace Manager.Models
         {
             Comparer<IPerson> comparer = Comparer<IPerson>.Default;
             int i = 0; 
-            while (i< myOrderedDictionary.Count && comparer.Compare(GetPeople[i], person) < 0) i++;
 
+            if (GetPeople != null )
+            {
+                i = ~GetPeople.BinarySearch(person, comparer);
+
+            } else
+            {
+                while (i < myOrderedDictionary.Count && comparer.Compare(GetPeople[i], person) < 0) i++;
+                
+            }
             myOrderedDictionary.Insert(i, tlf, person);
+
             GetPeople = myOrderedDictionary.Values.OfType<IPerson>().ToList();
         }
     }
