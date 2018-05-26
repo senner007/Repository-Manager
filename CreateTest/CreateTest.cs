@@ -35,7 +35,7 @@ namespace CreateTest
         [TestCleanup()]
         public void Cleanup()
         {// Clear static class for hver test https://colinmackay.scot/2007/06/16/unit-testing-a-static-class/
-
+            PersonRepository.GetPeople = null;
             Type staticType = typeof(PersonRepository);
             ConstructorInfo ci = staticType.TypeInitializer;
             object[] parameters = new object[0];
