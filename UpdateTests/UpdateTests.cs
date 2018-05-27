@@ -175,7 +175,7 @@ namespace UpdateTests
             _view.gridListCLick(
               (IPerson)obj,
               "TLF",
-              obj.TLF.ToString());
+              obj.TLF);
 
             _view.UpdateText = "11111112";
             _view.buttonUpdate();
@@ -211,7 +211,7 @@ namespace UpdateTests
             _view.gridListCLick(
               (IPerson)obj,
               "TLF",
-              obj.TLF.ToString());
+              obj.TLF);
 
             _view.UpdateText = "11111111";
             _view.buttonUpdate();
@@ -220,6 +220,78 @@ namespace UpdateTests
             string actual = _view.PersonList.FirstOrDefault().TLF.ToString();
 
             string expectedFeedback = "Fejl! person ikke opdateret";
+            string actualFeedback = _view.UpdateResponseLabel;
+
+            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expectedFeedback, actualFeedback);
+        }
+        [TestMethod]
+        public void View_Update_First_Person_Merged_LastName()
+        {
+
+            _view.FilterText = "";
+            _view.textChangeFilter();
+            _view.buttonSort();
+
+            Merged clicked = _view.PersonList.FirstOrDefault() as Merged;
+            var obj = new Merged
+            {
+                TLF = clicked.TLF,
+                FirstName = clicked.FirstName,
+                LastName = clicked.LastName,
+                Age = clicked.Age,
+                Company = clicked.Company,
+                Salary = clicked.Salary 
+            };
+
+            _view.gridListCLick(
+              (IPerson)obj,
+              "LastName",
+              obj.LastName);
+
+            _view.UpdateText = "Adamsq";
+            _view.buttonUpdate();
+
+            string expected = "Adamsq";
+            string actual = _view.PersonList.FirstOrDefault().LastName;
+
+            string expectedFeedback = "Opdatering gennemført!";
+            string actualFeedback = _view.UpdateResponseLabel;
+
+            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expectedFeedback, actualFeedback);
+        }
+        [TestMethod]
+        public void View_Update_Last_Person_Merged_LastName()
+        {
+
+            _view.FilterText = "";
+            _view.textChangeFilter();
+            _view.buttonSort();
+
+            Merged clicked = _view.PersonList.LastOrDefault() as Merged;
+            var obj = new Merged
+            {
+                TLF = clicked.TLF,
+                FirstName = clicked.FirstName,
+                LastName = clicked.LastName,
+                Age = clicked.Age,
+                Company = clicked.Company,
+                Salary = clicked.Salary
+            };
+
+            _view.gridListCLick(
+              (IPerson)obj,
+              "LastName",
+              obj.LastName);
+
+            _view.UpdateText = "McPeakq";
+            _view.buttonUpdate();
+
+            string expected = "McPeakq";
+            string actual = _view.PersonList.LastOrDefault().LastName;
+
+            string expectedFeedback = "Opdatering gennemført!";
             string actualFeedback = _view.UpdateResponseLabel;
 
             Assert.AreEqual(expected, actual);
