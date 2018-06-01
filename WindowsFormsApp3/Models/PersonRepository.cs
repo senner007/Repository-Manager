@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Collections;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Manager.Models
 {
@@ -34,8 +35,8 @@ namespace Manager.Models
             AddSortedDict("77777777", new Student() { TLF = "77777777", FirstName = "Thomas", LastName = "Anderson", Age = 20, Major = "Computer Science 101" });
             AddSortedDict("88888888", new Student() { TLF = "88888888", FirstName = "John", LastName = "Doe", Age = 30, Major = "Computer Science 201" });
             AddSortedDict("99999999", new Student() { TLF = "99999999", FirstName = "Jane", LastName = "Doe", Age = 25, Major = "Programming" });
-                                
-            //myOrderedDictionary = BigListTest.GetBigList(1000000, 200);
+
+            //myOrderedDictionary = BigListTest.GetBigList(500000, 200);
             //GetPeople = myOrderedDictionary.Values.OfType<IPerson>().ToList();
 
         }
@@ -116,9 +117,14 @@ namespace Manager.Models
         internal bool DeletePerson(IPerson person)
         {
             Console.WriteLine("deleting person:!");
+           
+            Stopwatch sw = Stopwatch.StartNew();
+            var index = GetPeople.BinarySearch(person, Comparer<IPerson>.Default);
+            myOrderedDictionary.RemoveAt(index);
+            GetPeople.RemoveAt(index);
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed);
 
-            myOrderedDictionary.Remove(person.TLF);
-            GetPeople.RemoveAt(GetPeople.BinarySearch(person, Comparer<IPerson>.Default));
             return true;
         }
 
@@ -154,9 +160,13 @@ namespace Manager.Models
                 while (i < myOrderedDictionary.Count && comparer.Compare(GetPeople[i], person) < 0) i++;
                 
             }
+            Console.WriteLine("inserting");
+            Stopwatch sw = Stopwatch.StartNew();
             myOrderedDictionary.Insert(i, tlf, person);
-
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed);
             GetPeople = myOrderedDictionary.Values.OfType<IPerson>().ToList();
+           
         }
     }
 }

@@ -15,10 +15,6 @@ namespace UpdateTests
     public class UpdateTests
     {
         private PersonRepository _manage;
-
-        public ReadPresenter _readPresenter;
-        public UpdateDeletePresenter _updateDeletePresenter;
-        public CreatePresenter _createPresenter;
         public MockView _view;
 
 
@@ -27,9 +23,7 @@ namespace UpdateTests
         {
             _manage = new PersonRepository();
             _view = new MockView();
-            _updateDeletePresenter = new UpdateDeletePresenter(_view);
-            _createPresenter = new CreatePresenter(_view);
-            _readPresenter = new ReadPresenter(_view, _updateDeletePresenter, _createPresenter);
+            new ReadPresenter(_view, new UpdateDeletePresenter(_view), new CreatePresenter(_view));
         }
         [TestCleanup()]
         public void Cleanup()

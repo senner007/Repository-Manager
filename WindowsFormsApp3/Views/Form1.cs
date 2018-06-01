@@ -14,22 +14,14 @@ namespace Manager.Views
         {
             InitializeComponent();
              AllocConsole();    
-            _updatedDeletePresenter = new UpdateDeletePresenter(this); // instantiate UpdateDeletePresenter presenter
-            _createPresenter = new CreatePresenter(this);
-            _readPresenter = new ReadPresenter(this, _updatedDeletePresenter, _createPresenter);
+            new ReadPresenter(this, new UpdateDeletePresenter(this), new CreatePresenter(this));
             this.ActiveControl = txtFilter; // fokus på filtrering ved programstart
-            // instantiate FindPresenter presenter - indsæt presenters for at kalde event i findpresenter
             Load += buttonSort_Click;
         }
 
         [DllImport("kernel32.dll", SetLastError = true)] // Console output
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
-
-        public ReadPresenter _readPresenter;
-        public UpdateDeletePresenter _updatedDeletePresenter;
-        public CreatePresenter _createPresenter;
-        public Determine determine = new Determine();
 
         //IFind View-Presenter--------------
         public IEnumerable<IPerson> PersonList { get => (IEnumerable<IPerson>)dataGridView1.DataSource;  set => dataGridView1.DataSource = value; }
