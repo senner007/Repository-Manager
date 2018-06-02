@@ -14,9 +14,9 @@ namespace Manager.Models
     public class PersonRepository
     {
 
-        private readonly static OrderedDictionary myOrderedDictionary;
+        private static OrderedDictionary myOrderedDictionary;
 
-        public static List<IPerson> GetPeople; // TODO : skal være static ?
+        public static List<IPerson> GetPeople { get; private set; } = null;// TODO : skal være static ?
 
         public OrderedDictionary GetDict => myOrderedDictionary;
 
