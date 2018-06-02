@@ -21,13 +21,15 @@ namespace Manager.Models
             if(p !=null)
             {
                 int result;
-                result = string.Compare(LastName, p.LastName, MyComparer.ENG, MyComparer.COMPOPTIONS); // hvis FORnavn
+                result = string.Compare(LastName, p.LastName, MyComparer.ENG, MyComparer.COMPOPTIONS); // hvis EFTERnavn
                 if (result != 0) return result;
-                result = string.Compare(FirstName,p.LastName, MyComparer.ENG, MyComparer.COMPOPTIONS); // hvis EFTERnavn
+                result = string.Compare(FirstName,p.FirstName, MyComparer.ENG, MyComparer.COMPOPTIONS); // hvis FORnavn
                 if (result != 0) return result;
 
                 return TLF.CompareTo(p.TLF); // hvis TLF
             }
+
+
             return -1;
         }
 
