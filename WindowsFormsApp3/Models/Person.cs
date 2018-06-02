@@ -23,7 +23,7 @@ namespace Manager.Models
                 int result;
                 result = string.Compare(LastName, p.LastName, MyComparer.ENG, MyComparer.COMPOPTIONS); // hvis FORnavn
                 if (result != 0) return result;
-                result = FirstName.CompareTo(p.FirstName); // hvis EFTERnavn
+                result = string.Compare(FirstName,p.LastName, MyComparer.ENG, MyComparer.COMPOPTIONS); // hvis EFTERnavn
                 if (result != 0) return result;
 
                 return TLF.CompareTo(p.TLF); // hvis TLF
