@@ -94,12 +94,12 @@ namespace Manager.Presenter
             return list; // TODO : returner ingen eller hel liste ved fejlindtastning?
         }
 
-        private IEnumerable<T> SortList<T>(IEnumerable<T> list, Func<T, dynamic> lambda) where T : IPerson
+        private IEnumerable<T> SortList<T,T2>(IEnumerable<T> list, Func<T, T2> lambda) where T : IPerson
         {
             if (skipSort == true) return list;
 
              Console.WriteLine("from sort function");
-
+            // Fix compare så resultat er lig med person IComparable
             if (_view.SortNameRadio) 
             {
                 list = list.OrderBy(o => o.FirstName).ThenBy(o => o.LastName);
@@ -118,7 +118,7 @@ namespace Manager.Presenter
         
         private IEnumerable<T> OrderReverse<T>(IEnumerable<T> list)
         {
-            return list.AsEnumerable().Reverse();
+            return list.Reverse();
         }
        
 
