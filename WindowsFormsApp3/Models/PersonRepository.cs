@@ -23,10 +23,8 @@ namespace Manager.Models
         static PersonRepository() // static constructor
         {
             Console.WriteLine("People static contructor");
-            
 
             myOrderedDictionary = new OrderedDictionary();
-
 
             AddSortedDict("11111111", new Employed() { TLF = "11111111", FirstName = "Poul", LastName = "Irish", Age = 40, Company = "Google", Salary = 10000 });
             AddSortedDict("22222222", new Employed() { TLF = "22222222", FirstName = "Poul", LastName = "Anderson", Age = 40, Company = "Google", Salary = 10000 });
@@ -40,39 +38,29 @@ namespace Manager.Models
 
             //myOrderedDictionary = BigListTest.GetBigList(500000, 200);
             //GetPeople = myOrderedDictionary.Values.OfType<IPerson>().ToList();
-          
 
         }
 
-        public bool UpdatePerson<T>(T clone, string propertyName, string value) where T : IPerson// IPerson parameter er value kopi fra Datagridview
+        public bool UpdatePerson(dynamic clone, string propertyName, string value) // IPerson parameter er value kopi fra Datagridview
         {
-            
-            IPerson _person = myOrderedDictionary[clone.TLF] as IPerson; // Find matching person in db                                                                                   
+            IPerson _person = myOrderedDictionary[clone.TLF]; // Find matching person in db                                                                                   
             PropertyInfo propInfo = clone.GetType().GetProperty(propertyName);
 
             if (propInfo == null || propertyName == "TLF" && TlfExists(value)) return false;
 
             propInfo.SetValue(clone, Convert.ChangeType(value, propInfo.PropertyType), null);
             //if (TlfExists(clone.TLF)) return false;
-            dynamic cl;
             if (_person is Employed)
             {
-              
-                if (clone is Employed) cl = clone as Employed;
-                else cl = clone as Merged;
-
                 //Objektet slettes først og derpå oprettes på ny.
                 // På den måde kan vi genbruge metoder som bruger addSorted, hvor listen ikke behøver sortering.
                 DeletePerson(_person);
-                CreateEmployed(cl.TLF, cl.FirstName, cl.LastName, cl.Age, cl.Company, cl.Salary);
+                CreateEmployed(clone.TLF, clone.FirstName, clone.LastName, clone.Age, clone.Company, clone.Salary);
             }
             else if (_person is Student)
             {
-
-                if (clone is Student) cl = clone as Student;
-                else cl = clone as Merged;
                 DeletePerson(_person);
-                CreateStudent(cl.TLF, cl.FirstName, cl.LastName, cl.Age, cl.Major);
+                CreateStudent(clone.TLF, clone.FirstName, clone.LastName, clone.Age, clone.Major);
             }
             return true; // TODO : hvornår/hvoprfor skal der returneres true ?
 
@@ -166,6 +154,7 @@ namespace Manager.Models
             if (GetPeople != null )
             {
                 i = ~GetPeople.BinarySearch(person, comparer);
+
             } else
             {
                 while (i < myOrderedDictionary.Count && comparer.Compare(GetPeople[i], person) < 0) i++;
