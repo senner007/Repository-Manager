@@ -14,7 +14,7 @@ namespace Manager.Presenter
         public bool IfUint(string input) => UInt32.TryParse(input, out UInt32 parsed)  ? true : false;
         // match ord efterfulgt af 1 mellemrum
         //https://stackoverflow.com/questions/26142059/regex-to-allow-letters-one-space-between-words-and-a-total-length-of-50
-        public bool IfName(string input) => Regex.IsMatch(input, @"^(?!.*?\s{2})[A-ZÆØÅæøåa-z ]{1,50}$")  ? true : false;
+        public bool IfName(string input) => Regex.IsMatch(input, @"^\b(?!.*?\s{2})[A-ZÆØÅæøåa-z ]{1,50}\b$")  ? true : false;
 
         public bool IfAge(string input) => UInt32.TryParse(input, out UInt32 parsed) && parsed > 15 && parsed < 100 ? true : false;
 
